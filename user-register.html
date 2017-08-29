@@ -90,8 +90,11 @@
                         </div>
                         <div class="item">
                             <div class="intro">
-                                <label class="fb-check-box">
-                                    <em><input type="checkbox" checked></em>
+                                <label class="fb-check-box active">
+                                    <em>
+                                        <i class="fb-sprite icon-checked"></i>
+                                        <input type="checkbox" checked>
+                                    </em>
                                     <span>我已同意并阅读<a href="javascript:;">《服务条款协议》</a></span>
                                 </label>
                             </div>
@@ -158,7 +161,8 @@
 <script src="js/fb-page.js"></script>
 <script>
     $(function () {
-
+        //选择确认
+        formChecked(".fb-check-box");
     })
 </script>
 </body>

@@ -22,7 +22,7 @@
 @gray-ee: #eeeeee;
 @main-color: #0fadff;
 @color: #04b1ff;
-@user-color:#0386ff;
+@user-color: #0386ff;
 @margin-big: 40px;
 @padding-big: 40px;
 @border-string: "top", "bottom", "left", "right", "none";
@@ -226,6 +226,12 @@
   :root & {
     filter: none;
   }
+}
+
+.fn-set-opacity-n(@num) {
+  @op: @num * 100;
+  opacity: @num;
+  filter: alpha(opacity=@op);
 }
 
 //设置阴影

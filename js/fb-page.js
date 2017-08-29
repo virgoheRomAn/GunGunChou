@@ -13,11 +13,13 @@ FB.resizeFun(function (w) {
 });
 //滑动显示内容
 FB.hoverShowFun();
+
 //实例化sliderBox
 function newSliderBox(ele, type, opt) {
     var opts = $.extend({}, opt, opts);
     $(ele).sliderBox(type, opts);
 }
+
 //设置滚动条
 function setProgress(ele) {
     ele.each(function () {
@@ -33,6 +35,7 @@ function setProgress(ele) {
         });
     });
 }
+
 //添加提示文字
 $(".fb-tips").each(function () {
     var _tips = $(this).find("span");
@@ -51,6 +54,42 @@ $(".app-qq-bar").click(function () {
         hasClose: true
     });
 });
+
+//表单按钮组
+function formChecked(ele) {
+    var _ele = ele || ".fb-radio-box";
+    $(_ele).on("click", function (e) {
+        e.stopPropagation();
+        var type = $(this).find("input").prop("type");
+        switch (type) {
+            case "radio":
+                if ($(this).hasClass(_ele.split(".")[1])) {
+                    var name = $(this).find("input").attr("name");
+                    $("input[name='" + name + "']").prop("checked", false).parents(_ele).removeClass("active");
+                    $(this).addClass("active").find("input").prop("checked", false);
+                } else {
+                    var $input = $(this).find("input");
+                    var $name = $input.attr("name");
+                    $("input[name='" + $name + "']").prop("checked", false).parents(_ele).removeClass("active");
+                    $input.prop("checked", true).parents(".fb-radio").addClass("active");
+                }
+                break;
+            case "checkbox":
+                var that = this;
+                $(that).toggleClass("active");
+                if ($(that).hasClass("active")) {
+                    $(that).find("input").prop("checked", true);
+                } else {
+                    $(that).find("input").prop("checked", false);
+                }
+                break;
+        }
+    });
+
+    $(_ele).find("span").click(function (e) {
+        e.stopPropagation();
+    });
+}
 
 
 

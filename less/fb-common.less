@@ -84,6 +84,26 @@ iframe, img {
   border: 0 none;
 }
 
+/*自定义滚动条*/
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    border: 5px solid transparent;
+  }
+  &::-webkit-scrollbar-track {
+    .fn-box-shadow-type(1px 1px 5px rgba(0, 0, 0, .2) inset);
+  }
+  &::-webkit-scrollbar-thumb {
+    min-height: 20px;
+    background-clip: content-box;
+    .fn-box-shadow-type(0 0 0 5px rgba(0, 0, 0, .2) inset);
+  }
+}
+
 /*雪碧图*/
 .fb-sprite {
   .fb-block;
@@ -339,7 +359,43 @@ iframe, img {
 }
 
 /*表单-复选框*/
-
+.fb-check-box {
+  .p-rel;
+  .fb-block;
+  &.active {
+    em {
+      .fn-set-background(@user-color);
+      .border-all(1px, solid, @user-color);
+      & > i {
+        .fb-block;
+        .p-abs;
+        .fn-set-tl(50%, 50%);
+        .layer-margin-num(-5px 0 0 -7px);
+      }
+    }
+  }
+  em {
+    .p-rel;
+    .fn-set-tr(4px, 0);
+    .set-layout("inline-block", 18px, 18px);
+    .border-radius(3px);
+    .border-all(1px, solid, @gray-99);
+    .fn-set-background(transparent);
+    .cursor-pointer;
+    margin: 0 3px 0 0;
+    & > i {
+      .fb-none;
+    }
+    & > input[type="checkbox"] {
+      .pos-abs-tl;
+      .disk-layer(100%, 100%);
+      .fn-set-opacity-n(0);
+      .cursor-pointer;
+      margin: 0;
+      -webkit-appearance: checkbox;
+    }
+  }
+}
 
 /*盒子边框*/
 .fn-border-none;
