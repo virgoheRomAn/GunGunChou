@@ -16,6 +16,7 @@
             box: {clsName: "", animate: "j-alert-ani"},
             title: "",
             load: true,
+            hasClose: true,
             path: "img/",
             icon: {location: "", src: ""},
             btn: {
@@ -126,7 +127,7 @@
                         createHtml(opt, css, isHasTitle(opt), isHasIcon(text, src), isHasBtn(opt, btnNum), type, close);
                     } else {
                         createHtml(opt, css, null, isHasIcon(text, src), null, type, close);
-                        if (callback)callback.call(that, opt);
+                        if (callback) callback.call(that, opt);
                     }
                 });
             } else {
@@ -237,7 +238,7 @@
      */
     function isHasTitle(opt) {
         var close = opt.hasClose ? "<a class='j-disk-close' href='javascript:;'>&times;</a>" : "";
-        if (opt.title)  return '<h2 class="j-title">' + opt.title + close + '</h2>';
+        if (opt.title) return '<h2 class="j-title">' + opt.title + close + '</h2>';
         else return '<h2 class="j-title">' + close + '</h2>';
     }
 

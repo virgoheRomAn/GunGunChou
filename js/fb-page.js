@@ -36,25 +36,6 @@ function setProgress(ele) {
     });
 }
 
-//添加提示文字
-$(".fb-tips").each(function () {
-    var _tips = $(this).find("span");
-    _tips.text(_tips.data("text"));
-});
-//弹出提示QQ
-$(".app-qq-bar").click(function () {
-    var intro = "<div class='select-s-qq'>";
-    intro += "<a href='javascript:;'><i class='fb-sprite icon-s-qq'></i>lucy</a>";
-    intro += "<a href='javascript:;'><i class='fb-sprite icon-s-qq'></i>Lily</a>";
-    intro += "<a href='javascript:;'><i class='fb-sprite icon-s-qq'></i>Andy</a>";
-    intro += "</div>";
-    var title = "选择在线咨询客服";
-    $.jBox.confirm(intro, {
-        title: title,
-        hasClose: true
-    });
-});
-
 //表单按钮组
 function formChecked(ele) {
     var _ele = ele || ".fb-radio-box";
@@ -90,6 +71,25 @@ function formChecked(ele) {
         e.stopPropagation();
     });
 }
+
+//添加提示文字
+$(".fb-tips").each(function () {
+    var _tips = $(this).find("span");
+    _tips.text(_tips.data("text"));
+});
+//弹出提示QQ
+$(".app-qq-bar").click(function () {
+    var intro = "<div class='select-s-qq'>";
+    intro += "<a href='javascript:;'><i class='fb-sprite icon-s-qq'></i>lucy</a>";
+    intro += "<a href='javascript:;'><i class='fb-sprite icon-s-qq'></i>Lily</a>";
+    intro += "<a href='javascript:;'><i class='fb-sprite icon-s-qq'></i>Andy</a>";
+    intro += "</div>";
+    var title = "选择在线咨询客服";
+    $.jBox.confirm(intro, {
+        title: title,
+        hasClose: true
+    });
+});
 
 
 
