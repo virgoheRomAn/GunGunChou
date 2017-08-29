@@ -22,17 +22,18 @@
 @gray-ee: #eeeeee;
 @main-color: #0fadff;
 @color: #04b1ff;
+@user-color:#0386ff;
 @margin-big: 40px;
 @padding-big: 40px;
 @border-string: "top", "bottom", "left", "right", "none";
 @imgs: "../img";
 /**-定义函数-**/
 //选择模式
-.user-type() {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+.user-type(@type:text) {
+  -webkit-user-select: @type;
+  -moz-user-select: @type;
+  -ms-user-select: @type;
+  user-select: @type;
 }
 
 //盒子
@@ -344,6 +345,9 @@
   }
   &.line {
     background: transparent;
+  }
+  &.no-bd {
+    border: 0 none;
   }
 }
 

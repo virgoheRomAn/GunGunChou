@@ -97,3 +97,88 @@
     }
   }
 }
+
+//内容
+.register-cont {
+  .fb-block-center;
+  .fn-set-width(380px);
+  .title-bar {
+    .fb-block;
+    .text-color(@gray-33);
+    .tm-center;
+    span {
+      .fb-block;
+      .fn-set-margin(10px, bottom);
+      .tm-bold;
+      .fs-number(28px);
+    }
+    label {
+      .fs-number(16px);
+      a {
+        .text-color(@user-color);
+      }
+    }
+  }
+}
+
+//表单列表
+.user-form {
+  .fb-block;
+  .item {
+    .fb-block;
+    .clear;
+    margin-bottom: 15px;
+    & > label {
+      .fb-block;
+      .text-mid-line(40px);
+      .border-all(1px, solid, @gray-99);
+      .border-radius(3px);
+      padding: 0 10px;
+      input {
+        &[type="text"], &[type="password"] {
+          .fb-block;
+          .fn-set-width(100%);
+          .text-mid-line(20px);
+          .border-none;
+          .fs-16;
+          background: transparent;
+          margin-top: 10px;
+        }
+      }
+      &.code {
+        .fn-set-width(200px);
+        .fl-left;
+      }
+    }
+    .code-btn {
+      .set-layout("block", 120px, 42px);
+      .fl-right;
+      img {
+        .fb-height;
+      }
+    }
+    .intro{
+      .user-type(none);
+      .fs-16;
+      a{
+        .text-color(@user-color);
+      }
+    }
+  }
+  .btn-bar {
+    margin-top: 30px;
+    padding-bottom: 50px;
+    a {
+      .text-mid-line(42px);
+      .tm-center;
+      .fs-number(24px);
+      .tc-fff;
+      line-height: 40px;
+    }
+  }
+}
+
+
+
+
+
