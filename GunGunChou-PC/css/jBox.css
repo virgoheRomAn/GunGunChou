@@ -1,0 +1,339 @@
+html, body {
+    position: relative;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+    visibility: visible;
+    overflow: hidden;
+}
+
+.j-disk {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+}
+
+.j-disk {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.j-disk-confirm {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.j-disk-alert {
+    background: transparent;
+}
+
+.j-disk-confirm .j-container {
+    display: block;
+    padding: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10002;
+    margin: -75px 0 0 -150px;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.j-title {
+    position: relative;
+    height: 28px;
+    line-height: 28px;
+    /*font-weight: bold;*/
+    font-size: 16px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: #04b1ff;
+    color: #ffffff;
+    cursor: move;
+    padding: 10px 15px;
+}
+
+.j-disk-close {
+    display: block;
+    height: 28px;
+    line-height: 24px;
+    float: right;
+    color: #ffffff;
+    font-size: 34px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.j-content {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    padding: 5px 25px;
+}
+
+.j-disk-text {
+    position: relative;
+    display: block;
+    /*padding: 10px 0;*/
+    margin: auto;
+    text-align: center;
+}
+
+.j-disk-text .j-disk-t {
+    font-size: 24px;
+}
+
+.j-disk-img {
+    text-align: left;
+    padding: 10px 0 10px 34px;
+}
+
+i.j-disk-icon {
+    display: block;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -13px;
+}
+
+i.j-disk-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.j-disk-prompt {
+    position: relative;
+    display: block;
+    padding: 10px 0;
+    margin: auto;
+}
+
+.j-disk-prompt label {
+    display: block;
+    line-height: 20px;
+    font-size: 14px;
+    margin: 5px auto 25px;
+    color: #878787;
+    text-align: center;
+}
+
+.j-disk-prompt a {
+    display: inline-block;
+    float: right;
+    width: 74px;
+    background: #10ACAD;
+    border: 1px solid #10ACAD;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.j-disk-prompt span {
+    display: inline-block;
+    width: 124px;
+    padding: 0 5px;
+    float: left;
+    border: 1px solid #aaa;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.j-disk-prompt span input {
+    width: 100%;
+    background: transparent;
+    border: 0 none;
+}
+
+.j-btn {
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    width: 100%;
+    margin: 15px auto 0;
+}
+
+.j-btn.j-btn-one a {
+    width: 100%;
+}
+
+.j-btn a {
+    display: block;
+    float: left;
+    width: 45%;
+    text-align: center;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+a.j-ensure {
+    background: #10ACAD;
+    border: 1px solid #10ACAD;
+    color: #FFFFFF;
+    float: left;
+}
+
+a.j-cancel {
+    background: #D8D8D8;
+    border: 1px solid #B3B3B3;
+    color: #666;
+    float: right;
+}
+
+.j-disk-alert .j-container {
+    display: block;
+    padding: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10002;
+    margin: -75px 0 0 -150px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.j-disk-alert .j-content {
+    color: #FFFFFF;
+    padding: 25px 80px;
+}
+
+/********************************************/
+/***********          弹窗动画          **********/
+/******        更多animate.min.css      ******/
+/********************************************/
+.animated {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+}
+
+.animate-infinite-linear {
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-direction: normal;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-direction: normal;
+}
+
+/*旋转*/
+@-webkit-keyframes rotateDeg {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateDeg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotateDeg {
+    animation-name: rotateDeg;
+    -webkit-animation-name: rotateDeg;
+}
+
+/*j弹窗动画*/
+@-webkit-keyframes j-alert-ani {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes j-alert-ani {
+    0% {
+        -moz-transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        -moz-transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        -moz-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes j-alert-ani {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.j-alert-ani {
+    -webkit-animation-name: j-alert-ani;
+    -moz-animation-name: j-alert-ani;
+    animation-name: j-alert-ani;
+}

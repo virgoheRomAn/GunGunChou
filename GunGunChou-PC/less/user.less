@@ -1,0 +1,99 @@
+@charset "UTF-8";
+@import "fb-function";
+@import (reference) "fb-common";
+
+/**
+*用户样式表
+*2017-08-28
+*徐继强
+*引用 fb-function.less构造函数样式   fb-common.less主体函数样式
+*/
+//注册
+.register-box {
+  .disk-type();
+  .layer-padding-num(60px 0);
+  background: url("@{imgs}/register-bg.jpg") center;
+  .register-bar {
+    .fb-block-center;
+    width: 1122px;
+    background: #fefefe;
+  }
+}
+
+//步骤
+.register-step {
+  .fb-block-center;
+  width: 716px;
+  padding: 40px 0 30px;
+  .clear;
+  .step {
+    .fl-left;
+    .bg {
+      display: block;
+      width: 100%;
+      .text-mid-line(60px);
+      .fs-number(30px);
+      .tc-fff;
+    }
+    .tx {
+      display: block;
+      width: 90px;
+      line-height: 20px;
+      margin-left: -15px;
+      margin-top: 10px;
+      .fs-14;
+      .tm-center;
+      .text-color(@gray-99);
+    }
+    &.active {
+      .tx {
+        .text-color(#04b1ff);
+      }
+    }
+    &.step1 {
+      width: 203px;
+      background: url("@{imgs}/step1.png") no-repeat;
+      .bg {
+        .tm-left;
+        text-indent: 22px;
+      }
+      &.active {
+        .bg {
+          background: url("@{imgs}/step1-active.png") no-repeat;
+        }
+      }
+    }
+    &.step2 {
+      width: 334px;
+      background: url("@{imgs}/step2.png") no-repeat;
+      .bg {
+        .tm-center;
+        text-indent: -14px;
+      }
+      .tx {
+        margin-left: 114px;
+      }
+      &.active {
+        .bg {
+          background: url("@{imgs}/step2-active.png") no-repeat;
+        }
+      }
+    }
+    &.step3 {
+      width: 179px;
+      background: url("@{imgs}/step3.png") no-repeat;
+      .bg {
+        .tm-center;
+        text-indent: 115px;
+      }
+      .tx {
+        margin-left: 105px;
+      }
+      &.active {
+        .bg {
+          background: url("@{imgs}/step3-active.png") no-repeat;
+        }
+      }
+    }
+  }
+}
