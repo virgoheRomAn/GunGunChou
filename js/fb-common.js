@@ -1,25 +1,6 @@
 //声明FB函数对象集合
 var FB = window.Global = window.Global || {};
 //声明FB集合属性
-var exp = {
-    telephone: /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
-    telCode: /^[0-9]{6}$/,
-    strengthA: {
-        number: /^[0-9]+$/,
-        letterCaps: /^[A-Z]+$/,
-        letterLows: /^[a-z]+$/,
-        symbol: /^\W+$/
-    },
-    strengthB: {
-        numLetterA: /^(([0-9]+[a-z]+)|([a-z]+[0-9]+))[0-9a-z]*$/,
-        numLetterB: /^(([0-9]+[A-Z]+)|([A-Z]+[0-9]+))[0-9A-Z]*$/,
-        numSymbol: /^((\W+[0-9]+)|([0-9]+\W+))[\W0-9]*$/,
-        LetterALetterB: /^(([A-Z]+[a-z]+)|([a-z]+[A-Z]+))[A-Za-z]*$/,
-        LetterASymbol: /^((\W+[a-z]+)|([a-z]+\W+))[\Wa-z]*$/,
-        LetterBSymbol: /^((\W+[A-Z]+)|([A-Z]+\W+))[\WA-Z]*$/
-    }
-};
-FB.verifyExp = exp;
 FB.win = window;
 /**
  * 添加函数名称

@@ -80,13 +80,13 @@
                         <span class="title">免费注册滚滚筹账户</span>
                         <label>已有账号？<a href="user-login.html">去登陆</a></label>
                     </div>
-                    <div class="user-form mt-20">
+                    <div class="user-form mt-20" id="userVerify">
                         <div class="item">
-                            <label class="normal"><input type="text" maxlength="11" value="" placeholder="手机号码"></label>
+                            <label class="normal"><input class="tel-phone" data-format="number" type="text" maxlength="11" value="" placeholder="手机号码"></label>
                         </div>
                         <div class="item">
-                            <label class="code"><input type="text" value="" placeholder="图形验证码"></label>
-                            <a class="code-btn" href="javascript:;"><img src="img/code.jpg"></a>
+                            <label class="code"><input class="code-num" type="text" value="" placeholder="图形验证码"></label>
+                            <a class="code-btn" href="javascript:;" title="点击换一换"><img src="img/code.jpg"></a>
                         </div>
                         <div class="item">
                             <div class="intro">
@@ -181,6 +181,11 @@
 <script src="js/fb-page.js"></script>
 <script>
     $(function () {
+        //设置弹窗的高度
+        var box_height = 0;
+        FB.resizeFun(function (w, h) {
+            box_height = h - h * 0.1 * 2;
+        });
         //配置弹窗
         $.jBox.configFun(function (opt) {
             opt.isVertical = false;
@@ -190,11 +195,25 @@
             var text = $("#agreementCont").html();
             var title = "滚滚筹服务协议";
             $.jBox.btnAlert(text, {
-                title: title
+                boxCls: "agreement-box",
+                title: title,
+                top: "10%",
+                btn: {
+                    text: ["同意协议，马上去注册"],
+                    jEnsure: function (opt) {
+                        $.jBox.alert("您点击了" + opt.btn.text[0] + "按钮！");
+                    }
+                }
             }, {
                 boxCSS: {
-                    width: "1100px",
-                    height: "580px"
+                    width: "900px",
+                    height: box_height + "px"
+                },
+                contCSS: {
+                    height: box_height - 48 - 30 + "px"
+                },
+                textBoxCSS: {
+                    height: box_height - 48 - 30 - 40 - 15 + "px"
                 }
             });
         });

@@ -11,6 +11,7 @@
             isMove: true,   //是否可移动
             isVertical: false,  //是否垂直剧中
             isFlow: true,   //是否跟随移动
+            isLimit: true,   //移动是否开启限制范围
             time: 1500, //小时时间
             top: "20%",  //距离顶部的距离，支持“px”和“%”
             box: {clsName: "", animate: "j-alert-ani"},
@@ -19,6 +20,7 @@
             hasClose: true,
             path: "img/",
             icon: {location: "", src: ""},
+            boxCls: "",
             btn: {
                 text: [],
                 closeType: 1,
@@ -157,7 +159,7 @@
         t = t ? t : "";
         c = c ? c : "";
         b = b ? b : "";
-        var cls = type == 0 ? "j-disk-alert" : "j-disk-confirm";
+        var cls = !type ? "j-disk-alert" : "j-disk-confirm";
         var html = '';
         if (_clear_setTimeout_) clearTimeout(_clear_setTimeout_);
 
@@ -171,30 +173,35 @@
 
         opt.diskBar = $("#jDisk");
         opt.boxCont = $(".j-container");
+        opt.boxContBar = $(".j-content");
         opt.boxTitle = $(".j-title");
-        opt.boxText = $(".j-disk-text").find("span");
+        opt.boxTextBox = $(".j-disk-text");
+        opt.boxText = $(".j-disk-t");
         opt.boxIcon = $(".j-disk-icon");
         opt.boxBtn = $(".j-btn");
         opt.jEnsure = $("#jEnsure");
         opt.jCancel = $("#jCancel");
-        opt.promptEnsure = $("#jPromptEnsure");
         opt.jClose = $(".j-disk-close");
+        opt.promptEnsure = $("#jPromptEnsure");
 
         if (opt.isMove) {
-            opt.boxTitle.on("mousedown", startMove);
+            opt.boxTitle.on("mousedown", {"opt": opt}, startMove);
         }
 
         var cWidth = opt.boxCont.width();
+        if (opt.boxCls) opt.diskBar.addClass(opt.boxCls);
 
         if (css) {
             setEleCss(opt, css, opt.boxCont, cWidth, type);
 
-            opt.boxIcon.css(css.iconCSS.length != 0 ? css.iconCSS : "");
-            opt.boxText.css(css.textCSS.length != 0 ? css.textCSS : "");
-            opt.boxTitle.css(css.titleCSS.length != 0 ? css.titleCSS : "");
-            opt.jEnsure.css(css.btnCSS.jEnsure.length != 0 ? css.btnCSS.jEnsure : "");
-            opt.jCancel.css(css.btnCSS.jCancel.length != 0 ? css.btnCSS.jCancel : "");
-            opt.promptEnsure.css(css.btnCSS.jEnsure.length != 0 ? css.btnCSS.jEnsure : "");
+            opt.boxTitle.css(css.titleCSS ? css.titleCSS : "");
+            opt.boxContBar.css(css.contCSS ? css.contCSS : "");
+            opt.boxTextBox.css(css.textBoxCSS ? css.textBoxCSS : "");
+            opt.boxText.css(css.textCSS ? css.textCSS : "");
+            opt.boxIcon.css(css.iconCSS ? css.iconCSS : "");
+            opt.jEnsure.css(css.btnCSS.jEnsure ? css.btnCSS.jEnsure : "");
+            opt.jCancel.css(css.btnCSS.jCancel ? css.btnCSS.jCancel : "");
+            opt.promptEnsure.css(css.btnCSS.jEnsure ? css.btnCSS.jEnsure : "");
         }
         opt.jEnsure.on("click", {"opt": opt}, ensureFun);
         opt.jCancel.on("click", {"opt": opt}, cancelFun);
@@ -307,12 +314,12 @@
         var marginLeft = parseInt(w) / 2;
 
         ele.css("width", w);
-        h = ele.height();
+        if (css.boxCSS) h = css.boxCSS.height ? css.boxCSS.height : ele.height();
         var pos = opt.isFlow ? "fixed" : "absolute";
         if (opt.isVertical) {
             ele.css({
                 "position": pos, "width": w, "height": h,
-                "margin": "-" + h / 2 + "px 0 0 -" + marginLeft + "px"
+                "margin": "-" + parseInt(h) / 2 + "px 0 0 -" + marginLeft + "px"
             });
         } else {
             ele.css({
@@ -389,30 +396,35 @@
     var saveData = {}, _isMoved_ = false;
 
     function startMove(e) {
-        e = event || window.event;
+        e = e || window.event;
         e.stopPropagation();
         e.preventDefault();
+        var opt = e.data.opt;
         saveData.startX = e.clientX || e.pageX;
         saveData.startY = e.clientY || e.pageY;
         saveData.top = parseFloat($(this).parents(".j-container").css("top"));
         saveData.left = parseFloat($(this).parents(".j-container").css("left"));
         if (!_isMoved_) {
             _isMoved_ = true;
-            $(document).on("mousemove", moving);
-            $(document).on("mouseup", endMove);
+            $(document).on("mousemove", {opt: opt}, moving);
+            $(document).on("mouseup", {opt: opt}, endMove);
         }
     }
 
     function moving(e) {
-        e = event || window.event;
+        e = e || window.event;
         e.stopPropagation();
         e.preventDefault();
+        var opt = e.data.opt;
         var x = e.clientX || e.pageX;
         var y = e.clientY || e.pageY;
         if (_isMoved_) {
             var mx = x - saveData.startX + saveData.left;
             var my = y - saveData.startY + saveData.top;
-
+            if (opt.isLimit) {
+                if (my < 0 || my > $(window).height() - 50) return false;
+                if (mx < 0 || mx > $(window).width()) return false;
+            }
             $(".j-container").css({
                 "top": my + "px",
                 "left": mx + "px"
