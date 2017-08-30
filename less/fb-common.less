@@ -104,6 +104,15 @@ iframe, img {
   }
 }
 
+//去掉input nu'm
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"]{
+  -moz-appearance: textfield;
+}
+
 /*雪碧图*/
 .fb-sprite {
   .fb-block;
@@ -250,8 +259,8 @@ iframe, img {
   .float-right;
 }
 
-.float-none {
-  .float-none
+.fl-none {
+  .float-none;
 }
 
 .clear {
