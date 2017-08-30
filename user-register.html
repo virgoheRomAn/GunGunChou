@@ -76,31 +76,90 @@
                     </div>
                 </div>
                 <div class="register-cont">
-                    <div class="title-bar">
-                        <span class="title">免费注册滚滚筹账户</span>
-                        <label>已有账号？<a href="user-login.html">去登陆</a></label>
-                    </div>
-                    <div class="user-form mt-20" id="userVerify">
-                        <div class="item">
-                            <label class="normal"><input class="verify" data-format="number" type="text" maxlength="11" value="" placeholder="手机号码"></label>
+                    <div class="step-cont active">
+                        <div class="title-bar">
+                            <span class="title">免费注册滚滚筹账户</span>
+                            <label>已有账号？<a href="user-login.html">去登陆</a></label>
                         </div>
-                        <div class="item">
-                            <label class="code"><input class="code-num" type="text" value="" placeholder="图形验证码"></label>
-                            <a class="code-btn" href="javascript:;" title="点击换一换"><img src="img/code.jpg"></a>
-                        </div>
-                        <div class="item">
-                            <div class="intro">
-                                <label class="fb-check-box active">
-                                    <em>
-                                        <i class="fb-sprite icon-checked"></i>
-                                        <input type="checkbox" checked>
-                                    </em>
-                                    <span>我已同意并阅读<a id="agreement" href="javascript:;">《服务条款协议》</a></span>
+                        <div class="user-form mt-20">
+                            <div class="item">
+                                <label class="normal">
+                                    <input class="verify-tel" type="text" maxlength="11" value="" placeholder="手机号码">
                                 </label>
                             </div>
+                            <div class="item">
+                                <label class="code">
+                                    <input type="text" value="" placeholder="图形验证码">
+                                </label>
+                                <a class="code-btn" href="javascript:;" title="点击换一换"><img src="img/code.jpg"></a>
+                            </div>
+                            <div class="item">
+                                <div class="intro">
+                                    <label class="fb-check-box active">
+                                        <em>
+                                            <i class="fb-sprite icon-checked"></i>
+                                            <input type="checkbox" checked>
+                                        </em>
+                                        <span>我已同意并阅读<a id="agreement" href="javascript:;">《服务条款协议》</a></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="btn-bar">
+                                <a class="fb-btn no-bd radius gradient tc-fff" href="javascript:;" id="nextBtn">下一步</a>
+                            </div>
                         </div>
-                        <div class="btn-bar">
-                            <a class="fb-btn no-bd radius gradient tc-fff" href="javascript:;">下一步</a>
+                    </div>
+                    <div class="step-cont">
+                        <div class="user-form mt-20">
+                            <div class="item">
+                                <span class="title">手机验证码已发送至您的手机</span>
+                                <label class="code">
+                                    <input type="text" value="" placeholder="手机验证码">
+                                </label>
+                                <a id="countDown" class="cut-down" href="javascript:;">获取验证码</a>
+                            </div>
+                            <div class="item">
+                                <label class="normal clean">
+                                    <input id="loginPsd" type="password" value="" placeholder="登陆密码">
+                                    <a class="clean-btn" href="javascript:;">
+                                        <i class="fb-sprite icon-clean"></i>
+                                    </a>
+                                </label>
+                                <div class="password-type">
+                                    <span>密码强度：</span>
+                                    <label class="type text">
+                                        <span class="r"><em>弱</em></span>
+                                        <span class="z"><em>中</em></span>
+                                        <span class="q"><em>强</em></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label class="normal clean">
+                                    <input type="password" value="" placeholder="再次输入您的登陆密码">
+                                    <a class="clean-btn" href="javascript:;">
+                                        <i class="fb-sprite icon-clean"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="item">
+                                <label class="normal">
+                                    <input type="password" value="" placeholder="邀请码（选填）">
+                                </label>
+                            </div>
+                            <div class="btn-bar">
+                                <a class="fb-btn no-bd radius gradient tc-fff" href="javascript:;">确定</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-cont">
+                        <div class="title-bar">
+                            <span class="title">注册成功</span>
+                            <span class="fb-block tc-333 fs-24 mt-20">恭喜获得<em class="ml-5 mr-5 tc-ff5e5e fs-24">50</em>积分，马上去认证吧！</span>
+                        </div>
+                        <div class="success-bar">
+                            <a class="tc-user fs-16 tm-uline" href="ggc-index.html">我在看看</a>
+                            <a class="tc-user fs-16 tm-uline" href="ggc-index.html">立即认证</a>
                         </div>
                     </div>
                 </div>
@@ -199,10 +258,7 @@
                 title: title,
                 top: "10%",
                 btn: {
-                    text: ["同意协议，马上去注册"],
-                    jEnsure: function (opt) {
-                        $.jBox.alert("您点击了" + opt.btn.text[0] + "按钮！");
-                    }
+                    text: ["同意协议，马上去注册"]
                 }
             }, {
                 boxCSS: {
@@ -219,6 +275,98 @@
         });
         //选择确认
         formChecked(".fb-check-box");
+
+        //注册流程
+        $("#nextBtn").click(function () {
+            var boxOpt = {isVertical: true};
+            var $step_num = $(".step");
+            var $step = $(".step-cont");
+            var tel = $(".verify-tel");
+            var val = tel.val();
+            if (FB.testForm.phone(val) == 0) {
+                $.jBox.alert("手机号不能为空", boxOpt);
+            } else if (FB.testForm.phone(val) == 3) {
+                $.jBox.alert("手机号格式错误", boxOpt);
+            } else if (FB.testForm.phone(val) == 2) {
+                $step_num.eq(1).addClass("active");
+                $step.eq(1).addClass("active").siblings().removeClass("active");
+                //验证码倒计时开始
+                $("#countDown").click();
+            }
+        });
+
+        //绑定倒计时
+        var countTime = "";
+        if (countTime) countTime.stopTimeFun();
+        $(document).on("click", "#countDown", function () {
+            if ($(this).hasClass("active")) return false;
+            var time = 120;
+            countTime = new FB.countDown(this, time, ["获取验证码", " 秒后重新获取"], function () {
+                console.log("倒计时结束")
+            });
+        });
+
+        //密码验证
+        $("#loginPsd").blur(function () {
+            var _val = $(this).val();
+        });
+
+        function passwordStrength() {
+            //检测是否开启大写  和  验证密码
+            var $pwdTip = $("#pwdTips");
+            var _diff = 0;
+            $("#password").blur(function () {
+                var _val = $(this).val();
+                if (!_diff) {
+                    if (_val.length > 0 && _val.length < 6) {
+                        $("#pwdTextTips").attr("class", "register-tips error").show().find("label").text("密码不能小于6位！");
+                        $(this).parents(".form-group").addClass("has-error");
+                    }
+                } else {
+                    $("#pwdTextTips").attr("class", "register-tips error").show().find("label").text("密码太简单，有被盗风险，请换复杂的密码组合！");
+                    $(this).parents(".form-group").addClass("has-error");
+                    $("#pwdSafe").hide();
+                }
+                $pwdTip.hide();
+            }).focus(function () {
+                //$("#pwdSafe").hide();
+            }).keyup(function () {
+                _diff = 0;
+                var _val = $(this).val();
+                if (_val.length >= 6) {
+                    $("#pwdTextTips").hide();
+                    if (
+                        eval(C.RegAry.strengthA.number).test(_val) ||
+                        eval(C.RegAry.strengthA.letterCaps).test(_val) ||
+                        eval(C.RegAry.strengthA.letterLows).test(_val) ||
+                        eval(C.RegAry.strengthA.symbol).test(_val)
+                    ) {
+                        if (_val.length <= 10) {
+                            _diff = 1;
+                        }
+                        $("#pwdSafe").attr("class", "psd-strength safety-A").show().find("i").eq(0).addClass("active").siblings().removeClass("active");
+                    } else if (
+                        eval(C.RegAry.strengthB.numLetterA).test(_val) ||
+                        eval(C.RegAry.strengthB.numLetterB).test(_val) ||
+                        eval(C.RegAry.strengthB.numSymbol).test(_val) ||
+                        eval(C.RegAry.strengthB.LetterALetterB).test(_val) ||
+                        eval(C.RegAry.strengthB.LetterASymbol).test(_val) ||
+                        eval(C.RegAry.strengthB.LetterBSymbol).test(_val)
+                    ) {
+                        if (_val.length >= 12) {
+                            $("#pwdSafe").attr("class", "psd-strength safety-C").show().find("i").addClass("active");
+                        } else {
+                            $("#pwdSafe").attr("class", "psd-strength safety-B").show().find("i").eq(2).removeClass("active").siblings().addClass("active");
+                        }
+                    } else {
+                        $("#pwdSafe").attr("class", "psd-strength safety-C").show().find("i").addClass("active");
+                    }
+                } else {
+                    $("#pwdSafe").hide();
+                    $("#pwdTextTips").show();
+                }
+            });
+        }
     })
 </script>
 </body>

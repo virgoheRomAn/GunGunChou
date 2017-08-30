@@ -18,9 +18,9 @@
                 LetterBSymbol: /^((\W+[A-Z]+)|([A-Z]+\W+))[\WA-Z]*$/
             }
         };
-
         var expOpt = $.extend({}, regularExp, exp);
 
+        var $element = $(element);
 
     };
 

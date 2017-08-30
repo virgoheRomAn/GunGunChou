@@ -13,6 +13,8 @@ FB.resizeFun(function (w) {
 });
 //滑动显示内容
 FB.hoverShowFun();
+//修复PlaceHolder
+FB.JPlaceHolder.init();
 
 //实例化sliderBox
 function newSliderBox(ele, type, opt) {

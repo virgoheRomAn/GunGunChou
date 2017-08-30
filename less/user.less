@@ -102,11 +102,17 @@
 .register-cont {
   .fb-block-center;
   .fn-set-width(380px);
+  .step-cont {
+    .fb-none;
+    &.active {
+      .fb-block;
+    }
+  }
   .title-bar {
     .fb-block;
     .text-color(@gray-33);
     .tm-center;
-    span {
+    span.title {
       .fb-block;
       .fn-set-margin(10px, bottom);
       .tm-bold;
@@ -119,6 +125,15 @@
       }
     }
   }
+  .success-bar {
+    padding-bottom: 150px;
+    margin-top: 25px;
+    text-align: center;
+    a {
+      display: inline-block;
+      margin: 0 25px;
+    }
+  }
 }
 
 //表单列表
@@ -127,13 +142,36 @@
   .item {
     .fb-block;
     .clear;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    span.title {
+      .fb-block;
+      .fs-12;
+      .text-color(@gray-66);
+      margin-bottom: 5px;
+    }
     & > label {
+      .p-rel;
       .fb-block;
       .text-mid-line(40px);
       .border-all(1px, solid, @gray-99);
       .border-radius(3px);
       padding: 0 10px;
+      &.code {
+        .fn-set-width(170px);
+        .fl-left;
+      }
+      &.clean {
+        padding-right: 40px;
+        a.clean-btn {
+          .fb-none;
+          .p-abs;
+          top: 50%;
+          right: 10px;
+          width: 20px;
+          height: 20px;
+          margin-top: -10px;
+        }
+      }
       input {
         &[type="text"], &[type="password"], &[type="number"] {
           .fb-block;
@@ -145,10 +183,6 @@
           margin-top: 10px;
         }
       }
-      &.code {
-        .fn-set-width(170px);
-        .fl-left;
-      }
     }
     .code-btn {
       .set-layout("block", 150px, 42px);
@@ -156,6 +190,22 @@
       .border-radius(3px);
       img {
         .fb-height;
+      }
+    }
+    .cut-down {
+      .set-layout("block", 150px, 40px);
+      .fl-right;
+      .border-radius(3px);
+      .tm-center;
+      .border-all(1px, solid, @user-color);
+      background: transparent;
+      color: @user-color;
+      line-height: 40px;
+      .fs-16;
+      &.active {
+        .border-all(1px, solid, #d2d2d2);
+        background: #e5e5e5;
+        color: #999999;
       }
     }
     .intro {
@@ -179,6 +229,87 @@
   }
 }
 
+//密码强度
+.password-type {
+  .fb-block;
+  .text-mid-line(22px);
+  text-align: right;
+  margin-top: 20px;
+  & > span {
+    .fs-14;
+    color: #666666;
+  }
+  .type {
+    .fb-inline-block;
+    .fl-right;
+    height: 100%;
+    &.text {
+      span {
+        em {
+          .fb-block;
+          color: #999999;
+        }
+      }
+    }
+    span {
+      .fb-inline-block;
+      .fl-left;
+      width: 50px;
+      height: 100%;
+      text-align: center;
+      margin-left: 5px;
+      background: #e5e5e5;
+      em {
+        .fs-12;
+        .fb-none;
+      }
+      &.r {
+        .border-radius(12px 0 0 12px);
+      }
+      &.q {
+        .border-radius(0 12px 12px 0);
+      }
+    }
+    &.type-r {
+      span.r {
+        background: #ffda45;
+        color: @white;
+        em {
+          .fb-inline-block;
+        }
+      }
+    }
+    &.type-z {
+      span.r {
+        background: #ffda45;
+      }
+      span.z {
+        background: #54e1dc;
+        color: @white;
+        em {
+          .fb-inline-block;
+        }
+      }
+    }
+    &.type-q {
+      span.r {
+        background: #ffda45;
+      }
+      span.z {
+        background: #54e1dc;
+      }
+      span.q {
+        background: #46e56f;
+        color: @white;
+        em {
+          .fb-inline-block;
+        }
+      }
+    }
+  }
+}
+
+//注册协议
 .register-agreement {
   display: block;
   height: 100%;
