@@ -94,9 +94,11 @@ function verifyPwd(ele, sureEle) {
         val = $(this).val();
         psdType = FB.testForm.password(val);
         if (!psdType.type) {
-            $tip.addClass("error").empty().html("<label><b class='fb-arrow-dir top'></b>" + psdType.text + "</label>");
+            $box.addClass("error");
+            $tip.empty().html("<label><b class='fb-arrow-dir top'></b>" + psdType.text + "</label>");
         } else {
-            $tip.removeClass("error").empty();
+            $box.removeClass("error");
+            $tip.empty();
         }
     }).focus(function () {
         $tip.empty();
@@ -153,12 +155,15 @@ function verifyPwd(ele, sureEle) {
             val = $(this).val();
             var pwdVal = $(ele).val();
             if (val !== pwdVal) {
-                $(sureEle).addClass("error").parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>");
+                $(sureEle).parents(".item>label:eq(0)").addClass("error");
+                $(sureEle).parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>");
             }else{
-                $(sureEle).removeClass("error").parents(".item").find(".form-tips").empty()
+                $(sureEle).parents(".item>label:eq(0)").removeClass("error");
+                $(sureEle).parents(".item").find(".form-tips").empty()
             }
         }).focus(function () {
-            $(sureEle).removeClass("error").parents(".item").find(".form-tips").empty();
+            $(sureEle).parents(".item>label:eq(0)").removeClass("error");
+            $(sureEle).parents(".item").find(".form-tips").empty();
         });
     }
 
