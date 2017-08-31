@@ -74,6 +74,126 @@ function formChecked(ele) {
     });
 }
 
+//验证密码
+function verifyPwd(ele, sureEle) {
+    var opt = {}, _caps = false;
+    var val = $(ele).val(), psdType;
+    var $box = $(ele).parents(".item>label:eq(0)"),
+        $psdType = $(".password-type>.type");
+    var tips = "<div class='form-tips'></div>",
+        pwdTip = "<div class='form-tips-pwd'></div>";
+    $box.after(tips + pwdTip);
+    var $tip = $(".form-tips"),
+        $pwdTip = $(".form-tips-pwd");
+
+    if(sureEle){
+        $(sureEle).parents(".item>label:eq(0)").after(tips);
+    }
+    //验证密码
+    $(ele).blur(function () {
+        val = $(this).val();
+        psdType = FB.testForm.password(val);
+        if (!psdType.type) {
+            $tip.addClass("error").empty().html("<label><b class='fb-arrow-dir top'></b>" + psdType.text + "</label>");
+        } else {
+            $tip.removeClass("error").empty();
+        }
+    }).focus(function () {
+        $tip.empty();
+        val = $(this).val();
+        psdType = FB.testForm.password(val, {isShift: true});
+        opt = psdType.options;
+        if (_caps) {
+            $pwdTip.empty().html("<label><b class='fb-arrow-dir left'></b>" + opt.capsText + "</label>");
+        } else {
+            $pwdTip.empty();
+        }
+    }).keyup(function () {
+        val = $(this).val();
+        psdType = FB.testForm.password(val);
+        if (psdType.type == 1) {
+            $psdType.attr("class", "type type-r");
+        } else if (psdType.type == 2) {
+            $psdType.attr("class", "type type-z");
+        } else if (psdType.type == 3) {
+            $psdType.attr("class", "type type-q");
+        } else {
+            $psdType.attr("class", "type text");
+        }
+    }).keypress(function (e) {
+        var evt = e || window.event;
+        var keyCode = evt.keyCode || evt.which;
+        var isShift = opt.isShift ? (evt.shiftKey || keyCode == 16 ) : false;
+        evt.stopPropagation();
+        if (((keyCode >= 65 && keyCode <= 90) && !isShift) || ((keyCode >= 97 && keyCode <= 122) && isShift)) {
+            $pwdTip.empty().html("<label><b class='fb-arrow-dir left'></b>" + opt.capsText + "</label>");
+            _caps = true;
+        } else if (keyCode >= 97 && keyCode <= 122) {
+            $pwdTip.empty();
+            _caps = false;
+        }
+    }).keydown(function (e) {
+        var evt = e || window.event;
+        var keyCode = evt.keyCode || evt.which;
+        evt.stopPropagation();
+        if (keyCode == 20) {
+            if (!_caps) {
+                $pwdTip.empty().html("<label><b class='fb-arrow-dir left'></b>" + opt.capsText + "</label>");
+                _caps = true;
+            } else {
+                $pwdTip.empty();
+                _caps = false;
+            }
+        }
+    });
+
+    //确认密码
+    if (sureEle) {
+        $(sureEle).blur(function () {
+            val = $(this).val();
+            var pwdVal = $(ele).val();
+            if (val !== pwdVal) {
+                $(sureEle).addClass("error").parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>");
+            }else{
+                $(sureEle).removeClass("error").parents(".item").find(".form-tips").empty()
+            }
+        }).focus(function () {
+            $(sureEle).removeClass("error").parents(".item").find(".form-tips").empty();
+        });
+    }
+
+    //判断大写按键
+    $(document).keydown(function (e) {
+        var evt = e || window.event;
+        var keyCode = evt.keyCode || evt.which;
+        evt.stopPropagation();
+        _caps = keyCode == 20;
+    });
+}
+
+//清除文字
+function clearText(tag, clearBox, type) {
+    $(tag).click(function () {
+        if (clearBox[0].nodeName.toLowerCase() == "input" || clearBox[0].nodeName.toLowerCase() == "textarea") {
+            clearBox.val("");
+        } else {
+            clearBox.html("");
+        }
+        if (!type) {
+            clearBox.keyup();
+            clearBox.blur();
+            $(this).hide();
+        }
+
+    });
+    if (!type) {
+        $(tag)[0].onmousedown = function (e) {
+            var event = e || window.event;
+            event.preventDefault()
+        }
+    }
+}
+
 //添加提示文字
 $(".fb-tips").each(function () {
     var _tips = $(this).find("span");

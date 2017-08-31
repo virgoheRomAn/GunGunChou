@@ -109,7 +109,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="step-cont">
+                    <div class="step-cont ">
                         <div class="user-form mt-20">
                             <div class="item">
                                 <span class="title">手机验证码已发送至您的手机</span>
@@ -120,7 +120,8 @@
                             </div>
                             <div class="item">
                                 <label class="normal clean">
-                                    <input id="loginPsd" type="password" value="" placeholder="登陆密码">
+                                    <input class="clean-input" id="loginPsd" type="password" value=""
+                                           placeholder="登陆密码">
                                     <a class="clean-btn" href="javascript:;">
                                         <i class="fb-sprite icon-clean"></i>
                                     </a>
@@ -136,7 +137,8 @@
                             </div>
                             <div class="item">
                                 <label class="normal clean">
-                                    <input type="password" value="" placeholder="再次输入您的登陆密码">
+                                    <input class="clean-input" id="againPsd" type="password" value=""
+                                           placeholder="再次输入您的登陆密码">
                                     <a class="clean-btn" href="javascript:;">
                                         <i class="fb-sprite icon-clean"></i>
                                     </a>
@@ -148,11 +150,11 @@
                                 </label>
                             </div>
                             <div class="btn-bar">
-                                <a class="fb-btn no-bd radius gradient tc-fff" href="javascript:;">确定</a>
+                                <a class="fb-btn no-bd radius gradient tc-fff" href="javascript:;" id="sureBtn">确定</a>
                             </div>
                         </div>
                     </div>
-                    <div class="step-cont">
+                    <div class="step-cont ">
                         <div class="title-bar">
                             <span class="title">注册成功</span>
                             <span class="fb-block tc-333 fs-24 mt-20">恭喜获得<em class="ml-5 mr-5 tc-ff5e5e fs-24">50</em>积分，马上去认证吧！</span>
@@ -249,6 +251,9 @@
         $.jBox.configFun(function (opt) {
             opt.isVertical = false;
         });
+
+        //选择协议
+        formChecked(".fb-check-box");
         //弹出协议
         $("#agreement").click(function () {
             var text = $("#agreementCont").html();
@@ -273,8 +278,6 @@
                 }
             });
         });
-        //选择确认
-        formChecked(".fb-check-box");
 
         //注册流程
         $("#nextBtn").click(function () {
@@ -307,67 +310,27 @@
         });
 
         //密码验证
-        $("#loginPsd").blur(function () {
-            var _val = $(this).val();
-            var _length = _val.length;
+        verifyPwd("#loginPsd", "#againPsd");
+
+        //清除文字
+        $(".clean-input").focus(function () {
+            $(this).next().show();
+        }).blur(function () {
+            $(this).next().hide();
+        });
+        $(".clean-btn").each(function () {
+            clearText(this, $(this).prev());
         });
 
-        function passwordStrength() {
-            //检测是否开启大写  和  验证密码
-            var $pwdTip = $("#pwdTips");
-            var _diff = 0;
-            $("#password").blur(function () {
-                var _val = $(this).val();
-                if (!_diff) {
-                    if (_val.length > 0 && _val.length < 6) {
-                        $("#pwdTextTips").attr("class", "register-tips error").show().find("label").text("密码不能小于6位！");
-                        $(this).parents(".form-group").addClass("has-error");
-                    }
-                } else {
-                    $("#pwdTextTips").attr("class", "register-tips error").show().find("label").text("密码太简单，有被盗风险，请换复杂的密码组合！");
-                    $(this).parents(".form-group").addClass("has-error");
-                    $("#pwdSafe").hide();
-                }
-                $pwdTip.hide();
-            }).focus(function () {
-                //$("#pwdSafe").hide();
-            }).keyup(function () {
-                _diff = 0;
-                var _val = $(this).val();
-                if (_val.length >= 6) {
-                    $("#pwdTextTips").hide();
-                    if (
-                        eval(C.RegAry.strengthA.number).test(_val) ||
-                        eval(C.RegAry.strengthA.letterCaps).test(_val) ||
-                        eval(C.RegAry.strengthA.letterLows).test(_val) ||
-                        eval(C.RegAry.strengthA.symbol).test(_val)
-                    ) {
-                        if (_val.length <= 10) {
-                            _diff = 1;
-                        }
-                        $("#pwdSafe").attr("class", "psd-strength safety-A").show().find("i").eq(0).addClass("active").siblings().removeClass("active");
-                    } else if (
-                        eval(C.RegAry.strengthB.numLetterA).test(_val) ||
-                        eval(C.RegAry.strengthB.numLetterB).test(_val) ||
-                        eval(C.RegAry.strengthB.numSymbol).test(_val) ||
-                        eval(C.RegAry.strengthB.LetterALetterB).test(_val) ||
-                        eval(C.RegAry.strengthB.LetterASymbol).test(_val) ||
-                        eval(C.RegAry.strengthB.LetterBSymbol).test(_val)
-                    ) {
-                        if (_val.length >= 12) {
-                            $("#pwdSafe").attr("class", "psd-strength safety-C").show().find("i").addClass("active");
-                        } else {
-                            $("#pwdSafe").attr("class", "psd-strength safety-B").show().find("i").eq(2).removeClass("active").siblings().addClass("active");
-                        }
-                    } else {
-                        $("#pwdSafe").attr("class", "psd-strength safety-C").show().find("i").addClass("active");
-                    }
-                } else {
-                    $("#pwdSafe").hide();
-                    $("#pwdTextTips").show();
-                }
-            });
-        }
+        //确定
+        $("#sureBtn").click(function(){
+            if($(".error").length==0){
+                var $step_num = $(".step");
+                var $step = $(".step-cont");
+                $step_num.eq(2).addClass("active");
+                $step.eq(2).addClass("active").siblings().removeClass("active");
+            }
+        });
     })
 </script>
 </body>

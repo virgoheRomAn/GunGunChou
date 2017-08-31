@@ -44,25 +44,69 @@ FB.testForm = {
     /**
      * 验证密码
      * @param val
-     * @returns {number}
+     * @param options 设置错误文本
+     * @returns {object}
      */
-    password: function (val) {
-        var _password = 0;
-        var _val = val;
-        var _leng = _val.length;
-        if (_val.length >= 6) {
-            if (eval(FB.verifyExp.strengthA.number).test(_val) ||
-                eval(FB.verifyExp.strengthA.letterCaps).test(_val) ||
-                eval(FB.verifyExp.strengthA.letterLows).test(_val) ||
-                eval(FB.verifyExp.strengthA.symbol).test(_val)) {
-                _password = 1;    //密码正确
-            } else {
-                _password = 0;    //密码不满足正则
-            }
+    password: function (val, options) {
+        var defaults = {
+            isSimple: true,    //开启简单密码检验
+            isCaps: true,  //开启键盘大写验证
+            isShift: false,   //开启Shift按键验证
+            showTag: true, //开启小tag提示
+            minLength: 6,
+            simpleLength: 6,
+            strongLength: 12,
+            nullText: "密码不能为空！",
+            lengthLess: "密码不能小于6位！",
+            successText: "设置密码成功！",
+            capsText: "注意：键盘大写锁定已打开，请注意大小写！",
+            shiftText: "注意：您按住了Shift键",
+            psdSimple: "密码太简单，有被盗风险，请换复杂的密码组合！"
+        };
+        var opt = $.extend({}, defaults, options);
+        var l = val.toString().length;
+        var resultOPT = {};
+        if (l == 0) {
+            resultOPT.type = 0;
+            resultOPT.text = opt.nullText;
+        } else if (l < opt.minLength) {
+            resultOPT.type = 0;
+            resultOPT.text = opt.lengthLess;
         } else {
-            _password = 2;        //密码位数太少
+            if (eval(FB.verifyExp.strengthA.number).test(val) || eval(FB.verifyExp.strengthA.letterCaps).test(val) || eval(FB.verifyExp.strengthA.letterLows).test(val) || eval(FB.verifyExp.strengthA.symbol).test(val)) {
+                //弱
+                if (!opt.isSimple) {
+                    resultOPT.type = 1;
+                    resultOPT.text = opt.successText;
+                } else {
+                    //等于简单长度
+                    if (l == opt.simpleLength) {
+                        resultOPT.type = 0;
+                        resultOPT.text = opt.psdSimple;
+                    }else{
+                        resultOPT.type = 1;
+                        resultOPT.text = opt.successText;
+                    }
+                }
+            } else if (eval(FB.verifyExp.strengthB.numLetterA).test(val) || eval(FB.verifyExp.strengthB.numLetterB).test(val) || eval(FB.verifyExp.strengthB.numSymbol).test(val) || eval(FB.verifyExp.strengthB.LetterALetterB).test(val) || eval(FB.verifyExp.strengthB.LetterASymbol).test(val) || eval(FB.verifyExp.strengthB.LetterBSymbol).test(val)) {
+                if (l == opt.strongLength) {
+                    //强
+                    resultOPT.type = 3;
+                    resultOPT.text = opt.successText;
+                } else {
+                    //中
+                    resultOPT.type = 2;
+                    resultOPT.text = opt.successText;
+                }
+            } else {
+                //强
+                resultOPT.type = 3;
+                resultOPT.text = opt.successText;
+            }
         }
-        return _password;
+        //回调
+        resultOPT.options = opt;
+        return resultOPT;
     }
 };
 //修复PlaceHolder
