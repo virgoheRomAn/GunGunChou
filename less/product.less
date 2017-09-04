@@ -1,0 +1,223 @@
+@charset "UTF-8";
+@import "fb-function";
+@import (reference) "fb-common";
+
+/**
+*产品样式表
+*2017-08-28
+*徐继强
+*引用 fb-function.less构造函数样式   fb-common.less主体函数样式
+*/
+//搜索模块
+.pro-search-box {
+  border-bottom: 1px solid #e4e4e4;
+  padding-top: 20px;
+  .search-bar {
+    label {
+      display: inline-block;
+    }
+    a.fb-btn {
+      display: inline-block;
+      padding: 0 35px;
+      margin-left: 30px;
+    }
+  }
+  .filtrate-bar {
+    padding-bottom: 30px;
+    .filtrate-item {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #333333;
+      span {
+        display: inline-block;
+        width: 90px;
+      }
+      label {
+        display: inline-block;
+        a {
+          display: inline-block;
+          margin-right: 50px;
+          color: @gray-99;
+          &.active, &:hover {
+            color: @user-color;
+            .tm-uline;
+          }
+        }
+      }
+    }
+  }
+}
+
+//产品列表
+.pro-list-box {
+  margin-top: 20px;
+  .product-list-bar {
+    li {
+      .fn-box-shadow(0, 0, 10px, rgba(0, 0, 0, .1));
+    }
+  }
+}
+
+.pro-paging {
+  @color: @white;
+  @border: #e4e4e4;
+  display: block;
+  .text-mid-line(30px);
+  margin: 40px auto 50px;
+  text-align: center;
+  span, a {
+    display: inline-block;
+    color: @gray-33;
+    font-size: @fs-14;
+  }
+  .all {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .select {
+    display: inline-block;
+    background: @color;
+    border: 1px solid @border;
+    margin: 0 10px;
+    select {
+      font-size: @fs-14;
+      border: 0 none;
+      background: transparent;
+      padding: 0 5px;
+    }
+  }
+  .pages {
+    display: inline-block;
+    font-size: 0;
+    a, span {
+      height: 30px;
+      line-height: 30px;
+      padding: 0 12px;
+      background: @color;
+      border: 1px solid @border;
+      border-left: 0 none;
+      &.prev {
+        border-left: 1px solid @border;
+      }
+      &.none {
+        color: @gray-99;
+        cursor: not-allowed;
+      }
+      &.active {
+        background: #03b8ff;
+        border: 1px solid #03b8ff;
+        color: @color;
+      }
+    }
+  }
+  .go {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: @fs-14;
+    input {
+      display: inline-block;
+      width: 32px;
+      .tm-center;
+      .text-mid-line(30px);
+      padding: 0 5px;
+      margin: 0 8px;
+      background: @color;
+      border: 1px solid @border;
+    }
+  }
+}
+
+//产品详情
+.pro-details-box {
+  .p-rel;
+  .fn-box-shadow(0, 0, 10px, rgba(0, 0, 0, .1));
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 40px;
+  background: @white;
+  .pro-state-img {
+    .set-layout("block", 104px, 104px, "absolute");
+    z-index: 1001;
+    top: -2px;
+    left: -3px;
+    i {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    &.going {
+      i {
+        background-position: 0 0;
+      }
+    }
+    &.start {
+      i {
+        background-position: 0 -109px;
+      }
+    }
+    &.end {
+      i {
+        background-position: 0 -219px;
+      }
+    }
+  }
+  .details-bar {
+    .p-rel;
+    padding-left: 440px;
+    .fb-img-box {
+      .set-layout("block", 400px, 400px, "absolute");
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+//产品内容详情
+.details-cont {
+  .text() {
+    .fs-18;
+    color: @gray-33;
+  }
+  & > h2 {
+    .p-rel;
+    .tm-bold;
+    top: -3px;
+    margin-bottom: 25px;
+    .text;
+  }
+  .pro-money {
+    margin-bottom: 20px;
+    label {
+      display: inline-block;
+      b {
+        display: block;
+        .tm-bold;
+        .text;
+      }
+      span {
+        .tm-bold;
+        .fs-18;
+        em {
+          .tm-bold;
+          .fs-number(42px);
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  .pro-time {
+    .text;
+    margin-bottom: 30px;
+    .cut-down {
+      .tm-bold;
+      em {
+        margin-left: 5px;
+      }
+      .loading {
+        .tm-light;
+        .fs-14;
+        color: @gray-99;
+      }
+    }
+  }
+}

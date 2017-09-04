@@ -4,6 +4,12 @@
         FB.scrollToElement(0);
     });
 })(".go-top");
+//自动执行倒计时
+(function cutDown(ele) {
+    $(ele).each(function () {
+        FB.dayTimeDown(this);
+    });
+}(".cut-down"));
 //浮动菜单显示位置
 FB.resizeFun(function (w) {
     var $fl_nav = $(".in-float-nav");
@@ -86,7 +92,7 @@ function verifyPwd(ele, sureEle) {
     var $tip = $(".form-tips"),
         $pwdTip = $(".form-tips-pwd");
 
-    if(sureEle){
+    if (sureEle) {
         $(sureEle).parents(".item>label:eq(0)").after(tips);
     }
     //验证密码
@@ -157,7 +163,7 @@ function verifyPwd(ele, sureEle) {
             if (val !== pwdVal) {
                 $(sureEle).parents(".item>label:eq(0)").addClass("error");
                 $(sureEle).parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>");
-            }else{
+            } else {
                 $(sureEle).parents(".item>label:eq(0)").removeClass("error");
                 $(sureEle).parents(".item").find(".form-tips").empty()
             }

@@ -83,7 +83,7 @@ FB.testForm = {
                     if (l == opt.simpleLength) {
                         resultOPT.type = 0;
                         resultOPT.text = opt.psdSimple;
-                    }else{
+                    } else {
                         resultOPT.type = 1;
                         resultOPT.text = opt.successText;
                     }
@@ -389,5 +389,74 @@ FB.countDown = function (dom, time, format, finishFun, countFun) {
         $this.text(format[0]).removeClass("active");
         finishFun && finishFun.call($this);
     }
+};
+/**
+ * 倒计时(包含天)
+ * @param tags   目标
+ * @param time
+ * @param Fun
+ */
+FB.dayTimeDown = function (tags, time, Fun) {
+    var boxEle, dayEle, hourEle, minEle, secEle, loadEle;
+    if ((typeof tags) == "string" || $(tags).data("time")) {
+        boxEle = $(tags);
+        dayEle = ".time-day";
+        hourEle = ".time-hour";
+        minEle = ".time-minute";
+        secEle = ".time-second";
+        loadEle = ".loading";
+    } else {
+        boxEle = $(tags.boxEle);
+        dayEle = tags.dayEle;
+        hourEle = tags.hourEle;
+        minEle = tags.minEle;
+        secEle = tags.secEle;
+        loadEle = tags.loadEle;
+    }
+
+    var dayFormat = (dayEle ? (boxEle.find(dayEle).data("format") ? boxEle.find(dayEle).data("format") : "") : "");
+    var hourFormat = (hourEle ? (boxEle.find(hourEle).data("format") ? boxEle.find(hourEle).data("format") : "") : "");
+    var minFormat = (minEle ? (boxEle.find(minEle).data("format") ? boxEle.find(minEle).data("format") : "") : "");
+    var secFormat = (secEle ? (boxEle.find(secEle).data("format") ? boxEle.find(secEle).data("format") : "") : "");
+
+    var countTime = 0;
+    if (time) {
+        if ((typeof time) == "number") {
+            countTime = time / 1000;
+        } else {
+            countTime = parseInt((new Date("" + time + "") - new Date()) / 1000);
+        }
+    } else {
+        countTime = parseInt((new Date("" + boxEle.data("time") + "") - new Date()) / 1000);
+    }
+    var int_day, int_hour, int_minute, int_second;
+    var _time;
+
+    boxEle.find(loadEle).show();
+
+    _time = setInterval(function () {
+        if (boxEle.find(loadEle).css("display") != "none") {
+            boxEle.find(loadEle).hide();
+        }
+        countTime--;
+        if (countTime > 0) {
+            int_day = Math.floor(countTime / 60 / 60 / 24);
+            int_hour = Math.floor(countTime / (60 * 60));
+            int_minute = Math.floor(countTime / 60) - (int_hour * 60);
+            int_second = Math.floor(countTime) - (int_hour * 60 * 60) - (int_minute * 60);
+        } else {
+            int_day = 0;
+            int_hour = 0;
+            int_minute = 0;
+            int_second = 0;
+            if (Fun) Fun.call(boxEle[0]);
+            clearInterval(_time);
+        }
+        if (dayEle) boxEle.find(dayEle).html(FB.padZero(int_day, 2) + "<em>" + dayFormat + "</em>");
+        if (hourEle) boxEle.find(hourEle).html(FB.padZero(int_hour % 24, 2) + "<em>" + hourFormat + "</em>");
+        if (minEle) boxEle.find(minEle).html(FB.padZero(int_minute, 2) + "<em>" + minFormat + "</em>");
+        if (secEle) boxEle.find(secEle).html(FB.padZero(int_second, 2) + "<em>" + secFormat + "</em>");
+    }, 1000);
+    return _time;
 };
 

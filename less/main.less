@@ -47,6 +47,7 @@
     .in-user-nav {
       .fl-left;
       a {
+        .p-rel;
         .fb-inline-block;
         .text-mid-line(16px);
         .border-right(1px, solid, @gray-99);
@@ -56,6 +57,18 @@
         &.active, &:hover {
           .text-color(@color);
           .tm-uline;
+        }
+        &.fn-hover-bar {
+          .fn-set-height(25px);
+          .border-none-right;
+          padding-right: 0;
+          & > span {
+            .p-rel;
+            .fb-inline-block;
+            .text-mid-line(16px);
+            .border-right(1px, solid, @gray-99);
+            padding-right: 15px;
+          }
         }
       }
     }
@@ -122,6 +135,36 @@
   right: -16px;
 }
 
+//显示投资经理
+.show-personal:extend(.show-app-ewm all) {
+  width: 140px;
+  top: 25px;
+  background: @white;
+  border: 1px solid @gray-ee;
+  b {
+    color: @gray-33;
+    display: block;
+    margin-bottom: 10px;
+  }
+  & > label {
+    .p-rel;
+    .fb-block;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    img {
+      .set-layout("block", 40px, 40px, "absolute");
+      top: 5px;
+      left: 0;
+    }
+    em {
+      display: block;
+      color: @gray-66;
+      .text-mid-line(24px);
+      .fs-14;
+    }
+  }
+}
+
 //菜单头部
 .in-head-bar {
   .p-rel;
@@ -180,6 +223,11 @@
         }
         &:hover {
           .tm-light;
+        }
+        &.active {
+          &:hover {
+            .tm-bold;
+          }
         }
       }
     }
@@ -387,7 +435,7 @@
 }
 
 //产品列表
-.in-content-tab {
+.in-content-tab, .pro-list-box {
   .look-more {
     @h: 40px;
     .set-layout("block", 100%, @h);
@@ -492,67 +540,82 @@
                 }
               }
             }
-            .pro-state {
-              .state-text {
-                .fb-none;
-              }
-              & > a {
-                .set-layout("inline-block", 30px, 29px);
-                .fn-set-margin(10px, right);
-                .fn-set-margin(4px, top);
-                .fb-tips {
-                  top: -33px;
-                }
-              }
-              & > a.state-collect {
-                i.icon-collect {
-                  .fn-set-margin(6px, top);
-                  cursor: pointer;
-                }
-                &.active {
-                  i.icon-collect {
-                    &:extend(.icon-collect.active);
-                  }
-                }
-              }
-              & > a.state-clock {
-                i.icon-clock {
-                  .fn-set-margin(5px, top);
-                  cursor: pointer;
-                }
-                &.active {
-                  i.icon-clock {
-                    &:extend(.icon-clock.active);
-                  }
-                }
-              }
-            }
-            .pro-progress {
-              .fn-set-margin(14px, top);
-              .progress-container {
-                background-image: -webkit-linear-gradient(left, #ffc54e, #ff4f72);
-                background-image: -moz-linear-gradient(left, #ffc54e, #ff4f72);
-                background-image: -o-linear-gradient(left, #ffc54e, #ff4f72);
-                background-image: -ms-linear-gradient(left, #ffc54e, #ff4f72);
-                background-image: linear-gradient(left, #ffc54e, #ff4f72);
-                background-color: #ff4f72 \9;
-                :root & {
-                  background-color: #ff4f72;
-                }
-                & > .runner {
-                  background-color: #999999 \9;
-                  :root & {
-                    background-color: #999999 \9;
-                  }
-                }
-                .meter {
-                  .fn-set-margin(-20px, top);
-                }
-              }
-            }
           }
         }
       }
+    }
+  }
+}
+
+//产品状态
+.pro-state {
+  &.end {
+    span.state-text {
+      .fb-block;
+      .text-mid-line(36px);
+      .fs-18;
+      .text-color(#ff2827);
+    }
+    & > a {
+      .fb-none;
+    }
+  }
+  .state-text {
+    .fb-none;
+  }
+  & > a {
+    .set-layout("inline-block", 30px, 29px);
+    .fn-set-margin(10px, right);
+    .fn-set-margin(4px, top);
+    .fb-tips {
+      top: -33px;
+    }
+  }
+  & > a.state-collect {
+    i.icon-collect {
+      .fn-set-margin(6px, top);
+      cursor: pointer;
+    }
+    &.active {
+      i.icon-collect {
+        &:extend(.icon-collect.active);
+      }
+    }
+  }
+  & > a.state-clock {
+    i.icon-clock {
+      .fn-set-margin(5px, top);
+      cursor: pointer;
+    }
+    &.active {
+      i.icon-clock {
+        &:extend(.icon-clock.active);
+      }
+    }
+  }
+}
+
+//产品进度
+.pro-progress {
+  .fn-set-margin(14px, top);
+  .progress-container {
+    background-image: -webkit-linear-gradient(left, #ffc54e, #ff4f72);
+    background-image: -moz-linear-gradient(left, #ffc54e, #ff4f72);
+    background-image: -o-linear-gradient(left, #ffc54e, #ff4f72);
+    background-image: -ms-linear-gradient(left, #ffc54e, #ff4f72);
+    background-image: linear-gradient(left, #ffc54e, #ff4f72);
+    background-color: #ff4f72 \9;
+    :root & {
+      background-color: #ff4f72;
+    }
+    & > .runner {
+      background-color: #999999 \9;
+      :root & {
+        background-color: #999999 \9;
+      }
+    }
+    .meter {
+      .fn-set-margin(-20px, top);
     }
   }
 }
@@ -670,6 +733,44 @@
         .fn-set-margin(-5px, top);
       }
     }
+  }
+}
+
+//页面位置导航
+.page-area {
+  @height: 44px;
+  .set-layout("block", 100%, @height);
+  .text-mid-line(@height);
+  .border-bto(1px, solid, #e4e4e4);
+  .fs-16;
+  .text-color(@gray-33);
+}
+
+//input
+.user-input {
+  @height: 40px;
+  .p-rel;
+  .fb-block;
+  .text-mid-line(@height);
+  .border-all(1px, solid, @gray-99);
+  .border-radius(3px);
+  .fs-16;
+  padding: 0 10px;
+  input {
+    .fb-block;
+    .fn-set-width(100%);
+    .text-mid-line(20px);
+    .border-none;
+    .fs-16;
+    background: transparent;
+    margin-top: 10px;
+  }
+  &.radius {
+    .border-radius(20px);
+    padding: 0 20px;
+  }
+  &.white {
+    .fn-set-background(@white);
   }
 }
 

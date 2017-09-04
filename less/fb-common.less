@@ -121,6 +121,12 @@ input[type="number"] {
   background: url("@{imgs}/sprite.png") no-repeat;
 }
 
+.fb-state {
+  .fb-block;
+  position: relative;
+  background: url("@{imgs}/state.png") no-repeat;
+}
+
 /*布局限制*/
 .fb-wrap {
   .disk-type;
@@ -471,10 +477,7 @@ input[type="number"] {
 
 /*按钮*/
 .fb-btn {
-  .button-style(100%, 30px, @main-color, @main-color, @main-color, 3px);
-  &-border {
-    background: transparent;
-  }
+  .button-style(100%, 40px, @white, @main-color, @main-color, 3px);
   &.gradient {
     background: linear-gradient(top, rgb(2, 240, 255), rgb(0, 227, 255) 36%, rgb(6, 207, 255) 55%, rgb(0, 136, 255) 100%);
     background: -o-linear-gradient(top, rgb(2, 240, 255), rgb(0, 227, 255) 36%, rgb(6, 207, 255) 55%, rgb(0, 136, 255) 100%);
@@ -488,6 +491,15 @@ input[type="number"] {
     background: -ms-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
     background: -moz-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
     background: -webkit-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
+  }
+  &.line-block {
+    .fb-inline-block;
+    width: auto;
+    padding: 0 20px;
+  }
+  &.small {
+    height: 34px;
+    line-height: 34px;
   }
 }
 
@@ -598,8 +610,16 @@ input[type="number"] {
   .text-color(#ffad36);
 }
 
+.tc-ff4a49 {
+  .text-color(#ff4a49);
+}
+
 .tc-ff5e5e {
   .text-color(#ff5e5e)
+}
+
+.tc-03bcff {
+  .text-color(#03bcff);
 }
 
 .tc-user {
