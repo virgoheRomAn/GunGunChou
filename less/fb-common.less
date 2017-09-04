@@ -413,6 +413,56 @@ input[type="number"] {
   }
 }
 
+/*表单-滑块*/
+.fb-slide-box {
+  @h: 40px;
+  .p-rel;
+  .fb-block;
+  .text-mid-line(@h);
+  .text {
+    color: @gray-33;
+    font-size: @fs-12;
+    line-height: 16px;
+    padding-top: 4px;
+  }
+  .p-rel;
+  .fb-block;
+  .min {
+    .fl-left;
+    .tm-center;
+    .text;
+  }
+  .max {
+    .fl-right;
+    .tm-center;
+    .text;
+  }
+  .slide-box {
+    .p-rel;
+    .fl-left;
+    .fn-set-height(@h);
+    .fn-set-width(220px);
+    padding: 0 10px;
+    margin: 0 5px;
+    .cont {
+      .fb-block;
+      .fn-set-height(10px);
+      .border-radius(10px);
+      margin-top: 15px;
+      background: #e4e4e4;
+    }
+    .btn {
+      .set-layout("block", 20px, 20px, "absolute");
+      .border-radius(50%);
+      .cursor-pointer;
+      top: 50%;
+      left: 0;
+      margin-top: -10px;
+      background: #03bcff;
+    }
+  }
+}
+
 /*盒子边框*/
 .fn-border-none;
 /*三角*/
