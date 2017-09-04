@@ -34,7 +34,9 @@ html, body {
 
 .j-disk-confirm {
     background: rgba(0, 0, 0, 0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000, endcolorstr=#7F000000)\9;
 }
+
 
 .j-disk-alert {
     background: transparent;
@@ -221,6 +223,7 @@ a.j-cancel {
     z-index: 10002;
     margin: -75px 0 0 -150px;
     background: rgba(0, 0, 0, 0.8);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#C8000000, endcolorstr=#C8000000)\9;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
