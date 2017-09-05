@@ -470,7 +470,8 @@
                                         <div class="evaluate-item evaluate-text">
                                             <span class="t">项目评价：</span>
                                             <label class="c">
-                                                <textarea cols="" rows="" placeholder="5分好评，并且满20字的评价有机会获得平台赠送的积分哦!"></textarea>
+                                                <textarea cols="" rows=""
+                                                          placeholder="5分好评，并且满20字的评价有机会获得平台赠送的积分哦!"></textarea>
                                             </label>
                                         </div>
                                     </div>
@@ -609,6 +610,7 @@
                 if ($cur.hasClass("loadEnd")) {
                     opt.$boxEle.height($cur.height() + opt.$boxEle.find(opt.menuBar).height());
                 } else {
+                    opt.$boxEle.height(460);
                     $cur.find(".tab-loading").height(opt.$boxEle.height());
                 }
             },
