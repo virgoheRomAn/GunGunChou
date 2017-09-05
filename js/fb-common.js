@@ -459,4 +459,85 @@ FB.dayTimeDown = function (tags, time, Fun) {
     }, 1000);
     return _time;
 };
+/**
+ * 滑块
+ * @param ele
+ * @param options
+ */
+FB.slideBox = function (ele, options) {
+    var defaults = {
+        value: 50,
+        min: 100,
+        max: 9999999,
+        start: null,
+        slide: null,
+        end: null,
+        change: null
+    };
+    var that = this;
+    var $ele = ele ? $(ele) : $(".fb-slide-box");
+    var opt = $.extend({}, defaults, options);
+    var $box = $ele.find(".slide-box"),
+        $btn = $ele.find(".btn"),
+        $move = $ele.find(".moved");
+
+    var min = parseInt(opt.min);
+    var max = parseInt(opt.max);
+    var width = $box.width();
+    var height = $box.height();
+    var offset = $box.find(".cont").offset();
+    var left = eleOffset($box.find(".cont")).left;
+    var top = eleOffset($box.find(".cont")).top;
+
+    function eleOffset(ele) {
+        return {
+            top: ele.offset().top,
+            left: ele.offset().left
+        }
+    }
+
+    var _is_move = false;
+
+    $btn.on("mousedown", function (e) {
+        console.log(0);
+        e = e || window.event;
+        e.stopPropagation();
+        e.preventDefault();
+        that.sx = e.clientX || e.pageX;
+        that.sy = e.clientY || e.pageY;
+        that.top = parseFloat($(this).css("top"));
+        that.left = parseFloat($(this).css("left"));
+        if (!_is_move) {
+            _is_move = true;
+            $(document).on("mousemove", {opt: opt}, moving);
+            $(document).on("mouseup", {opt: opt}, endMove);
+        }
+    });
+
+    function moving(e) {
+        e = e || window.event;
+        e.stopPropagation();
+        e.preventDefault();
+        var x = e.clientX || e.pageX;
+        var y = e.clientY || e.pageY;
+        if (_is_move) {
+            var mx = x - that.sx + that.left;
+            var my = y - that.sy + that.top;
+            var _left = eleOffset($btn).left;
+            var _top = eleOffset($btn).top;
+            var ratio = mx / width;
+            console.log(ratio,(_left - left)/width);
+            if (ratio >= 0 && ratio <= 1) {
+                $btn.css({"left": ratio * 100 + "%"});
+                $move.width(ratio * 100 + "%");
+            }
+        }
+    }
+
+    function endMove() {
+        _is_move = false;
+        $(document).off("mousemove", moving);
+        $(document).off("mouseup", endMove);
+    }
+};
 

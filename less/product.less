@@ -255,8 +255,8 @@
       }
     }
     .balance-handle {
-      .fl-right;
       .tm-right;
+      float: right;
       width: 300px;
       a {
         display: inline-block;
@@ -265,4 +265,108 @@
       }
     }
   }
+
+  //未登录
+  &.state-not-login {
+    .pro-money {
+      margin-bottom: 21px;
+    }
+  }
+}
+
+//详情页面Tab
+.pro-cont-box {
+  @user-color: #03bcff;
+  .p-rel;
+  .fn-box-shadow(0, 0, 10px, rgba(0, 0, 0, .1));
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 40px 40px;
+  background: @white;
+  .link-hover {
+    height: 56px;
+    color: @user-color;
+    background: transparent;
+    border-bottom: 3px solid @user-color;
+  }
+  .slider-tab {
+    border: 0 none;
+    .slider-tab-menu {
+      height: 59px;
+      border-bottom: 1px solid #e4e4e4;
+      background: transparent;
+      li {
+        margin-right: 0;
+        a {
+          height: 59px;
+          line-height: 60px;
+          color: @gray-33;
+          &:hover {
+            .link-hover;
+          }
+        }
+        &.active {
+          a {
+            .link-hover;
+          }
+        }
+      }
+    }
+    .tab-loading {
+      display: block;
+      position: relative;
+      height: 400px;
+      background: url("../img/ggc-loading.gif") no-repeat center;
+    }
+  }
+}
+
+//详情内容展示
+.product-information {
+  display: block;
+  padding: 15px 0;
+  p {
+    margin-bottom: 15px;
+  }
+  img {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+//凭证
+.product-voucher {
+  &:extend(.product-information all);
+}
+
+//投资记录
+.product-record {
+  @user-color: #03bcff;
+  display: block;
+  padding: 15px 0;
+  table {
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    font-size: @fs-18;
+    thead {
+      background: @user-color;
+      color: @white;
+      .text-mid-line(60px);
+    }
+    tbody {
+      border-top: 0 none;
+      tr {
+        .text-mid-line(60px);
+        td {
+          .tm-center;
+        }
+      }
+    }
+  }
+}
+
+//投票记录
+.product-vote {
+  &:extend(.product-record all);
 }

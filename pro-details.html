@@ -113,6 +113,7 @@
             <span class="pro-state-img going"><i class="fb-state"></i></span>
             <div class="details-bar">
                 <label class="fb-img-box"><img src="img/details-img.jpg"></label>
+                <!--登陆状态-->
                 <div class="details-cont state-login">
                     <h2>第200期201707221201凯迪拉克ATS-L2017款28T技术型项目</h2>
                     <div class="pro-money">
@@ -143,8 +144,10 @@
                         <div class="fb-slide-box">
                             <label class="min">100 元<br>最小金额</label>
                             <div class="slide-box">
-                                <label class="cont"><span></span></label>
-                                <span class="btn"></span>
+                                <label class="cont">
+                                    <em class="moved"></em>
+                                    <span class="btn"></span>
+                                </label>
                             </div>
                             <label class="max">9,999,999 元<br>最大金额</label>
                         </div>
@@ -180,6 +183,300 @@
                         <div class="progress-container gradient end">
                             <div class="meter">50%</div>
                             <span class="runner"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--未登陆状态-->
+                <div class="details-cont state-not-login" style="display: none">
+                    <h2>第200期201707221201凯迪拉克ATS-L2017款28T技术型项目</h2>
+                    <div class="pro-money">
+                        <label>
+                            <b>目标众筹金额：</b>
+                            <span class="tc-ff5e5e"><em>1,000,000</em>元</span>
+                        </label>
+                        <label class="fl-right">
+                            <b>已筹金额：</b>
+                            <span class="tc-03bcff"><em>900,000</em>元</span>
+                        </label>
+                    </div>
+                    <div class="pro-time mb-15">
+                        <span class="title">最长持有期限：</span>
+                        <em class="fs-18">60天</em>
+                    </div>
+                    <div class="pro-time mb-20">
+                        <span class="title">起止时间：</span>
+                        <em class="fs-18">2017-05-01 6:00 至 2017-07-01 6:30</em>
+                    </div>
+                    <div class="pro-set-money mb-15">
+                        <label class="set-sum">
+                            <span>众筹金额：</span>
+                            <input class="user-input small-radius" type="text" placeholder="请输入众筹金额">
+                        </label>
+                        <div class="fb-slide-box">
+                            <label class="min">100 元<br>最小金额</label>
+                            <div class="slide-box">
+                                <label class="cont">
+                                    <em class="moved"></em>
+                                    <span class="btn"></span>
+                                </label>
+                            </div>
+                            <label class="max">9,999,999 元<br>最大金额</label>
+                        </div>
+                    </div>
+                    <div class="pro-balance mb-15">
+                        <label class="balance-box">
+                            <span>可用余额：</span>
+                        </label>
+                        <label class="balance-handle fl-none">
+                            <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;">登陆后查看</a>
+                            <a class="fb-btn radius none no-bd fs-14" href="javascript:;">即将开始</a>
+                        </label>
+                    </div>
+                    <div class="pro-state">
+                        <span class="state-text">该车辆已售</span>
+                        <a class="state-collect fn-hover-bar" href="javascript:;">
+                            <i class="fb-sprite icon-collect"></i>
+                            <label class="fb-tips top fn-hover-menu">
+                                <em class="fb-arrow-dir"></em>
+                                <span data-text="关注该项目">关注该项目</span>
+                            </label>
+                        </a>
+                        <a class="state-clock active fn-hover-bar" href="javascript:;">
+                            <i class="fb-sprite icon-clock"></i>
+                            <label class="fb-tips top fn-hover-menu">
+                                <em class="fb-arrow-dir"></em>
+                                <span data-text="预约提醒">预约提醒</span>
+                            </label>
+                        </a>
+                    </div>
+                    <div class="pro-progress">
+                        <div class="progress-container gradient end">
+                            <div class="meter">50%</div>
+                            <span class="runner"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pro-cont-box">
+            <div class="slider-tab-bar">
+                <div class="slider-container slider-tab" id="detailsTab">
+                    <div class="slider-tab-menu">
+                        <ul>
+                            <li class="active"><a href="javascript:;">车辆信息</a></li>
+                            <li><a href="javascript:;">相关凭证</a></li>
+                            <li><a href="javascript:;">投资记录</a></li>
+                            <li><a href="javascript:;">投票记录</a></li>
+                            <li><a href="javascript:;">项目评价</a></li>
+                        </ul>
+                    </div>
+                    <div class="slider-tab-cont">
+                        <div class="slider-bar">
+                            <div class="tab-cont">
+                                <div class="product-information fb-hide">
+                                    <p class="fs-18">
+                                        本次众筹<span class="tc-ff5e5e">莱迪拉克ATS-L2017</span>款28T技术项目，全新车系，厂商指导价格：<span
+                                            class="tc-ff5e5e">186800元</span>，本次众筹价格：<span
+                                            class="tc-ff5e5e">156800元</span>。众筹期限为7天
+                                        众筹成功以后出售日期为60日，如60日内未成功出书，则由汇众筹按众筹价格12%年化收益无条件溢价回购。在其间内众筹失败，
+                                        则退回资金至汇众筹账户，期间无任何收益。
+                                    </p>
+                                    <img src="img/details-img1.jpg">
+                                    <img src="img/details-img2.jpg">
+                                </div>
+                                <div class="tab-loading"></div>
+                            </div>
+                            <div class="tab-cont">
+                                <div class="product-voucher fb-hide">
+                                    <img src="img/details-img3.jpg">
+                                </div>
+                                <div class="tab-loading"></div>
+                            </div>
+                            <div class="tab-cont">
+                                <div class="product-record fb-hide">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <colgroup>
+                                            <col width="33.33%">
+                                            <col width="33.33%">
+                                            <col width="33.33%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th>参与者</th>
+                                            <th>投资金额</th>
+                                            <th>投资时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>136****2957</td>
+                                            <td>￥20,000,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-loading"></div>
+                            </div>
+                            <div class="tab-cont">
+                                <div class="product-vote fb-hide">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <colgroup>
+                                            <col width="15%">
+                                            <col width="25%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th>投票人</th>
+                                            <th>投资金额</th>
+                                            <th>比例</th>
+                                            <th>赞成/反对</th>
+                                            <th>投票时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*钟祥</td>
+                                            <td>￥20,000</td>
+                                            <td>2.55%</td>
+                                            <td>赞成</td>
+                                            <td>2017-06-14 15:31:20</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-loading"></div>
+                            </div>
+                            <div class="tab-cont">
+                                <div class="product-evaluate fb-hide">
+                                    <div class="evaluate-box">
+                                        <div class="evaluate-item evaluate-user">
+                                            <img src="img/per-headImg.jpg">
+                                            <span>136****2957</span>
+                                        </div>
+                                        <div class="evaluate-item evaluate-grade">
+                                            <span class="t">本次投票的满意度：</span>
+                                            <label class="c start0">
+                                                <i class="fb-sprite icon-start"></i>
+                                                <i class="fb-sprite icon-start"></i>
+                                                <i class="fb-sprite icon-start"></i>
+                                                <i class="fb-sprite icon-start"></i>
+                                                <i class="fb-sprite icon-start"></i>
+                                            </label>
+                                        </div>
+                                        <div class="evaluate-item evaluate-text">
+                                            <span class="t">项目评价：</span>
+                                            <label class="c">
+                                                <textarea cols="" rows="" placeholder="5分好评，并且满20字的评价有机会获得平台赠送的积分哦!"></textarea>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-loading"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -282,6 +579,7 @@
 </div>
 
 <script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.sliderBox.float.min.js"></script>
 <script src="js/jquery.jbox.js"></script>
 <script src="js/fb-common.js"></script>
 <script src="js/fb-page.js"></script>
@@ -290,6 +588,40 @@
         //配置弹窗
         $.jBox.configFun(function (opt) {
             opt.isVertical = false;
+        });
+
+        //产品详情tab切换
+        newSliderBox("#detailsTab", "tab", {
+            events: "click",
+            direction: "H",
+            loop: false,
+            initFun: function (opt) {
+                var $cur = $(opt.currentEle);
+                if (!$cur.hasClass("loadEnd")) {
+                    setTimeout(function () {
+                        $cur.children().removeClass("fb-hide");
+                        $cur.addClass("loadEnd").find(".tab-loading").hide();
+                    }, 1000);
+                }
+            },
+            beforeMoveFun: function (opt) {
+                var $cur = $(this);
+                if ($cur.hasClass("loadEnd")) {
+                    opt.$boxEle.height($cur.height() + opt.$boxEle.find(opt.menuBar).height());
+                } else {
+                    $cur.find(".tab-loading").height(opt.$boxEle.height());
+                }
+            },
+            autoPlayFun: function (opt) {
+                var $cur = $(this);
+                if (!$cur.hasClass("loadEnd")) {
+                    setTimeout(function () {
+                        $cur.addClass("loadEnd").find(".tab-loading").hide();
+                        $cur.children().removeClass("fb-hide");
+                        opt.$boxEle.height($cur.height() + opt.$boxEle.find(opt.menuBar).height());
+                    }, 1000);
+                }
+            }
         });
 
         //进度条
