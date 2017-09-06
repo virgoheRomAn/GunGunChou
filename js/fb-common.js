@@ -125,21 +125,23 @@ FB.JPlaceHolder = {
     fix: function () {
         jQuery(':input[placeholder]').each(function (index, element) {
             var self = $(this), txt = self.attr('placeholder');
-            self.wrap($('<div></div>').css({
+            self.wrap($('<div class="placeholder-bar"></div>').css({
                 position: 'relative',
                 zoom: '1',
                 border: 'none',
                 background: 'none',
                 padding: 'none',
-                margin: 'none'
+                margin: 'none',
+                display: 'inline-block'
             }));
             var pos = self.position(), h = self.outerHeight(true), paddingleft = self.css('padding-left');
             var holder = $('<span></span>').text(txt).css({
                 position: 'absolute',
                 left: pos.left,
                 top: pos.top,
-                height: h,
-                lienHeight: h,
+                zIndex: 1001,
+                height: h + "px",
+                lineHeight: h + "px",
                 paddingLeft: paddingleft,
                 color: '#aaa'
             }).appendTo(self.parent());
@@ -290,7 +292,7 @@ FB.numberFormat = function (number, n, format, unit, split) {
         }
     }
 
-    return splits ? data_num.split("").reverse().join("") : data_num.split("").join("")+((typeof format_type == "string") ? "" :
+    return splits ? data_num.split("").reverse().join("") : data_num.split("").join("") + ((typeof format_type == "string") ? "" :
         "<span class='format-type3'>" + format_type[2] + "</span>");
 };
 /**

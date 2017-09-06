@@ -45,7 +45,7 @@ function setProgress(ele) {
 }
 
 //表单按钮组
-function formChecked(ele) {
+function formChecked(ele, callback) {
     var _ele = ele || ".fb-radio-box";
     $(_ele).on("click", function (e) {
         e.stopPropagation();
@@ -73,6 +73,7 @@ function formChecked(ele) {
                 }
                 break;
         }
+        if (callback) callback.call($(_ele)[0], $(_ele).find("input").prop("checked"), $(_ele).hasClass("active"));
     });
 
     $(_ele).find("span").click(function (e) {

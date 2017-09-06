@@ -232,6 +232,11 @@
       .text-mid-line(40px);
       .fs-18;
       color: @gray-33;
+      & > .placeholder-bar {
+        span {
+          font-size: @fs-14;
+        }
+      }
       .user-input {
         display: inline-block;
         .text-mid-line(30px);
@@ -321,7 +326,9 @@
       display: block;
       position: relative;
       height: 400px;
-      background: rgba(255, 255, 255, 0.5) url("../img/ggc-loading.gif") no-repeat center;
+      background: url("@{imgs}/ggc-loading.gif") no-repeat center;
+      background-color: rgba(255, 255, 255, 0.5);
+      background-color: transparent \9;
     }
   }
 }
@@ -417,6 +424,14 @@
       .c {
         display: inline-block;
         width: 80%;
+        & > .placeholder-bar {
+          display: inline-block;
+          width: 100%;
+          span {
+            padding-top: 8px;
+            line-height: 30px !important;
+          }
+        }
         textarea {
           .p-rel;
           top: 3px;
@@ -467,5 +482,19 @@
     display: inline-block;
     margin-right: 5px;
     .cursor-pointer;
+  }
+}
+
+//弹出立即投资
+.investment-box {
+  .j-btn {
+    height: 60px;
+    a {
+      font-size: @fs-20;
+      width: 260px;
+      margin: auto;
+      .fl-none;
+      .text-mid-line(40px);
+    }
   }
 }

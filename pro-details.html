@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/sliderBox.float.css">
     <link rel="stylesheet" href="css/jBox.css">
     <link rel="stylesheet" href="css/main.min.css?a=1.0">
+    <link rel="stylesheet" href="css/user.min.css">
     <link rel="stylesheet" href="css/product.min.css?a=1.0">
 </head>
 <body class="theme-f5">
@@ -106,7 +107,7 @@
             <em>></em>
             <a href="ggc-cars-funding.html">众筹汽车</a>
             <em>></em>
-            <span>项目详情1</span>
+            <span>项目详情</span>
         </div>
         <div class="pro-details-box">
             <!---start,going,end--->
@@ -186,7 +187,7 @@
                         </label>
                         <label class="balance-handle">
                             <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;">充值</a>
-                            <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;">立即投资</a>
+                            <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;" id="Investment">立即投资</a>
                         </label>
                     </div>
                     <div class="pro-state">
@@ -707,6 +708,34 @@
     </div>
 </div>
 
+<script type="ext/template" id="InvestmentCont">
+    <div class="investment-cont">
+        <div class="in-item">
+            <span class="t">增益券 :</span>
+            <label class="c">
+                <select>
+                    <option value="0" selected>选择可用的增益券</option>
+                    <option value="1">1.5%增益券</option>
+                    <option value="2">2.5%增益券</option>
+                </select>
+            </label>
+        </div>
+        <div class="in-item">
+            <div class="c">
+                <label class="fb-check-box">
+                    <em>
+                        <i class="fb-sprite icon-checked"></i>
+                        <input type="checkbox">
+                    </em>
+                    <span>使用积分（您目前积分余额为1500分）</span>
+                </label>
+                <div class="user-form">
+                    <div class="item"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.sliderBox.float.min.js"></script>
@@ -792,6 +821,31 @@
             slideBox.slideInit();
         });
 
+        //立即投资
+        $("#Investment").click(function () {
+            var text = $("#InvestmentCont").html();
+            var title = "确认并支付";
+            $.jBox.btnAlert(text, {
+                boxCls: "investment-box",
+                title: title,
+                top: "10%",
+                btn: {
+                    text: ["确认支付"]
+                },
+                configCallback: function (opt) {
+                    this.opt.css.boxCSS = {
+                        width: 640
+                    }
+                },
+                beforeClassFun: function (opt) {
+                    opt.jEnsure.addClass("fb-btn radius gradient no-bd fs-14");
+                    //选择协议
+                    formChecked(".fb-check-box", function (check) {
+
+                    });
+                }
+            });
+        });
     })
 </script>
 </body>

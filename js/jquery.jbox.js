@@ -56,7 +56,6 @@
             return opt;
         };
 
-
         that.alert = function (text, opts, css) {
             tipsFun(text, opts, null, null, 0, css, 1);
         };
@@ -118,8 +117,11 @@
          *  @param close
          */
         var tipsFun = function (text, opts, icon, callback, type, optCSS, close) {
+            if (opts && opts.configCallback) opts.configCallback.call(that);
+
             var opt = $.extend({}, that.opt, opts);
             var css = $.extend({}, defaultCSS, opt.css, optCSS);
+
             var location = opt.path === undefined ? (!opt.icon.location ? "" : opt.icon.location) : opt.path;
             var src = icon ? (opt.icon.src ? location + opt.icon.src : location + icon) : icon;
             var btnNum = opt.btn.text ? opt.btn.text.length : 0;
@@ -184,6 +186,9 @@
         opt.jClose = $(".j-disk-close");
         opt.promptEnsure = $("#jPromptEnsure");
 
+
+        if (opt.beforeClassFun) opt.beforeClassFun.call(opt.diskBar[0], opt);
+
         if (opt.isMove) {
             opt.boxTitle.on("mousedown", {"opt": opt}, startMove);
         }
@@ -207,6 +212,8 @@
         opt.jCancel.on("click", {"opt": opt}, cancelFun);
         opt.jClose.on("click", {"opt": opt}, cancelFun);
         opt.promptEnsure.on("click", {"opt": opt}, jPromptEnsure);
+
+        if (opt.afterClassFun) opt.afterClassFun.call(opt.diskBar[0], opt);
 
         if (close) {
             _clear_setTimeout_ = setTimeout(function () {
