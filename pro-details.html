@@ -112,7 +112,37 @@
             <!---start,going,end--->
             <span class="pro-state-img going"><i class="fb-state"></i></span>
             <div class="details-bar">
-                <label class="fb-img-box"><img src="img/details-img.jpg"></label>
+                <div class="fb-img-box">
+                    <div class="slider-container fb-slider-slide" id="detailsBanner">
+                        <ul class="slider-bar">
+                            <li class="slide-item">
+                                <a href="#"><img class="load-img" data-load-src="img/details-img.jpg"></a>
+
+                                <div class="slide-placeholder"></div>
+                            </li>
+                            <li class="slide-item">
+                                <a href="#"><img class="load-img" data-load-src="img/pro-car1.jpg"></a>
+
+                                <div class="slide-placeholder"></div>
+                            </li>
+                            <li class="slide-item">
+                                <a href="#"><img class="load-img" data-load-src="img/pro-car2.jpg"></a>
+
+                                <div class="slide-placeholder"></div>
+                            </li>
+                            <li class="slide-item">
+                                <a href="#"><img class="load-img" data-load-src="img/pro-car3.jpg"></a>
+
+                                <div class="slide-placeholder"></div>
+                            </li>
+                        </ul>
+                        <div class="slider-btn">
+                            <a href="javascript:;" class="prev"><i></i></a>
+                            <a href="javascript:;" class="next"><i></i></a>
+                        </div>
+                        <div class="slider-paging"></div>
+                    </div>
+                </div>
                 <!--登陆状态-->
                 <div class="details-cont state-login">
                     <h2>第200期201707221201凯迪拉克ATS-L2017款28T技术型项目</h2>
@@ -136,20 +166,17 @@
                             <label class="loading">倒计时加载中...</label>
                         </label>
                     </div>
-                    <div class="pro-set-money">
+                    <div class="pro-set-money fb-slider-bar">
                         <label class="set-sum">
                             <span>众筹金额：</span>
-                            <input class="user-input small-radius" type="text" placeholder="请输入众筹金额">
+                            <input class="user-input small-radius UISlider-input" type="text" placeholder="请输入众筹金额">
                         </label>
                         <div class="fb-slide-box">
-                            <label class="min">100 元<br>最小金额</label>
+                            <label class="min UISlider-min" data-val="100">100 元<br>最小金额</label>
                             <div class="slide-box">
-                                <div class="cont">
-                                    <!--<em class="moved"></em>-->
-                                    <!--<span class="btn"></span>-->
-                                </div>
+                                <div class="cont UISlider-box"></div>
                             </div>
-                            <label class="max">9,999,999 元<br>最大金额</label>
+                            <label class="max UISlider-max" data-val="9999999">9,999,999 元<br>最大金额</label>
                         </div>
                     </div>
                     <div class="pro-balance">
@@ -187,7 +214,7 @@
                     </div>
                 </div>
                 <!--未登陆状态-->
-                <div class="details-cont state-not-login" style="display: none">
+                <div class="details-cont state-not-login" style="display: none;">
                     <h2>第200期201707221201凯迪拉克ATS-L2017款28T技术型项目</h2>
                     <div class="pro-money">
                         <label>
@@ -207,20 +234,17 @@
                         <span class="title">起止时间：</span>
                         <em class="fs-18">2017-05-01 6:00 至 2017-07-01 6:30</em>
                     </div>
-                    <div class="pro-set-money mb-15">
+                    <div class="pro-set-money fb-slider-bar mb-15">
                         <label class="set-sum">
                             <span>众筹金额：</span>
-                            <input class="user-input small-radius" type="text" placeholder="请输入众筹金额">
+                            <input class="user-input small-radius UISlider-input" type="text" placeholder="请输入众筹金额">
                         </label>
                         <div class="fb-slide-box">
-                            <label class="min">100 元<br>最小金额</label>
+                            <label class="min UISlider-min" data-val="100">100 元<br>最小金额</label>
                             <div class="slide-box">
-                                <label class="cont">
-                                    <em class="moved"></em>
-                                    <span class="btn"></span>
-                                </label>
+                                <div class="cont UISlider-box"></div>
                             </div>
-                            <label class="max">9,999,999 元<br>最大金额</label>
+                            <label class="max UISlider-max" data-val="9999999">9,999,999 元<br>最大金额</label>
                         </div>
                     </div>
                     <div class="pro-balance mb-15">
@@ -696,6 +720,13 @@
             opt.isVertical = false;
         });
 
+        //产品图片滚动
+        newSliderBox("#detailsBanner", "slide", {
+            autoPlay: 3000,
+            direction: "H",
+            loop: true
+        });
+
         //产品详情tab切换
         var _timer_ = 0;
         newSliderBox("#detailsTab", "tab", {
@@ -756,36 +787,11 @@
         });
 
         //初始化jquery-ui slider
-        var $input = $(".set-sum input");
-        $(".slide-box .cont").slider({
-            range: "min",
-            min: 100,
-            max: 9999999,
-            step: 100,
-            animate: true,
-            classes: {
-                "ui-slider": "ui-corner-all",
-                "ui-slider-handle": "ui-corner-all btn",
-                "ui-slider-range": "ui-corner-all ui-widget-header moved"
-            },
-            slide: function (event, ui) {
-                var _val_ = ui.value;
-                $input.val(_val_);
-            }
-        });
-        $(".fb-slide-box .min").click(function () {
-            $input.val(100);
-            $(".slide-box .cont").slider({value: 100});
-        });
-        $(".fb-slide-box .max").click(function () {
-            $input.val(9999999);
-            $(".slide-box .cont").slider({value: 9999999});
+        $(".fb-slider-bar").each(function () {
+            var slideBox = new UISliderHandle(this);
+            slideBox.slideInit();
         });
 
-        $input.change(function () {
-            var val = $(this).val();
-            $(".slide-box .cont").slider({value: parseInt(val)});
-        });
     })
 </script>
 </body>

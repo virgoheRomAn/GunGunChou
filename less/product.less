@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import "fb-function";
 @import (reference) "fb-common";
+@import (reference) "main";
 
 /**
 *产品样式表
@@ -168,6 +169,10 @@
       .set-layout("block", 400px, 400px, "absolute");
       top: 0;
       left: 0;
+      .slider-btn {
+        width: 400px;
+        margin-left: -200px;
+      }
     }
   }
 }
@@ -316,7 +321,7 @@
       display: block;
       position: relative;
       height: 400px;
-      background: url("../img/ggc-loading.gif") no-repeat center;
+      background: rgba(255, 255, 255, 0.5) url("../img/ggc-loading.gif") no-repeat center;
     }
   }
 }
@@ -446,7 +451,7 @@
       .start-box {
         .p-rel;
         top: 3px;
-        i{
+        i {
           cursor: auto;
         }
       }

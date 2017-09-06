@@ -205,6 +205,77 @@ function clearText(tag, clearBox, type) {
     }
 }
 
+//设置ui滑块
+function UISliderHandle(ele, opt) {
+    var defaults = {
+        boxEle: ".UISlider-box",
+        input: ".UISlider-input",
+        minEle: ".UISlider-min",
+        maxEle: ".UISlider-max",
+        setValue: null
+    };
+
+    var that = this;
+    var opts = that.opt = $.extend({}, defaults, opt);
+    var $ele = $(ele),
+        $box = $ele.find(opts.boxEle),
+        $input = $ele.find(opts.input),
+        $min = $ele.find(opts.minEle),
+        $max = $ele.find(opts.maxEle);
+    opts.minVal = parseInt($min.data("val"));
+    opts.maxVal = parseInt($max.data("val"));
+    that.slideInit = function (option) {
+        var slideDef = {
+            range: "min",
+            min: opts.minVal,
+            max: opts.maxVal,
+            step: 100,
+            animate: true,
+            classes: {
+                "ui-slider": "",
+                "ui-slider-handle": "btn",
+                "ui-slider-range": "moved"
+            },
+            slide: function (event, ui) {
+                var _val_ = ui.value;
+                $input.val(FB.numberFormat(_val_, 0));
+            }
+        };
+        $box.slider($.extend({}, slideDef, option));
+    };
+
+    that.setSliderVal = function (val) {
+        $box.slider({value: val});
+    };
+
+    $min.click(function () {
+        $input.val(FB.numberFormat(opts.minVal, 0));
+    });
+    $max.click(function () {
+        $input.val(FB.numberFormat(opts.maxVal, 0));
+    });
+    $input.change(function () {
+        var val = $(this).val();
+        if (val >= opts.maxVal) val = opts.maxVal;
+        if (val <= opts.minVal) val = opts.minVal;
+        var valStr = val.toString();
+        if (valStr.indexOf(",") == -1) {
+            $(this).val(FB.numberFormat(parseInt(val), 0));
+            that.setSliderVal(val);
+        } else {
+            var newVal = 0;
+            var l = valStr.split(",").length;
+            for (var i = 0; i < l; i++) {
+                newVal += valStr.split(",")[i];
+            }
+            if (parseInt(newVal) >= opts.maxVal) newVal = opts.maxVal;
+            if (parseInt(newVal) <= opts.minVal) newVal = opts.minVal;
+            $(this).val(FB.numberFormat(parseInt(newVal), 0));
+            that.setSliderVal(parseInt(newVal));
+        }
+    });
+}
+
 //添加提示文字
 $(".fb-tips").each(function () {
     var _tips = $(this).find("span");

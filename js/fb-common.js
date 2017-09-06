@@ -237,16 +237,19 @@ FB.hoverShowFun = function (ele, tag, animate) {
  * @param number    传入数字
  * @param n 精确到小数后几位
  * @param format    数字后跟随的标识，单一字符“,”，多处分割“["亿"，"万"，"元"]”
+ * @param split     是否批量切割
  * @param unit  单位
  */
-FB.numberFormat = function (number, n, format, unit) {
+FB.numberFormat = function (number, n, format, unit, split) {
     var data_num = "", split_l, million_l;
     var format_type = format || ",";
+    //计算单位
+    var units = unit || 10000;
+    var splits = Boolean(split) || true;
     //处理显示金额精度,去掉小数点,负号
     var num = parseFloat((number + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
-    var new_num = num.toString().split("");
-    //计算单位
-    var units = unit || 1000;
+    var new_num = splits ? num.toString().split("").reverse() : num.toString().split("");
+
     switch (units / 100) {
         case 1:     //百为单位
             split_l = 3;    //3位分割
@@ -266,25 +269,28 @@ FB.numberFormat = function (number, n, format, unit) {
             break;
     }
     //小于设定单位，直接返回金额
-    if (new_num.length < split_l) {
-        return num;
-    }
+    // if (new_num.length < split_l) {
+    //     return num;
+    // }
     //循环处理之后的金额
     for (var i = 0; i < new_num.length; i++) {
-        if (i == (new_num.length - million_l)) {
-            data_num += new_num[i] + ((typeof format_type == "string") ? format_type :
-                "<span class='format-type1'>" + format_type[0] + "</span>") + "";
-        } else if (i == (new_num.length - split_l)) {
-            data_num += new_num[i] + ((typeof format_type == "string") ? format_type :
-                "<span class='format-type2'>" + format_type[1] + "</span>") + "";
+        if (!splits) {
+            if (i == (new_num.length - million_l)) {
+                data_num += new_num[i] + ((typeof format_type == "string") ? format_type :
+                    "<span class='format-type1'>" + format_type[0] + "</span>") + "";
+            } else if (i == (new_num.length - split_l)) {
+                data_num += new_num[i] + ((typeof format_type == "string") ? format_type :
+                    "<span class='format-type2'>" + format_type[1] + "</span>") + "";
+            } else {
+                data_num += new_num[i];
+            }
         } else {
-            data_num += new_num[i];
+            //批处理数据
+            data_num += new_num[i] + ((i + 1) % 3 == 0 && (i + 1) != new_num.length ? "," : "");
         }
-        //批处理数据
-        //data_num += new_num[i] + ((i + 1) % 3 == 0 && (i + 1) != new_num.length ? "," : "");
     }
 
-    return data_num.split("").join("") + ((typeof format_type == "string") ? "" :
+    return splits ? data_num.split("").reverse().join("") : data_num.split("").join("")+((typeof format_type == "string") ? "" :
         "<span class='format-type3'>" + format_type[2] + "</span>");
 };
 /**
@@ -526,7 +532,7 @@ FB.slideBox = function (ele, options) {
             var _left = eleOffset($btn).left;
             var _top = eleOffset($btn).top;
             var ratio = mx / width;
-            console.log(ratio,(_left - left)/width);
+            console.log(ratio, (_left - left) / width);
             if (ratio >= 0 && ratio <= 1) {
                 $btn.css({"left": ratio * 100 + "%"});
                 $move.width(ratio * 100 + "%");

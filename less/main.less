@@ -239,17 +239,6 @@
 .in-banner-bar {
   .pos-style("relative");
   .fn-set-height(480px);
-  .slider-paging {
-    .fn-set-height(30px);
-    &.active span {
-      .set-layout("inline-block", 14px, 14px);
-      .fn-set-background(@white);
-      .layer-margin-num(0 8px);
-      &.active, &:hover {
-        .fn-set-background(@main-color);
-      }
-    }
-  }
   .in-login-fast {
     .pos-bto-right("absolute", 0, 0);
     .set-layout("block", 320px, 480px);
@@ -294,6 +283,28 @@
     }
   }
 }
+
+//轮播
+.fb-slider-slide{
+  .slide-placeholder{
+    width: 236px;
+    height: 236px;
+    margin: -118px 0 0 -118px;
+    background:  url("@{imgs}/ggc-loading.gif") no-repeat center;
+  }
+  .slider-paging {
+    .fn-set-height(30px);
+    &.active span {
+      .set-layout("inline-block", 14px, 14px);
+      .fn-set-background(@white);
+      .layer-margin-num(0 8px);
+      &.active, &:hover {
+        .fn-set-background(@main-color);
+      }
+    }
+  }
+}
+
 
 //内容
 .in-container {
