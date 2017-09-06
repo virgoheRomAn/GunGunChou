@@ -385,6 +385,11 @@
       margin-bottom: 15px;
       .t {
         color: @gray-99;
+        display: block;
+        width: 180px;
+        padding-right: 10px;
+        .tm-right;
+        .fl-left;
       }
     }
     .evaluate-user {
@@ -397,15 +402,65 @@
       }
     }
     .evaluate-grade {
-      .start-box {
+      .text-mid-line(26px);
+      .c {
+        .p-rel;
+        top: 3px;
+      }
+    }
+    .evaluate-text {
+      .c {
         display: inline-block;
-        height: 20px;
-        i {
-          display: inline-block;
-          margin-top: 2px;
-          margin-right: 5px;
+        width: 80%;
+        textarea {
+          .p-rel;
+          top: 3px;
+          width: 95%;
+          height: 120px;
+          padding: 8px;
+          border: 1px solid #999999;
+          resize: none;
+          font-size: @fs-18;
         }
       }
     }
+    .evaluate-btn {
+      height: 40px;
+      padding-right: 20px;
+      margin: 15px 0 0 0;
+      a {
+        width: auto;
+        padding: 0 40px;
+      }
+    }
+  }
+  .evaluate-list {
+    &:extend(.product-record all);
+    td {
+      vertical-align: top;
+      line-height: 30px;
+      padding: 20px 10px;
+      .text {
+        .tm-left;
+      }
+      .start-box {
+        .p-rel;
+        top: 3px;
+        i{
+          cursor: auto;
+        }
+      }
+    }
+  }
+}
+
+//评价等级
+.start-box {
+  display: inline-block;
+  height: 20px;
+  i {
+    display: inline-block;
+    margin-right: 5px;
+    .cursor-pointer;
   }
 }

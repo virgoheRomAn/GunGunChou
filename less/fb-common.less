@@ -424,6 +424,7 @@ input[type="number"] {
     font-size: @fs-12;
     line-height: 16px;
     padding-top: 4px;
+    .cursor-pointer;
   }
   .p-rel;
   .fb-block;
@@ -461,6 +462,9 @@ input[type="number"] {
         margin-top: -10px;
         margin-left: -10px;
         background: #03bcff;
+        &:focus {
+          outline: none;
+        }
       }
       .moved {
         .set-layout("block", 20%, 100%, "absolute");

@@ -223,6 +223,12 @@ $(".app-qq-bar").click(function () {
         hasClose: true
     });
 });
+//评价等级
+$(document).on("click", ".start-select .icon-start", function () {
+    var $this = $(this);
+    $this.addClass("active").prevAll().addClass("active");
+    $this.nextAll().removeClass("active");
+});
 
 
 
