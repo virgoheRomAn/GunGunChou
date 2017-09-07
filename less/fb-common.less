@@ -7,6 +7,7 @@
 **********/
 //调用外部样式
 @import "fb-function.less";
+@import (reference) "main";
 /*全局基础*/
 * {
   .layer-margin-num(0);
@@ -478,6 +479,86 @@ input[type="number"] {
   }
 }
 
+/*表单-输入框*/
+.form-input {
+  .p-rel;
+  .fb-block;
+  .text-mid-line(40px);
+  .border-all(1px, solid, @gray-99);
+  .border-radius(5px);
+  padding: 0 10px;
+  &.line-block {
+    display: inline-block;
+  }
+  &.error {
+    .border-all(1px, solid, @error-color);
+    input {
+      color: @error-color;
+    }
+    i.icon-clean {
+      &:extend(.icon-clean.error);
+    }
+  }
+  &.clean {
+    padding-right: 40px;
+    a.clean-btn {
+      .fb-none;
+      .p-abs;
+      top: 50%;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+    }
+  }
+  input {
+    &[type="text"], &[type="password"], &[type="number"] {
+      .fb-block;
+      .fn-set-width(100%);
+      .text-mid-line(20px);
+      border: 0 none;
+      font-size: @fs-16;
+      background: transparent;
+      margin-top: 10px;
+    }
+  }
+}
+
+/*表单-提示*/
+.form-tips {
+  position: relative;
+  z-index: 100;
+  display: block;
+  width: 100%;
+  label {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    right: 0;
+    top: 11px;
+    background: rgba(51, 51, 51, 0.8);
+    background: #333 \9;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 14px;
+    :root & {
+      background: rgba(51, 51, 51, 0.8);
+    }
+    .border-radius(3px);
+    .fb-arrow-dir {
+      position: absolute;
+      top: -16px;
+      right: 15px;
+      border-color: transparent transparent rgba(51, 51, 51, 0.8) transparent;
+      border-color: transparent transparent #333333 transparent \9;
+      :root & {
+        border-color: transparent transparent rgba(51, 51, 51, 0.8) transparent;
+      }
+    }
+  }
+}
+
 /*盒子边框*/
 .fn-border-none;
 /*三角*/
@@ -565,6 +646,16 @@ input[type="number"] {
   &.small {
     height: 34px;
     line-height: 34px;
+  }
+  &.background {
+    background: transparent;
+    font-size: @fs-16;
+    .border-radius(5px);
+    &.red {
+      @color: @error-color;
+      background: @color;
+      border: 1px solid @color;
+    }
   }
 }
 
@@ -680,7 +771,7 @@ input[type="number"] {
 }
 
 .tc-ff5e5e {
-  .text-color(#ff5e5e)
+  .text-color(@error-color)
 }
 
 .tc-03bcff {

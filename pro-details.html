@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/sliderBox.float.css">
     <link rel="stylesheet" href="css/jBox.css">
     <link rel="stylesheet" href="css/main.min.css?a=1.0">
-    <link rel="stylesheet" href="css/user.min.css">
+    <link rel="stylesheet" href="css/main.min.css?a=1.0">
     <link rel="stylesheet" href="css/product.min.css?a=1.0">
 </head>
 <body class="theme-f5">
@@ -710,7 +710,7 @@
 
 <script type="ext/template" id="InvestmentCont">
     <div class="investment-cont">
-        <div class="in-item">
+        <div class="in-select mb-15">
             <span class="t">增益券 :</span>
             <label class="c">
                 <select>
@@ -720,7 +720,7 @@
                 </select>
             </label>
         </div>
-        <div class="in-item">
+        <div class="in-integral mb-25">
             <div class="c">
                 <label class="fb-check-box">
                     <em>
@@ -729,10 +729,36 @@
                     </em>
                     <span>使用积分（您目前积分余额为1500分）</span>
                 </label>
-                <div class="user-form">
-                    <div class="item"></div>
+                <div class="use-integral">
+                    <div class="fb-inline-block p-rel">
+                        <label class="form-input clean">
+                            <input type="text" placeholder="本次最大可用积分为500" value="">
+                            <a class="clean-btn" href="javascript:;"><i class="fb-sprite icon-clean"></i></a>
+                        </label>
+                        <div class="form-tips">
+                            <label><b class='fb-arrow-dir left'></b>不能超过最大使用积分数</label>
+                        </div>
+                    </div>
+                    <a class="fb-btn background red line-block" href="javascript:;" id="useIntegral">使用积分</a>
                 </div>
             </div>
+        </div>
+        <div class="in-money mb-15">
+            <label><span>认筹余额：</span><em>1000.00元</em></label>
+            <label><span>实际支付金额：</span><em>5500.00元</em></label>
+        </div>
+        <div class="in-password mb-15">
+            <span>支付密码：</span>
+            <div class="fb-inline-block p-rel">
+                <label class="form-input clean">
+                    <input type="password" placeholder="输入您的支付密码" id="password">
+                    <a class="clean-btn" href="javascript:;"><i class="fb-sprite icon-clean"></i></a>
+                </label>
+                <div class="form-tips">
+                    <label><b class='fb-arrow-dir left'></b>支付密码错误，请重新输入！</label>
+                </div>
+            </div>
+            <a class="forget" href="user-forget.html">忘记支付密码？</a>
         </div>
     </div>
 </script>
@@ -830,9 +856,20 @@
                 title: title,
                 top: "10%",
                 btn: {
-                    text: ["确认支付"]
+                    text: ["确认支付"],
+                    closeType: 3,
+                    jEnsure: function () {
+                        var $psd = $("#password");
+                        if ($psd.val() !== "123456") {
+                            $psd.parent().addClass("error");
+                        } else {
+                            $.jBox.closeFun(function(){
+                                console.log("输入密码：123456");
+                            });
+                        }
+                    }
                 },
-                configCallback: function (opt) {
+                configCallback: function () {
                     this.opt.css.boxCSS = {
                         width: 640
                     }
@@ -840,9 +877,32 @@
                 beforeClassFun: function (opt) {
                     opt.jEnsure.addClass("fb-btn radius gradient no-bd fs-14");
                     //选择协议
-                    formChecked(".fb-check-box", function (check) {
-
+                    formChecked(".fb-check-box", function () {
+                        $(this).next().toggle();
                     });
+
+                    //使用积分
+                    $("#useIntegral").click(function () {
+                        var $integral = $(".use-integral");
+                        var $form = $integral.find(".form-input");
+                        if ($form.find("input").val() > 1500) {
+                            $form.addClass("error");
+                        }
+                    });
+
+                    //绑定input
+                    $(".investment-cont").find(".form-input input").focus(function () {
+                        $(this).next().show();
+                        $(this).parent().removeClass("error");
+                    }).blur(function () {
+                        $(this).next().hide();
+                    });
+                    $(".clean-btn").each(function () {
+                        clearText(this, $(this).prev());
+                    });
+                },
+                afterClassFun: function (opt) {
+                    opt.boxCont.height("auto");
                 }
             });
         });

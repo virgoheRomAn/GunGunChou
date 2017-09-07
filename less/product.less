@@ -487,6 +487,10 @@
 
 //弹出立即投资
 .investment-box {
+  .j-disk-text {
+    text-align: left;
+    padding: 10px 0;
+  }
   .j-btn {
     height: 60px;
     a {
@@ -495,6 +499,76 @@
       margin: auto;
       .fl-none;
       .text-mid-line(40px);
+    }
+  }
+  .investment-cont {
+    font-size: @fs-16;
+    color: @gray-33;
+    .form-input {
+      display: inline-block;
+      width: 210px;
+      &.error {
+        & + .form-tips {
+          display: block;
+        }
+      }
+    }
+    .form-tips {
+      display: none;
+    }
+    .in-select {
+      .text-mid-line(40px);
+      .t {
+        margin-right: 30px;
+      }
+      .c {
+        select {
+          width: 208px;
+          height: 36px;
+          padding: 0 0 0 15px;
+          border: 1px solid #999999;
+          color: @gray-99;
+          font-size: @fs-12;
+          .border-radius(5px);
+        }
+      }
+    }
+    .in-integral {
+      .fb-check-box {
+        .text-mid-line(24px);
+        margin-bottom: 10px;
+      }
+      .use-integral {
+        display: none;
+        a.fb-btn {
+          margin-left: 35px;
+        }
+      }
+    }
+    .in-money {
+      label {
+        display: block;
+        margin-bottom: 10px;
+        .text-mid-line(30px);
+        span {
+          display: inline-block;
+          width: 120px;
+          float: left;
+        }
+        em {
+          .fs-number(24px);
+          color: @error-color;
+        }
+      }
+    }
+    .in-password {
+      .forget {
+        font-size: @fs-12;
+        color: @user-color;
+        margin-left: 10px;
+        .p-rel;
+        top: 10px;
+      }
     }
   }
 }

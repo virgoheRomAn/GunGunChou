@@ -103,7 +103,7 @@
         };
 
         that.closeFun = function (callback) {
-            closeDisk(opt.diskBar, null, callback);
+            closeDisk(that.opt.diskBar, null, callback);
         };
 
         /**
@@ -214,6 +214,7 @@
         opt.promptEnsure.on("click", {"opt": opt}, jPromptEnsure);
 
         if (opt.afterClassFun) opt.afterClassFun.call(opt.diskBar[0], opt);
+
 
         if (close) {
             _clear_setTimeout_ = setTimeout(function () {
@@ -365,14 +366,16 @@
     }
 
     function cancelFun(e) {
-        var opt = e.data.opt;
+        var evt = e || window.event;
+        var opt = evt.data.opt;
         closeDisk(opt.diskBar, 1, function () {
             if (opt.btn.jCancel) opt.btn.jCancel.call(this, opt);
         });
     }
 
     function jPromptEnsure(e) {
-        var opt = e.data.opt;
+        var evt = e || window.event;
+        var opt = evt.data.opt;
         var that = this;
         closeDisk(opt.diskBar, opt.btn.closeType, function () {
             if (opt.btn.jEnsure) opt.btn.jEnsure.call(that);
@@ -381,8 +384,8 @@
 
     function closeDisk(ele, type, callback) {
         var $ele = ele || $("#jDisk");
-        type = !type ? 1 : type;
-        if (type == 0) {
+        type = type || 1;
+        if (type == 3) {
             if (callback) callback.call(this);
         } else if (type == 1) {
             $ele.fadeOut(300, function () {
@@ -394,7 +397,7 @@
             _clear_setTimeout_ = setTimeout(function () {
                 $ele.fadeOut(300, function () {
                     $(this).remove();
-                    if (_callback) _callback.call(ele[0]);
+                    if (callback) callback.call(ele[0]);
                 });
             }, opt.time);
         }

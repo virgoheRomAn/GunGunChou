@@ -108,6 +108,7 @@ function verifyPwd(ele, sureEle) {
             $tip.empty();
         }
     }).focus(function () {
+        $(this).parent().removeClass("error waring success");
         $tip.empty();
         val = $(this).val();
         psdType = FB.testForm.password(val, {isShift: true});

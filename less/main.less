@@ -215,7 +215,7 @@
           .fn-set-margin(8px, right);
         }
         &.active, &:hover {
-          @color: #0386ff;
+          @color: @user-color;
           .text-color(@color);
           .tm-bold;
           & > em {
@@ -249,7 +249,7 @@
       .mt-20;
       span {
         .fb-block;
-        .text-color(#0386ff);
+        .text-color(@user-color);
         .fs-number(46px);
         .tm-bold;
         .text-gradient;
@@ -1095,6 +1095,12 @@
   width: 20px;
   height: 20px;
   background-position: -188px -202px;
+}
+
+.icon-clean.error {
+  width: 20px;
+  height: 20px;
+  background-position: -215px -202px;
 }
 
 .icon-start {

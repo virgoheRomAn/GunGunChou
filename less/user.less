@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import "fb-function";
 @import (reference) "fb-common";
+@import (reference) "main";
 
 /**
 *用户交互样式表
@@ -155,14 +156,20 @@
       .fb-block;
       .text-mid-line(40px);
       .border-all(1px, solid, @gray-99);
-      .border-radius(3px);
+      .border-radius(5px);
       padding: 0 10px;
       &.code {
         .fn-set-width(170px);
         .fl-left;
       }
       &.error {
-        .border-all(1px, solid, #ff5e5e);
+        .border-all(1px, solid, @error-color);
+        input {
+          color: @error-color;
+        }
+        i.icon-clean {
+          &:extend(.icon-clean.error);
+        }
       }
       &.clean {
         padding-right: 40px;
@@ -334,40 +341,6 @@
         em {
           .fb-inline-block;
         }
-      }
-    }
-  }
-}
-
-.form-tips {
-  position: relative;
-  z-index: 100;
-  display: block;
-  width: 100%;
-  label {
-    display: block;
-    height: 40px;
-    line-height: 40px;
-    position: absolute;
-    right: 0;
-    top: 11px;
-    background: rgba(51, 51, 51, 0.8);
-    background: #333 \9;
-    color: #fff;
-    padding: 0 10px;
-    font-size: 14px;
-    :root & {
-      background: rgba(51, 51, 51, 0.8);
-    }
-    .border-radius(3px);
-    .fb-arrow-dir {
-      position: absolute;
-      top: -16px;
-      right: 15px;
-      border-color: transparent transparent rgba(51, 51, 51, 0.8) transparent;
-      border-color: transparent transparent #333333 transparent \9;
-      :root & {
-        border-color: transparent transparent rgba(51, 51, 51, 0.8) transparent;
       }
     }
   }
