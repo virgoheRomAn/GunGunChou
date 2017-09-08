@@ -1077,7 +1077,9 @@
     }
   }
   .page-container {
-    margin-left: 230px;
+    //margin-left: 230px;
+    width: 970px;
+    float: right;
     .cont {
       background: #ffffff;
       .fb-box-shadow;
@@ -1100,6 +1102,278 @@
           a.active, a:hover {
             color: #fe2322;
           }
+        }
+      }
+    }
+  }
+}
+
+//新闻详情
+.page-details {
+  padding-bottom: 30px;
+  .container {
+    display: block;
+    width: 890px;
+    margin: auto;
+    .title {
+      border-bottom: 1px solid #e4e4e4;
+      text-align: center;
+      padding-top: 10px;
+      .text {
+        display: block;
+        font-size: 24px;
+        color: @user-color;
+        &.b {
+          color: @gray-33;
+          font-size: 28px;
+          padding: 10px 0 15px 0;
+        }
+      }
+      .intro {
+        display: block;
+        .text-mid-line(34px);
+        font-size: @fs-14;
+        color: @gray-99;
+        span {
+          margin: 0 15px;
+        }
+      }
+    }
+    .cont {
+      .p-rel;
+      font-size: @fs-18;
+      padding: 20px 0 20px 0;
+      color: @gray-33;
+      min-height: 300px;
+      .list-bar {
+        li {
+          .p-rel;
+          margin: 0 0 25px;
+          label {
+            display: block;
+            width: 80%;
+            a {
+              display: block;
+              font-size: @fs-18;
+              color: @user-color;
+              .tm-uline;
+              &:hover {
+                color: @error-color;
+              }
+            }
+            span {
+              color: @gray-99;
+              font-size: @fs-12;
+              margin-right: 20px;
+            }
+          }
+          em {
+            .pos-abs-tr;
+            margin-top: 5px;
+            font-size: @fs-14;
+            color: @gray-33;
+          }
+        }
+      }
+
+      .bottom {
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+      }
+      label {
+        display: block;
+      }
+      p.indent {
+        text-indent: 2em;
+      }
+    }
+    .page {
+      width: 280px;
+      margin-top: 20px;
+      font-size: @fs-14;
+      label {
+        display: block;
+        margin-bottom: 15px;
+        span {
+          display: block;
+          width: 60px;
+          float: left;
+        }
+        a {
+          color: @user-color;
+          margin-left: 70px;
+          .tm-clamp;
+        }
+      }
+    }
+  }
+}
+
+//个人中心
+.personal-information {
+  display: block;
+  width: 820px;
+  margin: auto;
+  padding: 20px 0;
+  .item {
+    padding: 15px 0;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .p-u-intro {
+    .p-rel;
+    padding: 15px 20px;
+    .p-u-head {
+      .p-rel;
+      display: inline-block;
+      width: 60%;
+      min-height: 120px;
+      padding-left: 140px;
+      .p-u-img {
+        display: block;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        .border-radius(50%);
+        .fb-box-shadow;
+        input[type="file"] {
+          visibility: hidden;
+          display: none;
+        }
+        &:hover {
+          span {
+            display: block;
+          }
+        }
+        img {
+          .box-fill;
+        }
+        span {
+          .box-fill;
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: none;
+          .fn-set-opacity(0, 0, 0, 0.5);
+          img {
+            display: block;
+            width: 61px;
+            height: 44px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -22px 0 0 -30px;
+          }
+        }
+      }
+      & > span, & > label {
+        display: block;
+        &.fn-hover-menu {
+          display: none;
+        }
+      }
+      .u-name {
+        font-size: @fs-14;
+        color: @gray-33;
+        a {
+          .fb-btn;
+          .line;
+          .line-block;
+          .text-mid-line(26px);
+          margin-left: 20px;
+          color: #0fadff;
+          &.active {
+            color: @gray-99;
+            border: 1px solid @gray-99;
+          }
+        }
+      }
+      .u-manager {
+        .p-rel;
+        .text-mid-line(30px);
+        font-size: @fs-14;
+        color: @gray-66;
+        margin-top: 10px;
+        padding-left: 30px;
+        i {
+          position: absolute;
+          top: 50%;
+          left: 0;
+        }
+        &.hover {
+          a {
+            color: @user-color;
+          }
+          i {
+            &:extend(.u-manager-icon.active);
+          }
+        }
+        .show-personal {
+          top: 30px;
+          left: 0;
+          margin-left: 0;
+          .fb-box-shadow;
+          border: 0 none;
+          border: 1px solid #e4e4e4 \9;
+          .border-radius(5px);
+          b {
+            line-height: normal;
+          }
+        }
+      }
+      .u-state {
+        margin-top: 10px;
+        label.approve-state {
+          position: relative;
+          display: inline-block;
+          margin-right: 15px;
+          em.fb-sprite {
+            position: absolute;
+            bottom: 4px;
+            right: 1px;
+          }
+          &.active {
+            i.u-phone-icon {
+              &:extend(.u-phone-icon.active);
+            }
+            i.u-id-card-icon {
+              &:extend(.u-id-card-icon.active);
+            }
+            em.fb-sprite {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .p-u-active {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      width: 150px;
+      a {
+        margin: 15px 0;
+      }
+    }
+  }
+  .p-u-money {
+    li {
+      padding: 40px 0;
+      text-align: center;
+      em {
+        font-size: 36px;
+      }
+      &.small-li {
+        padding: 22px 0;
+        text-align: center;
+        .small {
+          display: inline-block;
+          width: 80px;
+          margin: auto;
+          text-align: center;
         }
       }
     }
@@ -1234,7 +1508,7 @@
 .icon-checked {
   width: 14px;
   height: 10px;
-  background-position: -84px -227px;
+  background-position: -128px -182px;
 }
 
 .icon-clean {
@@ -1301,5 +1575,60 @@
   height: 20px;
   margin-top: -10px;
   background-position: -111px -347px;
+}
+
+.project-icon {
+  width: 20px;
+  height: 18px;
+  margin-top: -9px;
+  background-position: -84px -291px;
+}
+
+.wallet-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -110px -291px;
+}
+
+.setting-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -84px -318px;
+}
+
+.u-manager-icon {
+  width: 20px;
+  height: 24px;
+  margin-top: -12px;
+  background-position: -84px -375px;
+  &.active {
+    background-position: -111px -375px;
+  }
+}
+
+.u-phone-icon {
+  width: 40px;
+  height: 40px;
+  background-position: -235px -190px;
+  &.active {
+    background-position: -235px -92px;
+  }
+}
+
+.u-id-card-icon {
+  width: 40px;
+  height: 40px;
+  background-position: -235px -141px;
+  &.active {
+    background-position: -235px -44px;
+  }
+}
+
+.u-ape-sate {
+  width: 12px;
+  height: 12px;
+  background-position: -115px -162px;
 }
 

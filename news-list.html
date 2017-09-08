@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>滚滚筹-新闻详情</title>
+    <title>滚滚筹-新闻列表</title>
     <link rel="stylesheet" href="css/fb-common.min.css">
     <link rel="stylesheet" href="css/sliderBox.float.css">
     <link rel="stylesheet" href="css/jBox.css">
     <link rel="stylesheet" href="css/main.min.css?a=1.0">
+    <link rel="stylesheet" href="css/product.min.css">
 </head>
 <body class="theme-f5">
 <div class="fb-wrap gray-f5">
@@ -101,22 +102,78 @@
             <div class="page-details fb-module">
                 <div class="container">
                     <div class="title">
-                        <span class="text">滚滚筹客服电话变更通知</span>
-                        <label class="intro">
-                            <span>发布时间：2017-06-31 23:00:00</span>
-                            <span>点击量：213</span>
-                        </label>
+                        <span class="text b">平台公告</span>
                     </div>
                     <div class="cont">
-                        <label>各位尊敬的投友：</label>
-                        <p>即日起，公司客服电话变更为023-7514562，请知悉。</p>
-                        <p class="bottom tm-right">
-                            <span>滚滚筹<br>2017-07-23</span>
-                        </p>
+                        <div class="list-bar">
+                            <ul>
+                                <li>
+                                    <label>
+                                        <a href="news-details.html">滚滚筹服务条款和注册申请协议正式上线通知</a>
+                                        <span>发布者：滚滚筹平台</span>
+                                        <span>点击量：212</span>
+                                    </label>
+                                    <em>2017-07-23</em>
+                                </li>
+                                <li>
+                                    <label>
+                                        <a href="news-details.html">滚滚筹一周运营报告以及规划未来5年新战略部署通告</a>
+                                        <span>发布者：滚滚筹平台</span>
+                                        <span>点击量：212</span>
+                                    </label>
+                                    <em>2017-07-23</em>
+                                </li>
+                                <li>
+                                    <label>
+                                        <a href="news-details.html">滚滚筹服务条款和注册申请协议正式上线通知</a>
+                                        <span>发布者：滚滚筹平台</span>
+                                        <span>点击量：212</span>
+                                    </label>
+                                    <em>2017-07-23</em>
+                                </li>
+                                <li>
+                                    <label>
+                                        <a href="news-details.html">滚滚筹服务条款和注册申请协议正式上线通知</a>
+                                        <span>发布者：滚滚筹平台</span>
+                                        <span>点击量：212</span>
+                                    </label>
+                                    <em>2017-07-23</em>
+                                </li>
+                                <li>
+                                    <label>
+                                        <a href="news-details.html">滚滚筹服务条款和注册申请协议正式上线通知</a>
+                                        <span>发布者：滚滚筹平台</span>
+                                        <span>点击量：212</span>
+                                    </label>
+                                    <em>2017-07-23</em>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="page">
-                        <label><span>上一篇：</span><a href="#">滚滚筹app新版焕然异新上线了！</a></label>
-                        <label><span>下一篇：</span><a href="#">滚滚滚筹一周年运营报告以及未来 五年战略部署和规划改革的报</a></label>
+                    <div class="pro-paging">
+                        <span class="all">共200页</span>
+                        <div class="select fb-select-bar">
+                            <select>
+                                <option value="0" selected>10条/页</option>
+                                <option value="1">20条/页</option>
+                                <option value="2">50条/页</option>
+                                <option value="3">100条/页</option>
+                            </select>
+                        </div>
+                        <div class="pages">
+                            <a class="prev none" href="javascript:;">上一页</a>
+                            <label class="page-num">
+                                <a href="javascript:;" class="active">1</a>
+                                <a href="javascript:;">2</a>
+                                <a href="javascript:;">3</a>
+                                <a href="javascript:;">4</a>
+                                <a href="javascript:;">5</a>
+                                <span>···</span>
+                                <a href="javascript:;">10</a>
+                            </label>
+                            <a class="next" href="javascript:;">下一页</a>
+                        </div>
+                        <label class="go">往前<input type="text" value="">页</label>
                     </div>
                 </div>
             </div>
@@ -227,6 +284,9 @@
         $.jBox.configFun(function (opt) {
             opt.isVertical = false;
         });
+
+        //模拟下拉框
+        FB.selectBar(".fb-select-bar");
     })
 </script>
 </body>

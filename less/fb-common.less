@@ -363,6 +363,39 @@ input[type="number"] {
     .text-color(@white);
     .tm-center;
   }
+  &.width {
+    left: 50%;
+    width: 180px;
+    margin-left: -90px;
+  }
+  &.top-tip {
+    margin-top: 8px;
+    em {
+      .fn-set-tl(-12px, 50%);
+      .fn-set-margin(-6px, left);
+      .fn-arrow-dir(6px, transparent transparent #e4e4e4 transparent);
+      i.line {
+        .fn-set-tl(-4px, 50%);
+        .fn-set-margin(-5px, left);
+        .fn-arrow-dir(5px, transparent transparent #ffffff transparent);
+      }
+    }
+  }
+  &.white {
+    .fn-set-background(@white);
+    .border-radius(3px);
+    border: 1px solid #e4e4e4;
+    span {
+      color: @gray-33;
+      .text-mid-line(28px);
+    }
+    em {
+      .p-abs;
+      i.line {
+        .p-abs;
+      }
+    }
+  }
   &.top {
     .fn-set-tl(-46px, 50%);
     .fn-set-margin(-50px, left);
@@ -715,6 +748,11 @@ input[type="number"] {
       background: @color;
       border: 1px solid @color;
     }
+    &.blue {
+      @color: #03bcff;
+      background: @color;
+      border: 1px solid @color;
+    }
   }
 }
 
@@ -839,6 +877,10 @@ input[type="number"] {
 
 .tc-user {
   .text-color(@user-color);
+}
+
+.tc-fe693b {
+  .text-color(#fe693b);
 }
 
 /*盒子边距*/

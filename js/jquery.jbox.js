@@ -31,7 +31,7 @@
         };
 
         var defaultCSS = {
-            iconCSS: {width: "120px", "height": "120px"},
+            iconCSS: {width: "50px", "height": "50px"},
             boxCSS: {},
             titleCSS: {},
             textCSS: {},
@@ -57,23 +57,23 @@
         };
 
         that.alert = function (text, opts, css) {
-            tipsFun(text, opts, null, null, 0, css, 1);
+            tipsFun(text, opts, null, null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1);
         };
 
         that.error = function (text, opts, css) {
-            tipsFun(text, opts, "jBox/Jerror.png", null, 0, css, 1);
+            tipsFun(text, opts, "jBox/error.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1);
         };
 
         that.success = function (text, opts, css) {
-            tipsFun(text, opts, "jBox/Jsuccess.png", null, 0, css, 1);
+            tipsFun(text, opts, "jBox/success.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1);
         };
 
         that.waring = function (text, opts, css) {
-            tipsFun(text, opts, "jBox/Jalert.png", null, 0, css, 1);
+            tipsFun(text, opts, "jBox/alert.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1);
         };
 
         that.loading = function (text, opts, callback, css) {
-            tipsFun(text, opts, "jBox/loading.gif", callback, 0, css, 0);
+            tipsFun(text, opts, "jBox/loading.gif", callback, 0, css, opts ? opts.close === undefined ? 0 : opts.close : 0);
         };
 
         that.confirm = function (text, opts, css) {
@@ -215,8 +215,7 @@
 
         if (opt.afterClassFun) opt.afterClassFun.call(opt.diskBar[0], opt);
 
-
-        if (close) {
+        if (!!close) {
             _clear_setTimeout_ = setTimeout(function () {
                 opt.diskBar.fadeOut(300, function () {
                     $(this).remove();

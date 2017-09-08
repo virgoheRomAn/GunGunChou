@@ -231,7 +231,7 @@ FB.hoverShowFun = function (ele, tag, animate) {
     var _ele = !ele ? ".fn-hover-bar" : ele;
     var _tag = !tag ? ".fn-hover-menu" : tag;
     $(_ele).hover(function (e) {
-        var $tag = $(this).find(_tag);
+        var $tag = $(this).addClass("hover").find(_tag);
         FB.propagationFun(e);
         if (!animate) $tag.show();
         else {
@@ -239,7 +239,7 @@ FB.hoverShowFun = function (ele, tag, animate) {
             else $tag.show();
         }
     }, function (e) {
-        var $tag = $(this).find(_tag);
+        var $tag = $(this).removeClass("hover").find(_tag);
         FB.propagationFun(e);
         if (!animate) $tag.hide();
         else {
@@ -576,12 +576,12 @@ FB.selectBar = function (ele, options) {
     for (var i = 0; i < l; i++) {
         str += '<li><a data-val="' + $select.find("option").eq(i).val() + '">' + $select.find("option").eq(i).text() + '</a></li>';
     }
-    $ele.width($select.outerWidth(true)).addClass(cls).append("\
+    $ele.addClass(cls).append("\
         <label class=\"text\">" + $select.find("option:selected").text() + "</label>\
         <b class=\"fb-arrow-dir down\"></b>\
         <div class=\"list\"><ul></ul></div>\
          ");
-    $ele.find(".list ul").append(str).hide();
+    $ele.find(".list").width($select.outerWidth(true) + 30).find("ul").append(str).hide();
     $select.remove();
 
     $ele.click(function (e) {

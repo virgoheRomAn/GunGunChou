@@ -34,9 +34,8 @@ html, body {
 
 .j-disk-confirm {
     background: rgba(0, 0, 0, 0.5);
-    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000, endcolorstr=#7F000000)\9;
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000, endcolorstr=#7F000000) \9;
 }
-
 
 .j-disk-alert {
     background: transparent;
@@ -97,12 +96,14 @@ html, body {
 }
 
 .j-disk-text .j-disk-t {
+    position: relative;
+    top: -1px;
     font-size: 24px;
 }
 
 .j-disk-img {
     text-align: left;
-    padding: 10px 0 10px 34px;
+    padding: 5px 0 5px 70px;
 }
 
 i.j-disk-icon {
@@ -112,7 +113,7 @@ i.j-disk-icon {
     position: absolute;
     top: 50%;
     left: 0;
-    margin-top: -13px;
+    margin-top: -25px;
 }
 
 i.j-disk-icon img {
@@ -223,7 +224,7 @@ a.j-cancel {
     z-index: 10002;
     margin: -75px 0 0 -150px;
     background: rgba(0, 0, 0, 0.8);
-    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#C8000000, endcolorstr=#C8000000)\9;
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#C8000000, endcolorstr=#C8000000) \9;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -232,7 +233,11 @@ a.j-cancel {
 
 .j-disk-alert .j-content {
     color: #FFFFFF;
-    padding: 25px 80px;
+    padding: 25px 40px;
+}
+
+:root .j-container {
+    filter: none;
 }
 
 /********************************************/
