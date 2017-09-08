@@ -396,14 +396,14 @@
         </div>
         <div class="pro-paging">
             <span class="all">共200页</span>
-            <label class="select">
+            <div class="select fb-select-bar">
                 <select>
                     <option value="0" selected>10条/页</option>
                     <option value="1">20条/页</option>
                     <option value="2">50条/页</option>
                     <option value="3">100条/页</option>
                 </select>
-            </label>
+            </div>
             <div class="pages">
                 <a class="prev none" href="javascript:;">上一页</a>
                 <label class="page-num">
@@ -544,6 +544,9 @@
             FB.elementAddCls(that, "active").toggle();
             $.jBox.alert(text);
         });
+
+        //模拟下拉框
+        FB.selectBar(".fb-select-bar");
     })
 </script>
 </body>

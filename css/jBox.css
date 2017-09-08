@@ -141,8 +141,8 @@ i.j-disk-icon img {
     display: inline-block;
     float: right;
     width: 74px;
-    background: #10ACAD;
-    border: 1px solid #10ACAD;
+    background: #0fadff;
+    border: 1px solid #0fadff;
     color: #FFFFFF;
     text-align: center;
     font-size: 14px;
@@ -201,8 +201,8 @@ i.j-disk-icon img {
 }
 
 a.j-ensure {
-    background: #10ACAD;
-    border: 1px solid #10ACAD;
+    background: #0fadff;
+    border: 1px solid #0fadff;
     color: #FFFFFF;
     float: left;
 }

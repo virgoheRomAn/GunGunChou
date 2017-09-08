@@ -232,21 +232,22 @@
       .text-mid-line(40px);
       .fs-18;
       color: @gray-33;
-      & > .placeholder-bar {
-        span {
-          font-size: @fs-14;
-        }
+      & > span {
+        float: left;
       }
-      .user-input {
+      .form-input {
         display: inline-block;
-        .text-mid-line(30px);
-        .fs-14;
+        .text-mid-line(32px);
         .p-rel;
-        top: -2px;
+        font-size: @fs-14;
+        margin-top: 4px;
+        input {
+          margin-top: 6px;
+        }
       }
     }
     .fb-slide-box {
-      display: inline-block;;
+      display: inline-block;
       .fl-right;
     }
   }
@@ -522,13 +523,11 @@
         margin-right: 30px;
       }
       .c {
-        select {
-          width: 208px;
-          height: 36px;
-          padding: 0 0 0 15px;
+        display: inline-block;
+        border: 1px solid #999999;
+        .border-radius(5px);
+        ul {
           border: 1px solid #999999;
-          color: @gray-99;
-          font-size: @fs-12;
           .border-radius(5px);
         }
       }
@@ -540,6 +539,9 @@
       }
       .use-integral {
         display: none;
+        .fb-inline-block {
+          float: left;
+        }
         a.fb-btn {
           margin-left: 35px;
         }
@@ -562,12 +564,18 @@
       }
     }
     .in-password {
+      & > span {
+        float: left;
+        display: inline-block;
+        .text-mid-line(40px);
+      }
       .forget {
         font-size: @fs-12;
         color: @user-color;
         margin-left: 10px;
         .p-rel;
         top: 10px;
+        top: 0 \9;
       }
     }
   }

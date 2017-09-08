@@ -21,6 +21,8 @@ FB.resizeFun(function (w) {
 FB.hoverShowFun();
 //修复PlaceHolder
 FB.JPlaceHolder.init();
+//侧边栏
+FB.broadSideSlide(".slide-menu");
 
 //实例化sliderBox
 function newSliderBox(ele, type, opt) {
@@ -197,13 +199,16 @@ function clearText(tag, clearBox, type) {
             clearBox.blur();
             $(this).hide();
         }
-
     });
     if (!type) {
         $(tag)[0].onmousedown = function (e) {
             var event = e || window.event;
-            event.preventDefault()
-        }
+            if (document.all) {
+                event.returnValue = false;
+            } else {
+                event.preventDefault();
+            }
+        };
     }
 }
 

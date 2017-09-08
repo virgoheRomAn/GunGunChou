@@ -123,39 +123,53 @@ FB.JPlaceHolder = {
     },
     //修复
     fix: function () {
-        jQuery(':input[placeholder]').each(function (index, element) {
+        $('[placeholder]').each(function () {
             var self = $(this), txt = self.attr('placeholder');
-            self.wrap($('<div class="placeholder-bar"></div>').css({
-                position: 'relative',
-                zoom: '1',
-                border: 'none',
-                background: 'none',
-                padding: 'none',
-                margin: 'none',
-                display: 'inline-block'
-            }));
-            var pos = self.position(), h = self.outerHeight(true), paddingleft = self.css('padding-left');
-            var holder = $('<span></span>').text(txt).css({
-                position: 'absolute',
-                left: pos.left,
-                top: pos.top,
-                zIndex: 1001,
-                height: h + "px",
-                lineHeight: h + "px",
-                paddingLeft: paddingleft,
-                color: '#aaa'
-            }).appendTo(self.parent());
-            self.focusin(function (e) {
-                holder.hide();
-            }).focusout(function (e) {
-                if (!self.val()) {
-                    holder.show();
-                }
-            });
-            holder.click(function (e) {
-                holder.hide();
-                self.focus();
-            });
+            var parent = self.parent();
+            // var parent_h = parent.outerHeight(true);
+            // var parent_w = parent.outerWidth(true);
+            if (!self.hasClass("isPlaceholder")) {
+                self.addClass("isPlaceholder").parent().css("position", "relative");
+                // self.addClass("isPlaceholder").wrap($('<label class="placeholder-bar"></label>').css({
+                //     position: 'relative',
+                //     zoom: '1',
+                //     display: 'inline-block',
+                //     height: parent_h,
+                //     width: parent_w,
+                //     border: 'none',
+                //     background: 'none',
+                //     padding: 'none',
+                //     margin: 'none',
+                // }));
+                var self_nodeName = self[0].nodeName.toString().toLowerCase();
+                var top = self_nodeName == "textarea" ? "23px" : "50%";
+                var paddingLeft = parseInt(self.css('padding-left')) > 0 ? self.css('padding-left') : parent.css('padding-left');
+                var fontSize = !self.css('font-size') ? parent.css('font-size') : self.css('font-size');
+                var holder = $('<span class="placeholder-span"></span>').text(txt).css({
+                    position: 'absolute',
+                    left: 0,
+                    top: top,
+                    zIndex: 1001,
+                    height: '30px',
+                    lineHeight: '30px',
+                    marginTop: '-15px',
+                    paddingLeft: paddingLeft,
+                    color: '#999999',
+                    fontSize: fontSize
+                }).appendTo(parent);
+
+                self.focus(function () {
+                    holder.hide();
+                }).blur(function () {
+                    if (!self.val()) {
+                        holder.show();
+                    }
+                });
+                holder.click(function () {
+                    holder.hide();
+                    self.focus();
+                });
+            }
         });
     }
 };
@@ -547,5 +561,62 @@ FB.slideBox = function (ele, options) {
         $(document).off("mousemove", moving);
         $(document).off("mouseup", endMove);
     }
+};
+/**
+ * 模拟下拉列表
+ * @param ele
+ * @param options
+ */
+FB.selectBar = function (ele, options) {
+    var opt = $.extend({}, options);
+    var cls = opt.cls ? opt.cls : "fb-select-bar";
+    var $ele = $(ele);
+    var $select = $ele.find("select");
+    var str = "", l = $select.find("option").length;
+    for (var i = 0; i < l; i++) {
+        str += '<li><a data-val="' + $select.find("option").eq(i).val() + '">' + $select.find("option").eq(i).text() + '</a></li>';
+    }
+    $ele.width($select.outerWidth(true)).addClass(cls).append("\
+        <label class=\"text\">" + $select.find("option:selected").text() + "</label>\
+        <b class=\"fb-arrow-dir down\"></b>\
+        <div class=\"list\"><ul></ul></div>\
+         ");
+    $ele.find(".list ul").append(str).hide();
+    $select.remove();
+
+    $ele.click(function (e) {
+        var evt = e || window.event;
+        evt.stopPropagation();
+        $ele.find(".list ul").toggle();
+    });
+
+    $ele.find(".list li").click(function (e) {
+        var evt = e || window.event;
+        evt.stopPropagation();
+        $ele.find(".text").text($(this).text());
+        $ele.find(".list ul").hide();
+        if (opt.selectCallback) opt.selectCallback(this, $(this).text(), $(this).find("a").data("val"));
+    });
+
+    $(document).on("click", function (e) {
+        var evt = e || window.event;
+        evt.stopPropagation();
+        var $target = $(evt.target);
+        if (!$target.hasClass(cls) && !$target.parents("." + cls).hasClass(cls)) {
+            $ele.find(".list ul").hide();
+        }
+    });
+};
+/**
+ * 侧边栏
+ * @param ele
+ */
+FB.broadSideSlide = function (ele) {
+    var $son = $(ele).find(".son");
+    var $title = $son.find(".title");
+    $title.on("click", function () {
+        $(this).next().slideToggle("fast");
+        $(this).find("b").toggleClass("active");
+    });
 };
 

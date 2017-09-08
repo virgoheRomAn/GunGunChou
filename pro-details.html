@@ -170,7 +170,9 @@
                     <div class="pro-set-money fb-slider-bar">
                         <label class="set-sum">
                             <span>众筹金额：</span>
-                            <input class="user-input small-radius UISlider-input" type="text" placeholder="请输入众筹金额">
+                            <label class="form-input">
+                                <input class="UISlider-input" type="text" placeholder="请输入众筹金额">
+                            </label>
                         </label>
                         <div class="fb-slide-box">
                             <label class="min UISlider-min" data-val="100">100 元<br>最小金额</label>
@@ -238,7 +240,9 @@
                     <div class="pro-set-money fb-slider-bar mb-15">
                         <label class="set-sum">
                             <span>众筹金额：</span>
-                            <input class="user-input small-radius UISlider-input" type="text" placeholder="请输入众筹金额">
+                            <label class="user-input small-radius form-input">
+                                <input class="UISlider-input" type="text" placeholder="请输入众筹金额">
+                            </label>
                         </label>
                         <div class="fb-slide-box">
                             <label class="min UISlider-min" data-val="100">100 元<br>最小金额</label>
@@ -712,7 +716,7 @@
     <div class="investment-cont">
         <div class="in-select mb-15">
             <span class="t">增益券 :</span>
-            <label class="c">
+            <label class="c fb-select-bar big">
                 <select>
                     <option value="0" selected>选择可用的增益券</option>
                     <option value="1">1.5%增益券</option>
@@ -758,7 +762,7 @@
                     <label><b class='fb-arrow-dir left'></b>支付密码错误，请重新输入！</label>
                 </div>
             </div>
-            <a class="forget" href="user-forget.html">忘记支付密码？</a>
+            <a class="forget" href="user-forget-payPwd.html">忘记支付密码？</a>
         </div>
     </div>
 </script>
@@ -862,8 +866,9 @@
                         var $psd = $("#password");
                         if ($psd.val() !== "123456") {
                             $psd.parent().addClass("error");
+                            $psd.parent().next().show();
                         } else {
-                            $.jBox.closeFun(function(){
+                            $.jBox.closeFun(function () {
                                 console.log("输入密码：123456");
                             });
                         }
@@ -876,10 +881,15 @@
                 },
                 beforeClassFun: function (opt) {
                     opt.jEnsure.addClass("fb-btn radius gradient no-bd fs-14");
+                    //修复PlaceHolder
+                    FB.JPlaceHolder.init();
                     //选择协议
                     formChecked(".fb-check-box", function () {
                         $(this).next().toggle();
                     });
+
+                    //模拟下拉框
+                    FB.selectBar(".fb-select-bar");
 
                     //使用积分
                     $("#useIntegral").click(function () {
@@ -887,6 +897,7 @@
                         var $form = $integral.find(".form-input");
                         if ($form.find("input").val() > 1500) {
                             $form.addClass("error");
+                            $form.next().show();
                         }
                     });
 
@@ -894,9 +905,13 @@
                     $(".investment-cont").find(".form-input input").focus(function () {
                         $(this).next().show();
                         $(this).parent().removeClass("error");
+                        $(this).parent().next().hide();
                     }).blur(function () {
-                        $(this).next().hide();
+                        if(!$(this).val()) {
+                            $(this).next().hide();
+                        }
                     });
+
                     $(".clean-btn").each(function () {
                         clearText(this, $(this).prev());
                     });

@@ -316,7 +316,9 @@
         $(".clean-input").focus(function () {
             $(this).next().show();
         }).blur(function () {
-            $(this).next().hide();
+            if(!$(this).val()) {
+                $(this).next().hide();
+            }
         });
         $(".clean-btn").each(function () {
             clearText(this, $(this).prev());

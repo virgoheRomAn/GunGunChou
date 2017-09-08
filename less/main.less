@@ -790,6 +790,8 @@
 
 //底部
 .in-footer-bar {
+  .p-rel;
+  z-index: 9;
   .fn-set-background(@gray-33);
   .pt-30;
   .fn-set-margin(20px, top);
@@ -960,6 +962,150 @@
   }
 }
 
+//帮助菜单
+.page-cont {
+  margin-top: 20px;
+  .page-slide {
+    float: left;
+    width: 200px;
+    background: #ffffff;
+    //padding-bottom: 100px;
+    .fb-box-shadow;
+    .slide-menu {
+      padding: 0 16px;
+      i.fb-sprite {
+        position: absolute;
+        top: 50%;
+        left: 0;
+      }
+      .father {
+        .fb-block;
+        .p-rel;
+        .text-mid-line(40px);
+        border-bottom: 1px solid #e4e4e4;
+        &.active {
+          a {
+            color: @user-color;
+            i {
+              &:extend(.account-icon.active);
+            }
+          }
+        }
+        a {
+          position: relative;
+          display: block;
+          height: 100%;
+          padding: 0 15px 0 30px;
+          color: @gray-33;
+          font-size: @fs-14;
+          font-weight: bold;
+          &:hover {
+            color: @user-color;
+            i {
+              &:extend(.account-icon.active);
+            }
+          }
+        }
+      }
+      .son {
+        border-bottom: 1px solid #e4e4e4;
+        &:last-child, &.last {
+          border-bottom: 0 none;
+        }
+        .title {
+          .fb-block;
+          .p-rel;
+          .text-mid-line(40px);
+          padding: 0 15px 0 30px;
+          color: @gray-33;
+          font-size: @fs-14;
+          font-weight: bold;
+          cursor: pointer;
+          b {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-top: -3px;
+            border: 6px solid;
+            transition: transform 0.3s ease;
+            -o-transition: -o-transform 0.3s ease;
+            -ms-transition: -ms-transform 0.3s ease;
+            -moz-transition: -moz-transform 0.3s ease;
+            -webkit-transition: -webkit-transform 0.3s ease;
+            .fn-set-transform-origin(6px 3px);
+            &.active {
+              transform: rotate(180deg);
+              -o-transform: rotate(180deg);
+              -ms-transform: rotate(180deg);
+              -moz-transform: rotate(180deg);
+              -webkit-transform: rotate(180deg);
+              .fn-set-transform(rotate(180deg));
+            }
+            &.down {
+              border-color: #e4e4e4 transparent transparent transparent;
+            }
+          }
+        }
+        .son-list {
+          padding-bottom: 10px;
+          a {
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            font-size: @fs-14;
+            color: @gray-66;
+            .text-mid-line(40px);
+            i {
+              position: absolute;
+              top: 50%;
+              left: 12px;
+              display: block;
+              width: 4px;
+              height: 4px;
+              margin: -2px 0 0 0;
+              background: #FFFFFF;
+            }
+            &.active, &:hover {
+              color: @user-color;
+              i {
+                background: @user-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .page-container {
+    margin-left: 230px;
+    .cont {
+      background: #ffffff;
+      .fb-box-shadow;
+      .t {
+        position: relative;
+        .text-mid-line(40px);
+        font-size: 16px;
+        background: @user-color;
+        color: #ffffff;
+        padding: 0 36px;
+      }
+      .c {
+        padding: 20px 36px 20px;
+        min-height: 400px;
+        p {
+          font-size: @fs-14;
+          line-height: 20px;
+          color: @gray-33;
+          margin-bottom: 20px;
+          a.active, a:hover {
+            color: #fe2322;
+          }
+        }
+      }
+    }
+  }
+}
+
 /*图标集合*/
 .icon-head-tel {
   background-position: -86px -80px;
@@ -1111,3 +1257,49 @@
     background-position: -188px -232px;
   }
 }
+
+.account-icon {
+  width: 20px;
+  height: 18px;
+  margin-top: -9px;
+  background-position: -84px -260px;
+  &.active {
+    background-position: -110px -260px;
+  }
+}
+
+.safe-icon {
+  width: 16px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -84px -227px;
+}
+
+.about-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -108px -227px;
+}
+
+.guide-icon {
+  width: 18px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -111px -318px;
+}
+
+.question-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -84px -347px;
+}
+
+.money-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background-position: -111px -347px;
+}
+

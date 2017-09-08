@@ -47,6 +47,7 @@
 
 .disk-layer(@width:@width,@height:auto) when (default(@height)) {
   position: relative;
+  z-index: 10;
   display: block;
   width: @width;
   height: @height;
@@ -248,6 +249,34 @@
   -moz-box-shadow: @shadow;
   -o-box-shadow: @shadow;
   box-shadow: @shadow;
+}
+
+.fn-set-transition(@cont) {
+  @o: -o-;
+  @ms: -ms-;
+  @moz: -moz-;
+  @webkit: -webkit-;
+  transform: e(@cont);
+    @{o}transform: @o+e(@cont);
+    @{ms}transform: @ms+e(@cont);
+    @{moz}transform: @moz+e(@cont);
+    @{webkit}transform: @webkit+e(@cont);
+}
+
+.fn-set-transform(@cont) {
+  transform: e(@cont);
+  -o-transform: e(@cont);
+  -ms-transform: e(@cont);
+  -moz-transform: e(@cont);
+  -webkit-transform: e(@cont);
+}
+
+.fn-set-transform-origin(@cont) {
+  transform-origin: @cont;
+  -o-transform-origin: @cont;
+  -ms-transform-origin: @cont;
+  -moz-transform-origin: @cont;
+  -webkit-transform-origin: @cont;
 }
 
 //设置位置
