@@ -646,11 +646,22 @@ input[type="number"] {
   }
 }
 
+.fb-select-list {
+  &:extend(.fb-select-bar div.list all);
+  z-index: 11111;
+  li {
+    line-height: 30px;
+    a {
+      display: inline-block;
+    }
+  }
+}
+
 /*表单提示*/
 .form-tips {
   position: relative;
   z-index: 100;
-  display: block;
+  display: none;
   width: 100%;
   label {
     display: block;
@@ -876,9 +887,17 @@ input[type="number"] {
   vertical-align: bottom;
 }
 
+.tm-indent {
+  text-indent: 2em;
+}
+
 /*字体颜色-tc{text-color}*/
 .tc-333 {
   .text-color(@gray-33) !important;
+}
+
+.tc-666 {
+  .text-color(@gray-66) !important;
 }
 
 .tc-999 {
@@ -898,7 +917,7 @@ input[type="number"] {
 }
 
 .tc-ff5e5e {
-  .text-color(@error-color)
+  .text-color(@error-color);
 }
 
 .tc-03bcff {
@@ -911,6 +930,18 @@ input[type="number"] {
 
 .tc-fe693b {
   .text-color(#fe693b);
+}
+
+.tc-error {
+  .text-color(@error-color);
+}
+
+.tc-success {
+  .text-color(@success-color);
+}
+
+.tc-waring {
+  .text-color(@waring-color);
 }
 
 /*盒子边距*/

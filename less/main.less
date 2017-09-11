@@ -965,6 +965,16 @@
 //帮助菜单
 .page-cont {
   margin-top: 20px;
+  &.width {
+    .p-rel;
+    .fn-box-shadow(0, 0, 10px, rgba(0, 0, 0, .1));
+    margin-top: 20px;
+    padding: 40px;
+    background: @white;
+  }
+  &.height {
+    min-height: 460px;
+  }
   .page-slide {
     float: left;
     width: 200px;
@@ -1080,7 +1090,7 @@
     //margin-left: 230px;
     width: 970px;
     float: right;
-    .cont {
+    & > .cont {
       background: #ffffff;
       .fb-box-shadow;
       .t {
@@ -1212,10 +1222,31 @@
 
 //个人中心
 .personal-information {
+  .p-rel;
   display: block;
   width: 820px;
   margin: auto;
   padding: 20px 0;
+  &.width {
+    .p-u-money {
+      li {
+        width: 240px;
+        text-align: left;
+        &.small-li {
+          width: 100px;
+          .small {
+            float: right;
+          }
+        }
+      }
+    }
+    .pro-cont-box {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      .fn-box-shadow(0, 0, 0, 0);
+    }
+  }
   .item {
     padding: 15px 0;
     border-bottom: 1px solid #e4e4e4;
@@ -1476,12 +1507,144 @@
     }
     .form-input {
       display: inline-block;
-      width: 180px;
+      width: 160px;
       .text-mid-line(30px);
     }
     a.fb-btn {
       width: 202px;
       margin: 20px 0 0 110px;
+    }
+  }
+}
+
+//提现详情
+.deposit-box {
+  .deposit-money {
+    border-bottom: 1px solid #e4e4e4;
+    label {
+      .fb-inline-block;
+      height: 80px;
+      line-height: 70px;
+      em {
+        margin-right: 10px;
+      }
+    }
+  }
+  .deposit-bank {
+    margin-top: 20px;
+    padding-bottom: 50px;
+    .bank-intro {
+      width: 440px;
+      padding: 20px;
+      background: #e15555;
+      .border-radius(5px);
+      color: @white;
+      margin-bottom: 20px;
+      label {
+        display: block;
+        &.card-name {
+          .p-rel;
+          font-size: @fs-18;
+          .text-mid-line(32px);
+          padding-left: 43px;
+          em {
+            font-size: @fs-18;
+          }
+          i {
+            .p-abs;
+            top: 50%;
+            left: 0;
+          }
+        }
+        &.card-number {
+          font-size: 30px;
+          margin: 15px 0;
+          padding-left: 43px;
+        }
+        &.card-user {
+          font-size: @fs-20;
+          padding-left: 43px;
+        }
+      }
+    }
+    .deposit-slider {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      .form-input {
+        float: left;
+        width: 180px;
+        margin-right: 20px;
+      }
+      .fb-slide-box {
+        float: left;
+      }
+    }
+    .deposit-password {
+      .form-tips {
+        display: none;
+      }
+      a {
+        color: @user-color;
+        margin-left: 20px;
+        font-size: @fs-14;
+      }
+    }
+    .deposit-bnt {
+      width: 180px;
+    }
+  }
+}
+
+//交易记录
+.trading-box {
+  display: block;
+  width: 100%;
+  table {
+    width: 100%;
+    thead {
+      .text-mid-line(40px);
+      font-size: @fs-16;
+      color: @gray-33;
+      background: #f4f4f4;
+      th {
+        .tm-light;
+      }
+    }
+    tbody {
+      td {
+        text-align: center;
+        font-size: @fs-12;
+        padding: 15px 10px;
+      }
+    }
+  }
+}
+
+//我的增益券
+.ticket-list {
+  .ticket-bar {
+    width: 260px;
+    .border-radius(5px);
+    &.blue {
+      background: radial-gradient(left top, circle cover, rgb(3, 235, 255), rgb(3, 181, 255) 50%, rgb(1, 134, 255) 100%);
+      background: -o-radial-gradient(left top, circle cover, rgb(3, 235, 255), rgb(3, 181, 255) 50%, rgb(1, 134, 255) 100%);
+      background: -ms-radial-gradient(left top, circle cover, rgb(3, 235, 255), rgb(3, 181, 255) 50%, rgb(1, 134, 255) 100%);
+      background: -moz-radial-gradient(left top, circle cover, rgb(3, 235, 255), rgb(3, 181, 255) 50%, rgb(1, 134, 255) 100%);
+      background: -webkit-radial-gradient(left top, circle cover, rgb(3, 235, 255), rgb(3, 181, 255) 50%, rgb(1, 134, 255) 100%);
+    }
+    &.orange{
+      background: radial-gradient(left top , circle cover , rgb(255, 179, 106) , rgb(255, 130, 95) 50% , rgb(255, 80, 80) 100%);
+      background: -o-radial-gradient(left top , circle cover , rgb(255, 179, 106) , rgb(255, 130, 95) 50% , rgb(255, 80, 80) 100%);
+      background: -ms-radial-gradient(left top , circle cover , rgb(255, 179, 106) , rgb(255, 130, 95) 50% , rgb(255, 80, 80) 100%);
+      background: -moz-radial-gradient(left top , circle cover , rgb(255, 179, 106) , rgb(255, 130, 95) 50% , rgb(255, 80, 80) 100%);
+      background: -webkit-radial-gradient(left top , circle cover , rgb(255, 179, 106) , rgb(255, 130, 95) 50% , rgb(255, 80, 80) 100%);
+    }
+    &.gray{
+      background: radial-gradient(left top , circle cover , rgb(221, 221, 221) , rgb(182, 182, 182) 50% , rgb(151, 150, 150) 100%);
+      background: -o-radial-gradient(left top , circle cover , rgb(221, 221, 221) , rgb(182, 182, 182) 50% , rgb(151, 150, 150) 100%);
+      background: -ms-radial-gradient(left top , circle cover , rgb(221, 221, 221) , rgb(182, 182, 182) 50% , rgb(151, 150, 150) 100%);
+      background: -moz-radial-gradient(left top , circle cover , rgb(221, 221, 221) , rgb(182, 182, 182) 50% , rgb(151, 150, 150) 100%);
+      background: -webkit-radial-gradient(left top , circle cover , rgb(221, 221, 221) , rgb(182, 182, 182) 50% , rgb(151, 150, 150) 100%);
     }
   }
 }
@@ -1843,5 +2006,12 @@
   background-position: -362px 0;
 }
 
+//银行小图标
+.bank-gs-small {
+  width: 33px;
+  height: 32px;
+  margin: -16px 0 0 0;
+  background-position: -428px -1px;
+}
 
 

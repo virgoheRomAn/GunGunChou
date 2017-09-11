@@ -62,34 +62,34 @@
         };
 
         that.error = function (text, opts, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             tipsFun(text, opts, "jBox/error.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.success = function (text, opts, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             tipsFun(text, opts, "jBox/success.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.waring = function (text, opts, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             tipsFun(text, opts, "jBox/alert.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.loading = function (text, opts, callback, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             tipsFun(text, opts, "jBox/loading.gif", callback, 0, css, opts ? opts.close === undefined ? 0 : opts.close : 0, config);
         };
 
         that.confirm = function (text, opts, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             var icon = !opts.icon ? false : opts.icon;
             var src = !icon ? null : icon.src;
             tipsFun(text, opts, src, null, 1, css, 0, config);
         };
 
         that.btnAlert = function (text, opts, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             var icon = !opts.icon ? false : opts.icon;
             var src = !icon ? null : icon.src;
             tipsFun(text, opts, src, null, 1, css, 0, config);
@@ -131,7 +131,7 @@
             var css = $.extend({}, defaultCSS, opt.css, optCSS);
 
             var location = opt.path === undefined ? (!opt.icon.location ? "" : opt.icon.location) : opt.path;
-            var src = icon ? (opt.icon.src ? location + opt.icon.src : location + icon) : icon;
+            var src = icon ? (opt.icon.src ? location + opt.icon.src : location + icon) : "";
             var btnNum = opt.btn.text ? opt.btn.text.length : 0;
             if (icon) {
                 _loadImage(src, function () {
@@ -227,6 +227,7 @@
             _clear_setTimeout_ = setTimeout(function () {
                 opt.diskBar.fadeOut(300, function () {
                     $(this).remove();
+                    opt.closeCallback && opt.closeCallback.call();
                 });
             }, opt.time);
         }
@@ -352,7 +353,6 @@
      */
     function _loadImage(src, callback) {
         var img = new Image();
-        img.src = src;
         img.onload = function () {
             var real_width = img.width;
             var real_height = img.height;
@@ -361,7 +361,8 @@
         img.onerror = function () {
             console.log("图片加载错误，错误图片：" + img.src);
             if (callback) callback.call(img);
-        }
+        };
+        img.src = src;
     }
 
     function ensureFun(e) {

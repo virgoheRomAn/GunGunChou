@@ -309,9 +309,24 @@
       li {
         margin-right: 0;
         a {
+          .p-rel;
           height: 59px;
           line-height: 60px;
           color: @gray-33;
+          em {
+            .p-rel;
+            top:-10px;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            margin-left: 5px;
+            background: #ff5151;
+            text-align: center;
+            .border-radius(50%);
+            color: @white;
+            font-size: @fs-12;
+          }
           &:hover {
             .link-hover;
           }

@@ -568,6 +568,7 @@ FB.slideBox = function (ele, options) {
  * @param options
  */
 FB.selectBar = function (ele, options) {
+    var that = this;
     var opt = $.extend({}, options);
     var cls = opt.cls ? opt.cls : "fb-select-bar";
     var $ele = $(ele);
@@ -576,36 +577,87 @@ FB.selectBar = function (ele, options) {
     for (var i = 0; i < l; i++) {
         str += '<li><a data-val="' + $select.find("option").eq(i).val() + '">' + $select.find("option").eq(i).text() + '</a></li>';
     }
-    $ele.addClass(cls).append("\
+
+    if (!opt.body) {
+        $ele.addClass(cls).append("\
         <label class=\"text\">" + $select.find("option:selected").text() + "</label>\
         <b class=\"fb-arrow-dir down\"></b>\
         <div class=\"list\"><ul></ul></div>\
          ");
-    $ele.find(".list").width($select.outerWidth(true) + 30).find("ul").append(str).hide();
-    $select.remove();
+        $ele.find(".list").width($select.outerWidth(true) + 30).find("ul").append(str).hide();
+        $select.remove();
+    } else {
+        $ele.addClass(cls).append("\
+        <label class=\"text\">" + $select.find("option:selected").text() + "</label>\
+        <b class=\"fb-arrow-dir down\"></b>\
+         ");
+        $(document.body).append("<div class=\"list fb-select-list " + $ele.data("list") + "\"><ul></ul></div>");
+        var $list = $("." + $ele.data("list"));
+        $list.width($select.outerWidth(true) + 30).find("ul").append(str).hide();
+        $select.hide();
+        $list.css({"top": $ele.offset().top + $ele.outerHeight(true) + 5, "left": $ele.offset().left});
+    }
+
 
     $ele.click(function (e) {
         var evt = e || window.event;
         evt.stopPropagation();
-        $ele.find(".list ul").toggle();
+        if (!opt.body) {
+            $ele.find(".list ul").toggleClass("active").toggle();
+        } else {
+            $("." + $ele.data("list")).find("ul").toggleClass("active").toggle();
+        }
     });
-
-    $ele.find(".list li").click(function (e) {
-        var evt = e || window.event;
-        evt.stopPropagation();
-        $ele.find(".text").text($(this).text());
-        $ele.find(".list ul").hide();
-        if (opt.selectCallback) opt.selectCallback(this, $(this).text(), $(this).find("a").data("val"));
-    });
+    if (!opt.body) {
+        $ele.find(".list li").click(function (e) {
+            var evt = e || window.event;
+            evt.stopPropagation();
+            $ele.find(".text").text($(this).text());
+            $ele.find(".list ul").removeClass("active").hide();
+            if (opt.selectCallback) opt.selectCallback(this, $(this).text(), $(this).find("a").data("val"));
+        });
+    } else {
+        $("." + $ele.data("list")).find("ul li").click(function (e) {
+            var evt = e || window.event;
+            evt.stopPropagation();
+            $ele.find(".text").text($(this).text());
+            $(this).parents("ul").removeClass("active").hide();
+            that.refresh($ele, $("." + $ele.data("list")));
+            if (opt.selectCallback) opt.selectCallback(this, $(this).text(), $(this).find("a").data("val"));
+        });
+    }
 
     $(document).on("click", function (e) {
         var evt = e || window.event;
         evt.stopPropagation();
         var $target = $(evt.target);
+
         if (!$target.hasClass(cls) && !$target.parents("." + cls).hasClass(cls)) {
-            $ele.find(".list ul").hide();
+            if (!opt.body) {
+                $ele.find(".list ul").removeClass("active").hide();
+            } else {
+                $("." + $ele.data("list")).find("ul").removeClass("active").hide();
+            }
         }
     });
+
+    that.refresh = function (ele, list) {
+        var $ele = $(ele);
+        $(list).css({
+            "top": $ele.offset().top + $ele.outerHeight(true) + 5,
+            "left": $ele.offset().left,
+            "width": $ele.find("select").outerWidth(true) + 30
+        });
+    };
+
+    return {
+        refresh: function (ele, list) {
+            that.refresh(ele, list);
+        },
+        close: function (list) {
+            $(list).removeClass("active").hide();
+        }
+    }
 };
 /**
  * 侧边栏

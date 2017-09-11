@@ -85,6 +85,7 @@ html, body {
     display: block;
     font-size: 14px;
     padding: 5px 25px;
+    line-height: 1.2;
 }
 
 .j-disk-text {
@@ -97,7 +98,7 @@ html, body {
 
 .j-disk-text .j-disk-t {
     position: relative;
-    top: -1px;
+    /*top: -1px;*/
     font-size: 24px;
 }
 
