@@ -236,8 +236,27 @@ a.j-cancel {
     padding: 25px 40px;
 }
 
-:root .j-container {
+:root .j-container,
+:root .j-new-alert {
     filter: none;
+}
+
+.j-disk.j-new-alert {
+    background: rgba(0, 0, 0, 0.3);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#4C000000, endcolorstr=#4C000000) \9;
+}
+
+.j-disk.j-new-alert .j-container {
+    background: #ffffff;
+    filter: none \9;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.j-disk.j-new-alert .j-content {
+    color: #333333;
 }
 
 /********************************************/

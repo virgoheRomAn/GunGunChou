@@ -57,39 +57,39 @@
         };
 
         that.alert = function (text, opts, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             tipsFun(text, opts, null, null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.error = function (text, opts, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             tipsFun(text, opts, "jBox/error.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.success = function (text, opts, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             tipsFun(text, opts, "jBox/success.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.waring = function (text, opts, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             tipsFun(text, opts, "jBox/alert.png", null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 
         that.loading = function (text, opts, callback, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             tipsFun(text, opts, "jBox/loading.gif", callback, 0, css, opts ? opts.close === undefined ? 0 : opts.close : 0, config);
         };
 
         that.confirm = function (text, opts, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             var icon = !opts.icon ? false : opts.icon;
             var src = !icon ? null : icon.src;
             tipsFun(text, opts, src, null, 1, css, 0, config);
         };
 
         that.btnAlert = function (text, opts, css) {
-            var config = opts ? opts.configCallback || "" : "";
+            var config = opts ? opts.configCallback() || "" : "";
             var icon = !opts.icon ? false : opts.icon;
             var src = !icon ? null : icon.src;
             tipsFun(text, opts, src, null, 1, css, 0, config);
@@ -109,8 +109,10 @@
             }
         };
 
-        that.closeFun = function (callback) {
-            closeDisk(that.opt.diskBar, null, callback);
+        that.closeFun = function (callback, ele, type) {
+            var $ele = ele || that.opt.diskBar;
+            var _type = type || null;
+            closeDisk($ele, _type, callback);
         };
 
         /**
@@ -125,9 +127,7 @@
          *  *  @param config
          */
         var tipsFun = function (text, opts, icon, callback, type, optCSS, close, config) {
-            if (config) config.call(that);
-
-            var opt = $.extend({}, that.opt, opts);
+            var opt = $.extend({}, that.opt, opts, config);
             var css = $.extend({}, defaultCSS, opt.css, optCSS);
 
             var location = opt.path === undefined ? (!opt.icon.location ? "" : opt.icon.location) : opt.path;

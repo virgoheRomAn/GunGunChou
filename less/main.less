@@ -1361,7 +1361,7 @@
   }
   .p-u-money {
     li {
-      padding: 40px 0;
+      padding: 20px 0;
       text-align: center;
       em {
         font-size: 36px;
@@ -1376,6 +1376,112 @@
           text-align: center;
         }
       }
+    }
+  }
+}
+
+//个人内容
+.personal-container {
+  width: 825px;
+  margin: auto;
+  padding: 5px 0;
+  .title {
+    display: block;
+    .text-mid-line(70px);
+    border-bottom: 1px solid #e4e4e4;
+    font-size: 24px;
+    color: @gray-33;
+  }
+  .content {
+    display: block;
+    width: 100%;
+  }
+}
+
+//充值详情
+.recharge-box {
+  .item {
+    margin: 20px 0 25px 0;
+    & > span {
+      display: inline-block;
+      width: 110px;
+      float: left;
+      .text-mid-line(30px);
+    }
+    & > .mon-num {
+      .p-rel;
+      top: -7px;
+    }
+    .fb-inline-block {
+      width: 710px;
+      float: left;
+      .pay-type {
+        display: block;
+        .text-mid-line(30px);
+        a.active, a:hover {
+          .tc-ff4a49;
+          .tm-uline;
+        }
+        span {
+          .p-rel;
+          top: 6px;
+          display: inline-block;
+          width: 1px;
+          height: 18px;
+          border-right: 1px solid #999;
+          text-indent: -9999px;
+          margin: 0 10px;
+        }
+      }
+      .pay-type-cont {
+        margin: 25px 0 25px;
+        &.pay-type-alipay {
+          display: none;
+        }
+        &.pay-type-bank {
+          display: block;
+          .fb-box-list {
+            li {
+              margin-bottom: 20px;
+              a {
+                .p-rel;
+                display: block;
+                width: 98%;
+                margin: auto 10px 0 0;
+                height: 40px;
+                border: 1px solid transparent;
+                &.active, &:hover {
+                  border: 1px solid #fe3b49;
+                  em {
+                    display: block;
+                    .pos-abs-br;
+                  }
+                }
+                em {
+                  display: none;
+                  width: 20px;
+                  height: 20px;
+                  background: url("@{imgs}/sprite.png") no-repeat -84px -469px;
+                }
+                i {
+                  .p-abs;
+                  top: 50%;
+                  left: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .form-input {
+      display: inline-block;
+      width: 180px;
+      .text-mid-line(30px);
+    }
+    a.fb-btn {
+      width: 202px;
+      margin: 20px 0 0 110px;
     }
   }
 }
@@ -1631,4 +1737,111 @@
   height: 12px;
   background-position: -115px -162px;
 }
+
+//银行图标
+.bank-zg-icon {
+  width: 110px;
+  height: 31px;
+  margin: -16px 0 0 -55px;
+  background-position: 0 0;
+}
+
+.bank-ny-icon {
+  width: 160px;
+  height: 30px;
+  margin: -15px 0 0 -80px;
+  background-position: 0 -43px;
+}
+
+.bank-gs-icon {
+  width: 160px;
+  height: 32px;
+  margin: -16px 0 0 -80px;
+  background-position: 0 -85px;
+}
+
+.bank-js-icon {
+  width: 160px;
+  height: 30px;
+  margin: -15px 0 0 -80px;
+  background-position: 0 -129px;
+}
+
+.bank-gf-icon {
+  width: 129px;
+  height: 33px;
+  margin: -17px 0 0 -65px;
+  background-position: 0 -171px;
+}
+
+.bank-pd-icon {
+  width: 160px;
+  height: 30px;
+  margin: -15px 0 0 -80px;
+  background-position: 0 -216px;
+}
+
+.bank-ms-icon {
+  width: 160px;
+  height: 26px;
+  margin: -13px 0 0 -80px;
+  background-position: 0 -258px;
+}
+
+.bank-sf-icon {
+  width: 160px;
+  height: 32px;
+  margin: -16px 0 0 -80px;
+  background-position: -183px 0;
+}
+
+.bank-yz-icon {
+  width: 160px;
+  height: 27px;
+  margin: -14px 0 0 -80px;
+  background-position: -183px -44px;
+}
+
+.bank-gd-icon {
+  width: 160px;
+  height: 27px;
+  margin: -14px 0 0 -80px;
+  background-position: -183px -83px;
+}
+
+.bank-zs-icon {
+  width: 142px;
+  height: 32px;
+  margin: -16px 0 0 -71px;
+  background-position: -183px -122px;
+}
+
+.bank-jt-icon {
+  width: 160px;
+  height: 30px;
+  margin: -15px 0 0 -80px;
+  background-position: -183px -166px;
+}
+
+.bank-pa-icon {
+  width: 160px;
+  height: 30px;
+  margin: -15px 0 0 -80px;
+  background-position: -183px -208px;
+}
+
+.bank-zx-icon {
+  width: 160px;
+  height: 38px;
+  margin: -19px 0 0 -80px;
+  background-position: -183px -250px;
+}
+
+.alipay-icon {
+  width: 160px;
+  height: 54px;
+  background-position: -362px 0;
+}
+
+
 

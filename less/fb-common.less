@@ -128,6 +128,12 @@ input[type="number"] {
   background: url("@{imgs}/state.png") no-repeat;
 }
 
+.fb-bank {
+  .fb-block;
+  position: relative;
+  background: url("@{imgs}/bank.png") no-repeat;
+}
+
 /*布局限制*/
 .fb-wrap {
   .disk-type;
@@ -520,8 +526,32 @@ input[type="number"] {
   .border-all(1px, solid, @gray-99);
   .border-radius(5px);
   padding: 0 10px;
+  &.before-text {
+    padding-left: 30px;
+    em {
+      .p-abs;
+      left: 0;
+      top: 50%;
+      margin-top: -10px;
+      font-size: @fs-14;
+      display: block;
+      width: 30px;
+      .text-mid-line(20px);
+      text-align: center;
+      color: @error-color;
+    }
+  }
   &.line-block {
     display: inline-block;
+  }
+  &.small {
+    .text-mid-line(30px);
+    input {
+      &[type="text"], &[type="password"], &[type="number"] {
+        margin: 5px 0 0 0;
+        font-size: @fs-14;
+      }
+    }
   }
   &.error {
     .border-all(1px, solid, @error-color);

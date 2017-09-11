@@ -875,9 +875,12 @@
                     }
                 },
                 configCallback: function () {
-                    this.opt.css.boxCSS = {
+                    var opt = {};
+                    opt.css = {};
+                    opt.css.boxCSS = {
                         width: 640
-                    }
+                    };
+                    return opt;
                 },
                 beforeClassFun: function (opt) {
                     opt.jEnsure.addClass("fb-btn radius gradient no-bd fs-14");
@@ -907,7 +910,7 @@
                         $(this).parent().removeClass("error");
                         $(this).parent().next().hide();
                     }).blur(function () {
-                        if(!$(this).val()) {
+                        if (!$(this).val()) {
                             $(this).next().hide();
                         }
                     });
