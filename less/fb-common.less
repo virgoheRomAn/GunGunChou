@@ -345,6 +345,11 @@ input[type="number"] {
         width: 20%;
       }
     }
+    &.row-6 {
+      & > li {
+        width: 16.66%;
+      }
+    }
   }
 }
 
@@ -387,6 +392,20 @@ input[type="number"] {
       }
     }
   }
+  &.down-tip {
+    margin-top: 8px;
+    em {
+      .fn-set-bl(-12px, 50%);
+      .fn-set-margin(-6px, left);
+      .fn-arrow-dir(6px, #e4e4e4 transparent transparent transparent);
+      i.line {
+        .fn-set-tl(-6px, 50%);
+        .fn-set-margin(-5px, left);
+        .fn-arrow-dir(5px, #ffffff transparent transparent transparent);
+      }
+    }
+  }
+
   &.white {
     .fn-set-background(@white);
     .border-radius(3px);
@@ -401,7 +420,15 @@ input[type="number"] {
         .p-abs;
       }
     }
+    &.height {
+      span {
+        height: auto;
+        line-height: 18px;
+        padding: 5px;
+      }
+    }
   }
+
   &.top {
     .fn-set-tl(-46px, 50%);
     .fn-set-margin(-50px, left);
