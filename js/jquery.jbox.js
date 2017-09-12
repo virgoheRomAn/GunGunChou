@@ -57,7 +57,7 @@
         };
 
         that.alert = function (text, opts, css) {
-            var config = opts ? opts.configCallback() || "" : "";
+            var config = opts ? opts.configCallback ? opts.configCallback() : "" : "";
             tipsFun(text, opts, null, null, 0, css, opts ? opts.close === undefined ? 1 : opts.close : 1, config);
         };
 

@@ -103,6 +103,11 @@
 .register-cont {
   .fb-block-center;
   .fn-set-width(380px);
+  &.width {
+    a.fs-20 {
+      font-size: 20px;
+    }
+  }
   .step-cont {
     .fb-none;
     &.active {
@@ -140,16 +145,45 @@
 //表单列表
 .user-form {
   .fb-block;
+  .user-title {
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+    &.small{
+      font-size: 16px;
+      font-weight: normal;
+      text-align: left;
+    }
+  }
   .item {
-    //.p-rel;
+    .p-rel;
     .fb-block;
     .clear;
     margin-bottom: 20px;
+    &.small {
+      input {
+        &[type="text"], &[type="password"], &[type="number"] {
+          font-size: @fs-14;
+        }
+      }
+    }
     span.title {
       .fb-block;
       .fs-12;
       .text-color(@gray-66);
       margin-bottom: 5px;
+      &.u-title {
+        .text-mid-line(26px);
+        font-size: @fs-16;
+        color: @gray-66;
+        border-bottom: 0 none;
+      }
+      &.width {
+        width: 150px;
+        float: left;
+      }
     }
     & > label {
       .p-rel;
@@ -158,9 +192,18 @@
       .border-all(1px, solid, @gray-99);
       .border-radius(5px);
       padding: 0 10px;
+      &.width {
+        width: 178px;
+      }
       &.code {
         .fn-set-width(170px);
         .fl-left;
+        &.small{
+          width: 100px;
+        }
+        &.smaller{
+          width: 150px;
+        }
       }
       &.error {
         .border-all(1px, solid, @error-color);
@@ -252,6 +295,13 @@
         .pt-5;
       }
     }
+    .u-cont {
+      display: inline-block;
+      .text-mid-line(26px);
+      font-size: 16px;
+      color: #666;
+      border-bottom: 0 none;
+    }
   }
   .btn-bar {
     margin-top: 30px;
@@ -260,7 +310,7 @@
       .text-mid-line(42px);
       .tm-center;
       .fs-number(24px);
-      .tc-fff;
+      color: @white;
       line-height: 40px;
     }
   }
@@ -345,7 +395,6 @@
     }
   }
 }
-
 
 .form-tips-pwd:extend(.form-tips all) {
   //position: absolute;

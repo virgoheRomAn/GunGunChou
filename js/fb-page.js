@@ -92,8 +92,8 @@ function verifyPwd(ele, sureEle) {
     var tips = "<div class='form-tips'></div>",
         pwdTip = "<div class='form-tips-pwd'></div>";
     $box.after(tips + pwdTip);
-    var $tip = $(".form-tips"),
-        $pwdTip = $(".form-tips-pwd");
+    var $tip = $(ele).parents(".item").find(".form-tips"),
+        $pwdTip = $(ele).parents(".item").find(".form-tips-pwd");
 
     if (sureEle) {
         $(sureEle).parents(".item>label:eq(0)").after(tips);
@@ -104,14 +104,14 @@ function verifyPwd(ele, sureEle) {
         psdType = FB.testForm.password(val);
         if (!psdType.type) {
             $box.addClass("error");
-            $tip.empty().html("<label><b class='fb-arrow-dir top'></b>" + psdType.text + "</label>");
+            $tip.empty().html("<label><b class='fb-arrow-dir top'></b>" + psdType.text + "</label>").show();
         } else {
             $box.removeClass("error");
-            $tip.empty();
+            $tip.empty().hide();
         }
     }).focus(function () {
         $(this).parent().removeClass("error waring success");
-        $tip.empty();
+        $tip.empty().hide();
         val = $(this).val();
         psdType = FB.testForm.password(val, {isShift: true});
         opt = psdType.options;
@@ -166,14 +166,14 @@ function verifyPwd(ele, sureEle) {
             var pwdVal = $(ele).val();
             if (val !== pwdVal) {
                 $(sureEle).parents(".item>label:eq(0)").addClass("error");
-                $(sureEle).parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>");
+                $(sureEle).parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>").show();
             } else {
                 $(sureEle).parents(".item>label:eq(0)").removeClass("error");
-                $(sureEle).parents(".item").find(".form-tips").empty()
+                $(sureEle).parents(".item").find(".form-tips").empty().hide();
             }
         }).focus(function () {
             $(sureEle).parents(".item>label:eq(0)").removeClass("error");
-            $(sureEle).parents(".item").find(".form-tips").empty();
+            $(sureEle).parents(".item").find(".form-tips").empty().hide();
         });
     }
 
