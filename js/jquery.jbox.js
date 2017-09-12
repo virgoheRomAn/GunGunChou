@@ -262,7 +262,7 @@
     function isHasTitle(opt) {
         var close = opt.hasClose ? "<a class='j-disk-close' href='javascript:;'>&times;</a>" : "";
         if (opt.title) return '<h2 class="j-title">' + opt.title + close + '</h2>';
-        else return '<h2 class="j-title">' + close + '</h2>';
+        else return '';
     }
 
     /**
