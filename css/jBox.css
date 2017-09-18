@@ -78,6 +78,10 @@ html, body {
     font-size: 34px;
     text-align: center;
     vertical-align: middle;
+    top: 50%;
+    right: 10px;
+    margin-top: -14px;
+    position: absolute;
 }
 
 .j-content {
