@@ -177,7 +177,7 @@ FB.JPlaceHolder = {
  * 添加函数名称
  * @param name 函数名称
  * @param callback  函数方法
- * @returns {FB.AddFun} 当前对象
+ * @returns {FB.addFun} 当前对象
  * @constructor
  */
 FB.addFun = function (name, callback) {

@@ -1,0 +1,507 @@
+@charset "UTF-8";
+@import "fb-function";
+@import (reference) "fb-common";
+@import (reference) "main";
+
+/**
+*用户交互样式表
+*2017-08-28
+*徐继强
+*引用 fb-function.less构造函数样式   fb-common.less主体函数样式
+*/
+//注册
+.register-box {
+  .disk-type();
+  .layer-padding-num(60px 0);
+  background: url("@{imgs}/register-bg.jpg") center;
+  .register-bar {
+    .fb-block-center;
+    width: 1122px;
+    background: #fefefe;
+  }
+}
+
+//步骤
+.register-step {
+  .fb-block-center;
+  width: 716px;
+  padding: 40px 0 30px;
+  .clear;
+  .step {
+    .fl-left;
+    .bg {
+      display: block;
+      width: 100%;
+      .text-mid-line(60px);
+      .fs-number(30px);
+      .tc-fff;
+    }
+    .tx {
+      display: block;
+      width: 90px;
+      line-height: 20px;
+      margin-left: -15px;
+      margin-top: 10px;
+      .fs-14;
+      .tm-center;
+      .text-color(@gray-99);
+    }
+    &.active {
+      .tx {
+        .text-color(#04b1ff);
+      }
+    }
+    &.step1 {
+      width: 203px;
+      background: url("@{imgs}/step1.png") no-repeat;
+      .bg {
+        .tm-left;
+        text-indent: 22px;
+      }
+      &.active {
+        .bg {
+          background: url("@{imgs}/step1-active.png") no-repeat;
+        }
+      }
+    }
+    &.step2 {
+      width: 334px;
+      background: url("@{imgs}/step2.png") no-repeat;
+      .bg {
+        .tm-center;
+        text-indent: -14px;
+      }
+      .tx {
+        margin-left: 114px;
+      }
+      &.active {
+        .bg {
+          background: url("@{imgs}/step2-active.png") no-repeat;
+        }
+      }
+    }
+    &.step3 {
+      width: 179px;
+      background: url("@{imgs}/step3.png") no-repeat;
+      .bg {
+        .tm-center;
+        text-indent: 115px;
+      }
+      .tx {
+        margin-left: 105px;
+      }
+      &.active {
+        .bg {
+          background: url("@{imgs}/step3-active.png") no-repeat;
+        }
+      }
+    }
+  }
+}
+
+//内容
+.register-cont {
+  .fb-block-center;
+  .fn-set-width(380px);
+  &.width {
+    a.fs-20 {
+      font-size: 20px;
+    }
+  }
+  .step-cont {
+    .fb-none;
+    &.active {
+      .fb-block;
+    }
+  }
+  .title-bar {
+    .fb-block;
+    .text-color(@gray-33);
+    .tm-center;
+    span.title {
+      .fb-block;
+      .fn-set-margin(10px, bottom);
+      .tm-bold;
+      .fs-number(28px);
+    }
+    label {
+      .fs-number(16px);
+      a {
+        .text-color(@user-color);
+      }
+    }
+  }
+  .success-bar {
+    padding-bottom: 150px;
+    margin-top: 25px;
+    text-align: center;
+    a {
+      display: inline-block;
+      margin: 0 25px;
+    }
+  }
+}
+
+//表单列表
+.user-form {
+  .fb-block;
+  .user-title {
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+    &.small{
+      font-size: 16px;
+      font-weight: normal;
+      text-align: left;
+    }
+  }
+  .item {
+    .p-rel;
+    .fb-block;
+    .clear;
+    margin-bottom: 20px;
+    &.small {
+      input {
+        &[type="text"], &[type="password"], &[type="number"] {
+          font-size: @fs-14;
+        }
+      }
+    }
+    span.title {
+      .fb-block;
+      .fs-12;
+      .text-color(@gray-66);
+      margin-bottom: 5px;
+      &.u-title {
+        .text-mid-line(26px);
+        font-size: @fs-16;
+        color: @gray-66;
+        border-bottom: 0 none;
+      }
+      &.width {
+        width: 150px;
+        float: left;
+      }
+    }
+    & > label {
+      .p-rel;
+      .fb-block;
+      .text-mid-line(40px);
+      .border-all(1px, solid, @gray-99);
+      .border-radius(5px);
+      padding: 0 10px;
+      &.width {
+        width: 178px;
+      }
+      &.code {
+        .fn-set-width(170px);
+        .fl-left;
+        &.small{
+          width: 100px;
+        }
+        &.smaller{
+          width: 150px;
+        }
+      }
+      &.error {
+        .border-all(1px, solid, @error-color);
+        input {
+          color: @error-color;
+        }
+        i.icon-clean {
+          &:extend(.icon-clean.error);
+        }
+      }
+      &.clean {
+        padding-right: 40px;
+        a.clean-btn {
+          .fb-none;
+          .p-abs;
+          top: 50%;
+          right: 10px;
+          width: 20px;
+          height: 20px;
+          margin-top: -10px;
+        }
+      }
+      input {
+        &[type="text"], &[type="password"], &[type="number"] {
+          .fb-block;
+          .fn-set-width(100%);
+          .text-mid-line(20px);
+          .border-none;
+          .fs-16;
+          background: transparent;
+          margin-top: 10px;
+        }
+      }
+    }
+    .code-btn {
+      .set-layout("block", 150px, 42px);
+      .fl-right;
+      .border-radius(3px);
+      img {
+        .fb-height;
+      }
+      span {
+        .cursor-pointer;
+        .tm-uline;
+        .text-color(@gray-66);
+        .fs-12;
+      }
+      &.big {
+        width: 202px;
+        img {
+          width: 150px;
+          .fl-left
+        }
+        span {
+          .fl-right;
+          .tm-right;
+          width: 50px;
+          line-height: 20px;
+        }
+      }
+    }
+    .cut-down {
+      .set-layout("block", 150px, 40px);
+      .fl-right;
+      .border-radius(3px);
+      .tm-center;
+      .border-all(1px, solid, @user-color);
+      background: transparent;
+      color: @user-color;
+      line-height: 40px;
+      .fs-16;
+      &.active {
+        .border-all(1px, solid, #d2d2d2);
+        background: #e5e5e5;
+        color: #999999;
+      }
+    }
+    .intro {
+      .user-type(none);
+      .fs-16;
+      a {
+        .text-color(@user-color);
+      }
+      .forget {
+        .text-color(@gray-66);
+      }
+      &.right {
+        .tm-right;
+        .pt-5;
+      }
+    }
+    .u-cont {
+      display: inline-block;
+      .text-mid-line(26px);
+      font-size: 16px;
+      color: #666;
+      border-bottom: 0 none;
+    }
+  }
+  .btn-bar {
+    margin-top: 30px;
+    padding-bottom: 50px;
+    a {
+      .text-mid-line(42px);
+      .tm-center;
+      .fs-number(24px);
+      color: @white;
+      line-height: 40px;
+    }
+  }
+}
+
+//密码强度
+.password-type {
+  .fb-block;
+  .text-mid-line(22px);
+  text-align: right;
+  margin-top: 20px;
+  & > span {
+    .fs-14;
+    color: #666666;
+  }
+  .type {
+    .fb-inline-block;
+    .fl-right;
+    height: 100%;
+    &.text {
+      span {
+        em {
+          .fb-block;
+          color: #999999;
+        }
+      }
+    }
+    span {
+      .fb-inline-block;
+      .fl-left;
+      width: 50px;
+      height: 100%;
+      text-align: center;
+      margin-left: 5px;
+      background: #e5e5e5;
+      em {
+        .fs-12;
+        .fb-none;
+      }
+      &.r {
+        .border-radius(12px 0 0 12px);
+      }
+      &.q {
+        .border-radius(0 12px 12px 0);
+      }
+    }
+    &.type-r {
+      span.r {
+        background: #ffda45;
+        color: @white;
+        em {
+          .fb-inline-block;
+        }
+      }
+    }
+    &.type-z {
+      span.r {
+        background: #ffda45;
+      }
+      span.z {
+        background: #54e1dc;
+        color: @white;
+        em {
+          .fb-inline-block;
+        }
+      }
+    }
+    &.type-q {
+      span.r {
+        background: #ffda45;
+      }
+      span.z {
+        background: #54e1dc;
+      }
+      span.q {
+        background: #46e56f;
+        color: @white;
+        em {
+          .fb-inline-block;
+        }
+      }
+    }
+  }
+}
+
+.form-tips-pwd:extend(.form-tips all) {
+  //position: absolute;
+  //top: 0;
+  //right: -315px;
+  label {
+    top: -42px;
+    right: -316px;
+    background: #e4e4e4;
+    border: 1px solid #e4e4e4;
+    color: @gray-33;
+    :root & {
+      background: #e4e4e4;
+    }
+    .fb-arrow-dir {
+      border-color: transparent #e4e4e4 transparent transparent;
+      top: 50%;
+      right: auto;
+      left: -17px;
+      margin-top: -8px;
+      :root & {
+        border-color: transparent #e4e4e4 transparent transparent;
+      }
+    }
+  }
+}
+
+//注册协议
+.register-agreement {
+  display: block;
+  height: 100%;
+  padding-right: 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .text-color(@gray-66);
+  .tm-left;
+  p {
+    margin-bottom: 10px;
+    .fs-14;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 18px;
+    .fs-12;
+  }
+}
+
+//弹出注册协议
+.agreement-box {
+  .j-content {
+    padding: 15px 10px 15px 25px;
+    height: 76%;
+    overflow: hidden;
+    .j-disk-text {
+      height: 70%;
+      overflow: hidden;
+      .j-disk-t {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+    }
+    .j-btn {
+      .text-mid-line(40px);
+      a {
+        .fb-btn;
+        .gradient;
+        .no-bd;
+        .radius;
+        .tc-fff;
+        .fs-20;
+        .text-mid-line(40px);
+        .fl-none;
+        width: 364px;
+        margin: auto;
+      }
+    }
+  }
+}
+
+//登陆
+.login-box {
+  width: 460px;
+  margin: 0 0 0 auto;
+  padding: 32px 40px;
+  background: #fefefe;
+  .title-bar {
+    display: block;
+    color: #333;
+    .title {
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 28px;
+    }
+    label {
+      .fl-right;
+      font-size: 16px;
+      line-height: 50px;
+      a {
+        color: #0386ff;
+        .tm-uline;
+      }
+    }
+  }
+}
+
+
+
