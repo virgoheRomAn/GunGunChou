@@ -26,7 +26,7 @@ FB.broadSideSlide(".slide-menu");
 
 //实例化sliderBox
 function newSliderBox(ele, type, opt) {
-    var opts = $.extend({}, opt, opts);
+    var opts = $.extend({}, opt);
     $(ele).sliderBox(type, opts);
 }
 
