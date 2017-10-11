@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/sliderBox.float.css">
     <link rel="stylesheet" href="css/jBox.css">
     <link rel="stylesheet" href="css/main.min.css?a=1.0">
+    <link rel="stylesheet" href="css/product.min.css?a=1.0">
 </head>
 <body class="theme-f5">
 <div class="fb-wrap gray-f5">
@@ -982,34 +983,44 @@
                     <div class="notice-cont">
                         <ul class="notice-list clear">
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                             <li>
-                                <a href="news-list.html"><i class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
+                                <a href="news-list.html"><i
+                                        class="fb-sprite icon-list"></i>关于平台新版上线通知，给您带的收益不错不错不错错错</a>
                             </li>
                         </ul>
                     </div>
@@ -1112,6 +1123,35 @@
     </div>
 </div>
 
+<script type="text/template" id="ticketBox">
+    <div class="ticket-list mb-0">
+        <div class="ticket-bar blue width">
+            <em class="p-abs left"></em>
+            <em class="p-abs right"></em>
+            <label class="title tc-fff">
+                <em>50</em>
+                <span>积分</span>
+            </label>
+            <label class="intro tc-fff">
+                <span class="fb-block tm-bold fs-14">小积分大用处</span>
+                <span class="fb-block fs-12">可在认筹时进行抵扣或者用于抽奖</span>
+            </label>
+        </div>
+        <div class="ticket-bar orange width mt-15">
+            <em class="p-abs left"></em>
+            <em class="p-abs right"></em>
+            <label class="title tc-fff">
+                <em>1.5</em>
+                <span>%</span>
+            </label>
+            <label class="intro tc-fff">
+                <span class="fb-block tm-bold fs-14">单比认筹金额满2000使用</span>
+                <span class="fb-block fs-12">该增益券全平台通用，投标增加年化收益率</span>
+            </label>
+        </div>
+        <span class="fb-block fs-14 tc-333 tm-center mt-5">有效期：2017-12-30至2018-01-12</span>
+    </div>
+</script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.sliderBox.float.min.js"></script>
 <script src="js/jquery.animateNumber.min.js"></script>
@@ -1120,6 +1160,30 @@
 <script src="js/fb-page.js"></script>
 <script>
     $(function () {
+        //赠送优惠券
+        $.jBox.btnAlert($("#ticketBox").html(), {
+            boxCls: "investment-box",
+            title: "恭喜你获得奖励",
+            top: "10%",
+            btn: {
+                text: ["我知道了"],
+                jEnsure: function (opt) {
+                    $.jBox.alert("领取优惠券成功！");
+                }
+            },
+            configCallback: function () {
+                var opt = {};
+                var css = opt.css = {};
+                css.boxCSS = {
+                    width: 380
+                };
+                return opt;
+            },
+            beforeClassFun: function (opt) {
+                opt.jEnsure.addClass("fb-btn radius gradient no-bd fs-14");
+            }
+        });
+
         //配置弹窗
         $.jBox.configFun(function (opt) {
             opt.isVertical = false;
