@@ -1827,9 +1827,51 @@
         }
       }
     }
-    .cont{
-      .ticket-bar{
+    .cont {
+      .ticket-bar {
         margin: auto;
+      }
+    }
+  }
+}
+
+//投票
+.vote-box {
+  .j-content {
+    padding: 0;
+  }
+  .vote-cont {
+    padding: 15px;
+    background: @gray-f5;
+    p {
+      font-size: @fs-14;
+      line-height: 18px;
+      text-align: left;
+      color: @gray-66;
+      margin: 10px 0;
+    }
+    + .vote-intro {
+      background: @white;
+      padding: 0 15px;
+      .form-list {
+        border-bottom: 1px solid #c4c4c4;
+        padding: 10px 0;
+        .item-text {
+          .text-mid-line(22px);
+          font-size: @fs-14;
+          float: left;
+          margin: 5px 0;
+          width: 50%;
+          text-align: left;
+          .t {
+            color: @gray-33;
+            text-align: left;
+          }
+          .c {
+            text-align: left;
+            color: @error-color;
+          }
+        }
       }
     }
   }

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/sliderBox.float.css">
     <link rel="stylesheet" href="css/jBox.css">
     <link rel="stylesheet" href="css/main.min.css?a=1.0">
-    <link rel="stylesheet" href="css/main.min.css?a=1.0">
     <link rel="stylesheet" href="css/product.min.css?a=1.0">
 </head>
 <body class="theme-f5">
@@ -303,7 +302,7 @@
                         <div class="slider-bar">
                             <div class="tab-cont">
                                 <div class="product-information fb-hide">
-                                    <p class="fs-18" >
+                                    <p class="fs-18">
                                         本次众筹<span class="tc-ff5e5e">莱迪拉克ATS-L2017</span>款28T技术项目，全新车系，厂商指导价格：<span
                                             class="tc-ff5e5e">186800元</span>，本次众筹价格：<span
                                             class="tc-ff5e5e">156800元</span>。众筹期限为7天
@@ -712,7 +711,7 @@
     </div>
 </div>
 
-<script type="ext/template" id="InvestmentCont">
+<script type="text/template" id="InvestmentCont">
     <div class="investment-cont">
         <div class="in-select mb-15">
             <span class="t">增益券 :</span>
@@ -763,6 +762,29 @@
                 </div>
             </div>
             <a class="forget" href="user-forget-payPwd.html">忘记支付密码？</a>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="voteCont">
+    <div class="vote-cont">
+        <p>1、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 当此投票通过。 </p>
+        <p>2、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 当此投票通过。 </p>
+        <p>3、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 </p>
+    </div>
+    <div class="vote-intro">
+        <div class="form-list clearfix">
+            <div class="item-text">
+                <span class="t">众筹金额：</span>
+                <span class="c tc-ff3d3d">￥56233.65</span>
+            </div>
+            <div class="item-text">
+                <span class="t">回款金额：</span>
+                <span class="c tc-ff3d3d">￥11233.65</span>
+            </div>
+            <div class="item-text">
+                <span class="t">收益率：</span>
+                <span class="c tc-ff3d3d">11.11%</span>
+            </div>
         </div>
     </div>
 </script>
@@ -923,6 +945,45 @@
                     opt.boxCont.height("auto");
                 }
             });
+        });
+
+        //立即投票
+        $.jBox.confirm($("#voteCont").html(), {
+            boxCls: "vote-box",
+            title: "我要投票",
+            top: "10%",
+            btn: {
+                text: ["<em class='tc-success tm-bold fs-16'>31.33%</em><span>赞成</span>", "<em class='tc-error tm-bold fs-16'>31.33%</em><span>反对</span>"],
+                jEnsure: function (opt) {
+                    $.jBox.alert("你点击了赞成按钮！");
+                },
+                jCancel: function (opt) {
+                    $.jBox.alert("您点击了反对按钮！");
+                }
+            },
+            configCallback: function () {
+                var opt = {};
+                var css = opt.css = {};
+                css.boxCSS = {
+                    width: 640
+                };
+                return opt;
+            },
+            beforeClassFun: function (opt) {
+                opt.boxBtn.width(450).height(80).find("a").css({
+                    "width": "180px",
+                    "margin": "auto",
+                    "background": "transparent",
+                    "border": "0 none",
+                    "height": "auto",
+                    "line-height": "normal"
+                }).find("em").css({
+                    "display": "block",
+                    "margin-bottom": "5px"
+                });
+                opt.jEnsure.find("span").addClass("fb-btn radius gradient no-bd fs-14");
+                opt.jCancel.find("span").addClass("fb-btn radius gradient no-bd fs-14");
+            }
         });
     })
 </script>
