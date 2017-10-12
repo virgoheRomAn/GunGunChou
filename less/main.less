@@ -1894,6 +1894,266 @@
   }
 }
 
+//抽奖
+.lottery-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #6017d7 url("../img/lottery/bg.jpg") no-repeat top;
+  .logo {
+    padding-top: 30px;
+    text-align: center;
+  }
+  .container {
+    display: block;
+    width: 801px;
+    margin: auto;
+    padding-bottom: 50px;
+    .intro {
+      font-size: @fs-20;
+      color: @white;
+      p {
+        .text-mid-line(30px);
+      }
+      label {
+        display: block;
+        width: 100%;
+        text-indent: 2em;
+        span {
+          display: block;
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    }
+    .list {
+      position: relative;
+      z-index: 100;
+      margin-top: 20px;
+      padding-top: 20px;
+      .title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 90;
+        display: block;
+        width: 100%;
+      }
+      .bg {
+        display: block;
+        width: 775px;
+        height: 100%;
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        .border-radius(5px);
+        .fn-set-opacity(53, 53, 53, 0.25);
+      }
+      .cont {
+        position: relative;
+        z-index: 91;
+        display: block;
+        width: 715px;
+        padding: 0 30px;
+        margin: auto;
+        border-top: 4px solid #564e64;
+        .border-radius(2px 2px 5px 5px);
+        background: #9962f4;
+        padding-bottom: 40px;
+        label {
+          position: relative;
+          display: block;
+          text-align: center;
+          border-bottom: 3px solid #ffd800;
+          margin-bottom: 40px;
+          span {
+            display: inline-block;
+            padding: 0 30px;
+            font-size: 32px;
+            color: #ffd800;
+            background: #9962f4;
+            position: relative;
+            top: 21px;
+          }
+        }
+        .cont-height {
+          overflow: hidden;
+          height: 360px;
+        }
+        ul {
+          display: block;
+          li {
+            display: block;
+            padding: 0 10px;
+            .text-mid-line(60px);
+            &.background {
+              background: #8f54f2;
+            }
+            span {
+              display: inline-block;
+              font-size: 20px;
+              color: @white;
+              margin-right: 15px;
+              &.user {
+                width: 200px;
+              }
+              &.ticket {
+                color: #ffd800;
+                width: 170px;
+                margin-left: 40px;
+              }
+              &.time {
+                float: right;
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    .lottery {
+      position: relative;
+      z-index: 30;
+      display: block;
+      width: 788px;
+      height: 663px;
+      background: url("../img/lottery/lottery-bg.png") no-repeat center;
+      margin: auto auto 70px;
+      .bg {
+        position: absolute;
+        top: 10px;
+        left: 4px;
+        width: 780px;
+        height: 657px;
+        background: url("../img/lottery/lottery-matter1.png") no-repeat center;
+        .fb-box-list {
+          width: auto;
+          padding: 35px 36px;
+          ul {
+            height: 189px;
+            margin-bottom: 6px;
+          }
+          .award-box {
+            display: table;
+            width: 230px;
+            height: 189px;
+            margin: auto;
+            background: url("../img/lottery/award-bg.png") no-repeat center;
+            &.background {
+              background: transparent;
+            }
+            &.active {
+              background: #0fadff;
+            }
+            label {
+              display: table-cell;
+              vertical-align: middle;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .shadow {
+      display: block;
+      width: 866px;
+      height: 85px;
+      position: absolute;
+      bottom: -43px;
+      left: 50%;
+      margin-left: -433px;
+      z-index: 10;
+    }
+    .gold {
+      display: block;
+      width: 866px;
+      position: absolute;
+      z-index: 100;
+      bottom: -46px;
+      left: 50%;
+      margin-left: -433px;
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+        margin-top: 53px;
+      }
+    }
+  }
+}
+
+//弹出中奖信息
+.disk-lottery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  .fn-set-opacity(0, 0, 0, 0.5);
+  .pop-lottery {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1021px;
+    height: 1021px;
+    background: url("../img/lottery/pop-lottery-bg.png") no-repeat center;
+    margin: -511px 0 0 -511px;
+    .cont {
+      position: relative;
+      top: 200px;
+      width: 560px;
+      margin: auto;
+      .close {
+        display: block;
+        height: 60px;
+        line-height: 60px;
+        text-align: right;
+        font-size: 60px;
+        a {
+          color: #fff;
+        }
+      }
+      .text {
+        display: block;
+        height: 185px;
+        text-align: center;
+        position: relative;
+        top: -90px;
+        label {
+          display: block;
+          color: #fceb54;
+          font-size: 60px;
+          margin-bottom: 20px;
+        }
+        span {
+          display: block;
+          font-size: 30px;
+          color: #890215;
+          em {
+            color: #fceb54;
+            margin: 0 10px;
+            font-size: 30px;
+          }
+        }
+      }
+      .btn {
+        display: block;
+        width: 480px;
+        height: 96px;
+        line-height: 90px;
+        text-align: center;
+        font-size: 36px;
+        background: url("../img/lottery/pop-lottery-btb.png") no-repeat center;
+        margin: -75px auto 0;
+        cursor: pointer;
+        color: #ff3737;
+      }
+    }
+  }
+}
+
 /*图标集合*/
 .icon-head-tel {
   background-position: -86px -80px;
