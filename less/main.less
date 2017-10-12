@@ -1954,12 +1954,11 @@
         z-index: 91;
         display: block;
         width: 715px;
-        padding: 0 30px;
         margin: auto;
         border-top: 4px solid #564e64;
         .border-radius(2px 2px 5px 5px);
         background: #9962f4;
-        padding-bottom: 40px;
+        padding: 0 30px 40px;
         label {
           position: relative;
           display: block;
@@ -2043,7 +2042,7 @@
               background: transparent;
             }
             &.active {
-              background: #0fadff;
+              background: url("../img/lottery/award-bg-active.png") no-repeat center;
             }
             label {
               display: table-cell;
@@ -2072,12 +2071,28 @@
       bottom: -46px;
       left: 50%;
       margin-left: -433px;
+      text-align: center;
       .left {
         float: left;
       }
       .right {
         float: right;
         margin-top: 53px;
+      }
+      .integral {
+        display: inline-block;
+        width: 200px;
+        font-size: @fs-20;
+        color: @white;
+        position: absolute;
+        bottom: -14px;
+        left: 50%;
+        margin-left: -100px;
+        em {
+          color: #ffd800;
+          font-size: @fs-20;
+          font-weight: bold;
+        }
       }
     }
   }
