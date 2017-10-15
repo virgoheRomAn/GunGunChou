@@ -137,28 +137,53 @@
   padding: 40px;
   background: @white;
   .pro-state-img {
-    .set-layout("block", 104px, 104px, "absolute");
+    .set-layout("block", 102px, 102px, "absolute");
     z-index: 1001;
-    top: -2px;
-    left: -3px;
+    top: 0;
+    left: 0;
     i {
       display: block;
       width: 100%;
       height: 100%;
     }
-    &.going {
+    &.state1 {
       i {
         background-position: 0 0;
       }
     }
-    &.start {
+    &.state2 {
       i {
-        background-position: 0 -109px;
+        background-position: -103px 0;
       }
     }
-    &.end {
+    &.state3 {
       i {
-        background-position: 0 -219px;
+        background-position: -207px 0;
+      }
+    }
+    &.state4 {
+      i {
+        background-position: -311px 0;
+      }
+    }
+    &.state5 {
+      i {
+        background-position: 0 -103px;
+      }
+    }
+    &.state6 {
+      i {
+        background-position: -103px -103px;
+      }
+    }
+    &.state7 {
+      i {
+        background-position: -207px -103px;
+      }
+    }
+    &.state8 {
+      i {
+        background-position: -311px -103px;
       }
     }
   }
@@ -315,7 +340,7 @@
           color: @gray-33;
           em {
             .p-rel;
-            top:-10px;
+            top: -10px;
             display: inline-block;
             width: 18px;
             height: 18px;
