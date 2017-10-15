@@ -361,6 +361,7 @@ FB.progressBox = function (options) {
         } else {
             clearInterval(_clear_timer_);
             $progress.addClass("end").removeClass("running");
+            $text.html(parseFloat(option.number).toString() + (option.format ? option.format : "%"));
             if (option.endFun) option.endFun.call(that, option);
         }
     };
