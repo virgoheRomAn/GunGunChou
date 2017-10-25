@@ -158,7 +158,7 @@
                     </div>
                     <div class="pro-time">
                         <span class="title">剩余时间：</span>
-                        <label class="cut-down" data-time="2017/10/10">
+                        <label class="cut-down" data-time="2019/10/10">
                             <span class="time-day" data-format="天"></span>
                             <span class="time-hour" data-format="时"></span>
                             <span class="time-minute" data-format="分"></span>
@@ -178,7 +178,7 @@
                             <div class="slide-box">
                                 <div class="cont UISlider-box"></div>
                             </div>
-                            <label class="max UISlider-max" data-val="9999999">9,999,999 元<br>最大金额</label>
+                            <label class="max UISlider-max" data-val="199">199 元<br>最大金额</label>
                         </div>
                     </div>
                     <div class="pro-balance">
@@ -948,42 +948,44 @@
         });
 
         //立即投票
-        $.jBox.confirm($("#voteCont").html(), {
-            boxCls: "vote-box",
-            title: "我要投票",
-            top: "10%",
-            btn: {
-                text: ["<em class='tc-success tm-bold fs-16'>31.33%</em><span>赞成</span>", "<em class='tc-error tm-bold fs-16'>31.33%</em><span>反对</span>"],
-                jEnsure: function (opt) {
-                    $.jBox.alert("你点击了赞成按钮！");
+        $("#voteBtn").click(function(){
+            $.jBox.confirm($("#voteCont").html(), {
+                boxCls: "vote-box",
+                title: "我要投票",
+                top: "10%",
+                btn: {
+                    text: ["<em class='tc-success tm-bold fs-16'>31.33%</em><span>赞成</span>", "<em class='tc-error tm-bold fs-16'>31.33%</em><span>反对</span>"],
+                    jEnsure: function (opt) {
+                        $.jBox.alert("你点击了赞成按钮！");
+                    },
+                    jCancel: function (opt) {
+                        $.jBox.alert("您点击了反对按钮！");
+                    }
                 },
-                jCancel: function (opt) {
-                    $.jBox.alert("您点击了反对按钮！");
+                configCallback: function () {
+                    var opt = {};
+                    var css = opt.css = {};
+                    css.boxCSS = {
+                        width: 640
+                    };
+                    return opt;
+                },
+                beforeClassFun: function (opt) {
+                    opt.boxBtn.width(450).height(80).find("a").css({
+                        "width": "180px",
+                        "margin": "auto",
+                        "background": "transparent",
+                        "border": "0 none",
+                        "height": "auto",
+                        "line-height": "normal"
+                    }).find("em").css({
+                        "display": "block",
+                        "margin-bottom": "5px"
+                    });
+                    opt.jEnsure.find("span").addClass("fb-btn radius gradient no-bd fs-14");
+                    opt.jCancel.find("span").addClass("fb-btn radius gradient no-bd fs-14");
                 }
-            },
-            configCallback: function () {
-                var opt = {};
-                var css = opt.css = {};
-                css.boxCSS = {
-                    width: 640
-                };
-                return opt;
-            },
-            beforeClassFun: function (opt) {
-                opt.boxBtn.width(450).height(80).find("a").css({
-                    "width": "180px",
-                    "margin": "auto",
-                    "background": "transparent",
-                    "border": "0 none",
-                    "height": "auto",
-                    "line-height": "normal"
-                }).find("em").css({
-                    "display": "block",
-                    "margin-bottom": "5px"
-                });
-                opt.jEnsure.find("span").addClass("fb-btn radius gradient no-bd fs-14");
-                opt.jCancel.find("span").addClass("fb-btn radius gradient no-bd fs-14");
-            }
+            });
         });
     })
 </script>

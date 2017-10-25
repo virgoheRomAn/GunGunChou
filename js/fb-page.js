@@ -236,7 +236,7 @@ function UISliderHandle(ele, opt) {
             range: "min",
             min: opts.minVal,
             max: opts.maxVal,
-            step: 100,
+            step: 10,
             animate: true,
             classes: {
                 "ui-slider": "",
