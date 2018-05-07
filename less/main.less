@@ -620,25 +620,10 @@
 //产品进度
 .pro-progress {
   .fn-set-margin(14px, top);
-  .progress-container {
-    background-image: -webkit-linear-gradient(left, #ffc54e, #ff4f72);
-    background-image: -moz-linear-gradient(left, #ffc54e, #ff4f72);
-    background-image: -o-linear-gradient(left, #ffc54e, #ff4f72);
-    background-image: -ms-linear-gradient(left, #ffc54e, #ff4f72);
-    background-image: linear-gradient(left, #ffc54e, #ff4f72);
-    background-color: #ff4f72 \9;
-    :root & {
-      background-color: #ff4f72;
-    }
-    & > .runner {
-      background-color: #999999 \9;
-      :root & {
-        background-color: #999999 \9;
-      }
-    }
-    .meter {
-      .fn-set-margin(-20px, top);
-    }
+  .meter {
+    .fn-set-margin(-25px, top);
+    float: right;
+    color: #ff4e4d;
   }
 }
 
@@ -2187,7 +2172,7 @@
   height: 338px;
   margin: auto;
   background: url("../img/share-bg.png") no-repeat center;
-  img{
+  img {
     position: relative;
     top: 156px;
     left: 8px;

@@ -247,9 +247,13 @@
                                                         </div>
                                                         <div class="pro-progress">
                                                             <div class="progress-container gradient">
-                                                                <div class="meter">100%</div>
-                                                                <span class="runner"></span>
+                                                                <span class="runner finished"></span>
+                                                                <span class="runner unfinished"></span>
+                                                                <!--<div class="meter">100%</div>-->
+                                                                <!--<span class="runner"></span>-->
                                                             </div>
+                                                            <div class="meter unfinished fb-hide">10%</div>
+                                                            <div class="meter finished">60%</div>
                                                         </div>
                                                         <a class="fb-btn radius gradient tc-fff"
                                                            href="pro-details.html">查看详情</a>
@@ -1199,7 +1203,7 @@
             tabLimit: true,
             initFun: function (opt) {
                 var $cur = $(opt.currentEle);
-                var $pro = $cur.find(".progress-container");
+                var $pro = $cur.find(".pro-progress");
                 if (!$cur.hasClass("loadEnd")) {
                     $cur.find(".tab-loading").show();
                     setTimeout(function () {

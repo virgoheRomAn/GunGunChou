@@ -31,17 +31,40 @@ function newSliderBox(ele, type, opt) {
 }
 
 //设置滚动条
-function setProgress(ele) {
-    ele.each(function () {
+function setProgress(ele, start, end) {
+    // ele.each(function () {
+    //     var that = this;
+    //     FB.progressBox({
+    //         element: {
+    //             container: that,
+    //             text: $(that).find(".meter"),
+    //             runner: $(that).find(".runner")
+    //         },
+    //         number: $(that).find(".meter").text().split("%")[0],
+    //         time: 1000
+    //     });
+    // });
+
+    $(ele).each(function () {
         var that = this;
         FB.progressBox({
             element: {
-                container: that,
+                container: $(that).find(".progress-container"),
                 text: $(that).find(".meter"),
                 runner: $(that).find(".runner")
             },
-            number: $(that).find(".meter").text().split("%")[0],
-            time: 1000
+            // number: $(that).find(".meter").text().split("%")[0],
+            unfinishedNum: $(that).find(".meter.unfinished").text().split("%")[0],
+            finishedNum: $(that).find(".meter.finished").text().split("%")[0],
+            time: 0,
+            add: 0.1,
+            textMove: true,
+            startFun: function (opt) {
+                if (start) start.call(this, opt);
+            },
+            endFun: function (opt) {
+                if (end) end.call(this, opt);
+            }
         });
     });
 }

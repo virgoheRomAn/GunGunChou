@@ -187,7 +187,7 @@
                             <b class="tc-ff4a49"><em>200,000</em>元</b>
                         </label>
                         <label class="balance-handle">
-                            <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;">充值</a>
+                            <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;" id="voteBtn">充值</a>
                             <a class="fb-btn radius gradient no-bd fs-14" href="javascript:;" id="Investment">立即投资</a>
                         </label>
                     </div>
@@ -209,9 +209,11 @@
                         </a>
                     </div>
                     <div class="pro-progress">
-                        <div class="progress-container gradient end">
-                            <div class="meter">15.91%</div>
-                            <span class="runner"></span>
+                        <div class="progress-container gradient">
+                            <div class="meter finished">80.5%</div>
+                            <div class="meter unfinished">10.4%</div>
+                            <span class="runner finished"></span>
+                            <span class="runner unfinished"></span>
                         </div>
                     </div>
                 </div>
@@ -849,7 +851,7 @@
         });
 
         //进度条
-        $(".progress-container").each(function () {
+        $(".pro-progress").each(function () {
             setProgress($(this));
         });
         //点击收藏
