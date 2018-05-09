@@ -191,6 +191,14 @@
                             <div class="p-u-active">
                                 <a class="fb-btn gradient radius no-bd fs-18" href="ggc-lottery.html">抽奖送大礼</a>
                                 <a class="fb-btn gradient radius no-bd fs-18" href="ticket.html">领券中心</a>
+                                <div class="fb-switch radius active">
+                                    <label class="box">
+                                        <span class="on">开</span>
+                                        <span class="btn"><em class="radius"></em></span>
+                                        <span class="off">关</span>
+                                        <!--<input type="checkbox">-->
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="item p-u-money">
@@ -373,6 +381,12 @@
 <script src="js/fb-page.js"></script>
 <script>
     $(function () {
+        //switch开关
+        $(".fb-switch").click(function (e) {
+            e.stopPropagation();
+            $(this).toggleClass("active");
+        });
+
         //配置弹窗
         $.jBox.configFun(function (opt) {
             opt.isVertical = false;

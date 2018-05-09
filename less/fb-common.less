@@ -307,6 +307,76 @@ input[type="number"] {
   zoom: 1;
 }
 
+/*表单-switch开关*/
+.fb-switch {
+  .set-layout("block", 105px, 40px);
+  overflow: hidden;
+  //background: @gray-99;
+  background: linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
+  background: -o-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
+  background: -ms-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
+  background: -moz-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
+  background: -webkit-linear-gradient(top, #e2e2e2, #d1d1d0 36%, #b5b5b5 55%, #a09f9f 100%);
+  .border-radius(3px);
+  padding: 2px;
+  .fn-transition(all 0.3s ease);
+  &.active {
+    //background: #06cfff;
+    background: linear-gradient(top, #02f0ff, #00e3ff 36%, #06cfff 55%, #08f 100%);
+    background: -o-linear-gradient(top, #02f0ff, #00e3ff 36%, #06cfff 55%, #08f 100%);
+    background: -ms-linear-gradient(top, #02f0ff, #00e3ff 36%, #06cfff 55%, #08f 100%);
+    background: -moz-linear-gradient(top, #02f0ff, #00e3ff 36%, #06cfff 55%, #08f 100%);
+    background: -webkit-linear-gradient(top, #02f0ff, #00e3ff 36%, #06cfff 55%, #08f 100%);
+    label.box {
+      left: 65px;
+    }
+  }
+  &.radius {
+    .border-radius(40px);
+  }
+  label.box {
+    cursor: pointer;
+    .disk-layer(100%, 100%);
+    left: 0;
+    width: 165px;
+    float: right;
+    .fn-transition(all 0.3s ease);
+    span {
+      .set-layout("block", 60px, 100%);
+      z-index: 100;
+      float: left;
+      &.btn {
+        .set-layout("block", 40px, 40px);
+        .border-radius(50%);
+        background: @white;
+      }
+      &.on, &.off {
+        color: @white;
+        line-height: 38px;
+        font-size: @fs-16;
+        text-align: center;
+        font-weight: bold;
+      }
+      &.on {
+        text-indent: 8px;
+      }
+      &.off {
+        text-indent: -8px;
+      }
+    }
+    input[type="checkbox"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 /*列表布局*/
 .fb-box-list {
   .disk-type;
@@ -783,7 +853,7 @@ input[type="number"] {
     &.finished {
       z-index: 999;
     }
-    &.unfinished{
+    &.unfinished {
       background-color: transparent;
       background-image: -webkit-linear-gradient(left, #06cfff, #0386ff);
       background-image: -moz-linear-gradient(left, #06cfff, #0386ff);
@@ -877,6 +947,22 @@ input[type="number"] {
       border: 1px solid @color;
     }
   }
+}
+
+//设置过滤
+.fn-transition(@mar) {
+  transition: @mar;
+  -webkit-transition: @mar;
+}
+
+.fn-transform-origin(@mar) {
+  -webkit-transform-origin: @mar;
+  transform-origin: @mar;
+}
+
+.fn-transform(@mar) {
+  transform: @mar;
+  -webkit-transform: @mar;
 }
 
 /*文字渐变*/
